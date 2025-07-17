@@ -18,7 +18,13 @@ import {
   Play,
   Instagram,
   Linkedin,
-  ChevronRight
+  ChevronRight,
+  Star,
+  Zap,
+  TrendingUp,
+  Globe,
+  Heart,
+  Sparkles
 } from "lucide-react";
 
 const Index = () => {
@@ -36,9 +42,16 @@ const Index = () => {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 glass-card border-b">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <Building className="h-8 w-8 text-primary" />
-            <span className="font-bold text-xl gradient-text">AMC E-Cell</span>
+          <div className="flex items-center space-x-3 animate-fade-in">
+            <img 
+              src="/lovable-uploads/2393551e-f229-4311-96a9-fd84f1257fd7.png" 
+              alt="AMC Logo" 
+              className="h-12 w-auto hover-scale"
+            />
+            <div>
+              <span className="font-bold text-xl gradient-text">AMC E-Cell</span>
+              <p className="text-xs text-muted-foreground">Innovation Hub</p>
+            </div>
           </div>
           <div className="hidden md:flex space-x-6">
             <button onClick={() => scrollToSection('about')} className="hover:text-primary transition-colors">About</button>
@@ -56,15 +69,30 @@ const Index = () => {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto text-center">
+          <div className="flex justify-center items-center mb-8 animate-scale-in">
+            <img 
+              src="/lovable-uploads/2393551e-f229-4311-96a9-fd84f1257fd7.png" 
+              alt="AMC Logo" 
+              className="h-24 w-auto mr-6 hover-scale"
+            />
+            <div className="text-left">
+              <h3 className="text-2xl font-bold gradient-text">AMC Institutions</h3>
+              <p className="text-muted-foreground">Innovation • Excellence • Leadership</p>
+            </div>
+          </div>
           <h1 className="text-6xl md:text-8xl font-bold mb-6 gradient-text animate-fade-in">
             Igniting Innovation
           </h1>
-          <h2 className="text-4xl md:text-6xl font-bold mb-8 text-foreground">
+          <h2 className="text-4xl md:text-6xl font-bold mb-8 text-foreground animate-fade-in" style={{animationDelay: '0.2s'}}>
             Empowering Entrepreneurs
           </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            AMC Engineering College's Official Entrepreneurship Cell - Fostering the next generation of innovators and startup founders
-          </p>
+          <div className="flex items-center justify-center mb-8 animate-fade-in" style={{animationDelay: '0.4s'}}>
+            <Sparkles className="h-6 w-6 text-primary mr-2" />
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl">
+              AMC Engineering College's Official Entrepreneurship Cell - Fostering the next generation of innovators and startup founders
+            </p>
+            <Sparkles className="h-6 w-6 text-accent ml-2" />
+          </div>
           <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg" 
@@ -110,43 +138,67 @@ const Index = () => {
       {/* About Section */}
       <section id="about" className="py-20 px-4">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-5xl font-bold mb-6 gradient-text">About AMC E-Cell</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Founded to cultivate entrepreneurial talent and drive startup success stories on campus and beyond
-            </p>
+            <div className="flex items-center justify-center mb-4">
+              <Star className="h-5 w-5 text-primary mr-2" />
+              <p className="text-xl text-muted-foreground max-w-3xl">
+                Founded in 2023, AMC E-Cell is a student-run initiative to cultivate entrepreneurial talent and drive startup success stories on campus and beyond
+              </p>
+              <Star className="h-5 w-5 text-accent ml-2" />
+            </div>
+            <div className="flex justify-center items-center space-x-8 mt-8">
+              <div className="text-center animate-scale-in" style={{animationDelay: '0.2s'}}>
+                <div className="text-3xl font-bold text-primary">50+</div>
+                <div className="text-sm text-muted-foreground">Active Members</div>
+              </div>
+              <div className="text-center animate-scale-in" style={{animationDelay: '0.4s'}}>
+                <div className="text-3xl font-bold text-accent">15+</div>
+                <div className="text-sm text-muted-foreground">Events Organized</div>
+              </div>
+              <div className="text-center animate-scale-in" style={{animationDelay: '0.6s'}}>
+                <div className="text-3xl font-bold text-primary">5+</div>
+                <div className="text-sm text-muted-foreground">Startups Incubated</div>
+              </div>
+            </div>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="glass-card hover:scale-105 transition-transform">
+            <Card className="glass-card hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-fade-in">
               <CardContent className="p-8 text-center">
-                <Target className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-4">Vision</h3>
-                <p className="text-muted-foreground">
-                  To foster a culture of innovation and entrepreneurship at AMC Engineering College
+                <div className="animate-pulse-glow">
+                  <Target className="h-12 w-12 text-primary mx-auto mb-4" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 gradient-text">Vision</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  To foster a culture of innovation and entrepreneurship at AMC Engineering College, creating the next generation of successful entrepreneurs and industry leaders
                 </p>
               </CardContent>
             </Card>
             
-            <Card className="glass-card hover:scale-105 transition-transform">
+            <Card className="glass-card hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-fade-in" style={{animationDelay: '0.2s'}}>
               <CardContent className="p-8 text-center">
-                <Lightbulb className="h-12 w-12 text-accent mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-4">Mission</h3>
-                <p className="text-muted-foreground">
-                  To empower students with guidance, mentorship, and resources to bring ideas to life
+                <div className="animate-pulse-glow">
+                  <Lightbulb className="h-12 w-12 text-accent mx-auto mb-4" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 gradient-text">Mission</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  To empower students with comprehensive guidance, mentorship, and resources to transform innovative ideas into successful ventures and real-world impact
                 </p>
               </CardContent>
             </Card>
             
-            <Card className="glass-card hover:scale-105 transition-transform">
+            <Card className="glass-card hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-fade-in" style={{animationDelay: '0.4s'}}>
               <CardContent className="p-8 text-center">
-                <Rocket className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-4">Objectives</h3>
-                <ul className="text-muted-foreground text-left space-y-2">
-                  <li>• Promote startup culture</li>
-                  <li>• Host events & workshops</li>
-                  <li>• Build industry relations</li>
-                  <li>• Provide incubation support</li>
+                <div className="animate-pulse-glow">
+                  <Rocket className="h-12 w-12 text-primary mx-auto mb-4" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 gradient-text">Objectives</h3>
+                <ul className="text-muted-foreground text-left space-y-3">
+                  <li className="flex items-center"><Zap className="h-4 w-4 mr-2 text-primary" />Promote startup culture on campus</li>
+                  <li className="flex items-center"><Calendar className="h-4 w-4 mr-2 text-accent" />Host innovative events & workshops</li>
+                  <li className="flex items-center"><Globe className="h-4 w-4 mr-2 text-primary" />Build strong industry relations</li>
+                  <li className="flex items-center"><TrendingUp className="h-4 w-4 mr-2 text-accent" />Provide comprehensive incubation support</li>
                 </ul>
               </CardContent>
             </Card>
@@ -260,59 +312,133 @@ const Index = () => {
       {/* Team Section */}
       <section id="team" className="py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-5xl font-bold text-center mb-16 gradient-text">Our Team</h2>
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-5xl font-bold mb-6 gradient-text">Our Dynamic Team</h2>
+            <p className="text-xl text-muted-foreground">Meet the passionate leaders driving innovation at AMC E-Cell</p>
+          </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Dr. Sarah Johnson",
-                role: "Faculty Coordinator",
-                dept: "Computer Science",
-                description: "Guiding innovation and entrepreneurship"
-              },
-              {
-                name: "Arjun Patel",
-                role: "President",
-                dept: "CSE, Final Year",
-                description: "Leading the entrepreneurial revolution"
-              },
-              {
-                name: "Priya Sharma",
-                role: "Vice President",
-                dept: "ECE, Pre-Final",
-                description: "Organizing events and workshops"
-              },
-              {
-                name: "Rahul Kumar",
-                role: "Technical Lead",
-                dept: "IT, Pre-Final",
-                description: "Managing technical initiatives"
-              },
-              {
-                name: "Sneha Reddy",
-                role: "Marketing Head",
-                dept: "CSE, Pre-Final",
-                description: "Building community and outreach"
-              },
-              {
-                name: "Vikram Singh",
-                role: "Operations Manager",
-                dept: "Mech, Final Year",
-                description: "Ensuring smooth operations"
-              }
-            ].map((member, index) => (
-              <Card key={index} className="glass-card hover:scale-105 transition-transform">
-                <CardContent className="p-6 text-center">
-                  <div className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white">
-                    {member.name.split(' ').map(n => n[0]).join('')}
+          {/* Leadership Team */}
+          <div className="mb-12">
+            <h3 className="text-3xl font-bold text-center mb-8 gradient-text">Leadership</h3>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <Card className="glass-card hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-fade-in">
+                <CardContent className="p-8 text-center">
+                  <div className="w-24 h-24 bg-gradient-to-br from-primary to-accent rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white animate-pulse-glow">
+                    RN
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{member.name}</h3>
-                  <Badge variant="outline" className="mb-2">{member.role}</Badge>
-                  <p className="text-sm text-muted-foreground mb-3">{member.dept}</p>
-                  <p className="text-sm">{member.description}</p>
+                  <h3 className="text-2xl font-bold mb-2 gradient-text">Ritesh N</h3>
+                  <Badge variant="default" className="mb-3 animate-pulse-glow">Team Lead</Badge>
+                  <p className="text-sm text-muted-foreground mb-3">4th Year CSE AIML</p>
+                  <p className="text-sm leading-relaxed">Visionary leader driving innovation and entrepreneurship, orchestrating the E-Cell's strategic direction and fostering a culture of excellence</p>
+                  <div className="flex justify-center space-x-2 mt-4">
+                    <Button variant="outline" size="sm" className="hover-scale">
+                      <Linkedin className="h-4 w-4" />
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
-            ))}
+              
+              <Card className="glass-card hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-fade-in" style={{animationDelay: '0.1s'}}>
+                <CardContent className="p-8 text-center">
+                  <div className="w-24 h-24 bg-gradient-to-br from-accent to-primary rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white animate-pulse-glow">
+                    SS
+                  </div>
+                  <h3 className="text-2xl font-bold mb-2 gradient-text">Swathi Srikanth</h3>
+                  <Badge variant="secondary" className="mb-3">Mentor</Badge>
+                  <p className="text-sm text-muted-foreground mb-3">Faculty Guidance</p>
+                  <p className="text-sm leading-relaxed">Experienced mentor providing strategic guidance and industry insights to nurture entrepreneurial talent and ensure academic excellence</p>
+                  <div className="flex justify-center space-x-2 mt-4">
+                    <Button variant="outline" size="sm" className="hover-scale">
+                      <Linkedin className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Core Team */}
+          <div className="mb-12">
+            <h3 className="text-3xl font-bold text-center mb-8 gradient-text">Core Team</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  name: "Pannaga JA",
+                  initials: "PJ",
+                  role: "Vice President",
+                  dept: "4th Year CSE AIML",
+                  description: "Strategic planning and team coordination specialist"
+                },
+                {
+                  name: "Shashank GS",
+                  initials: "SG",
+                  role: "Technical Lead",
+                  dept: "4th Year CSE AIML", 
+                  description: "Innovation catalyst and technical architecture expert"
+                },
+                {
+                  name: "Ruthu Parinika",
+                  initials: "RP",
+                  role: "Events Manager",
+                  dept: "4th Year CSE AIML",
+                  description: "Event orchestration and community engagement leader"
+                },
+                {
+                  name: "Sanath Naik",
+                  initials: "SN",
+                  role: "Marketing Head",
+                  dept: "4th Year CSE AIML",
+                  description: "Brand building and digital outreach strategist"
+                },
+                {
+                  name: "Praveen V",
+                  initials: "PV",
+                  role: "Operations Manager",
+                  dept: "4th Year CSE AIML",
+                  description: "Operational excellence and resource management expert"
+                }
+              ].map((member, index) => (
+                <Card key={index} className="glass-card hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-fade-in" style={{animationDelay: `${0.1 * index}s`}}>
+                  <CardContent className="p-6 text-center">
+                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full mx-auto mb-4 flex items-center justify-center text-lg font-bold text-white hover-scale">
+                      {member.initials}
+                    </div>
+                    <h3 className="text-lg font-bold mb-2">{member.name}</h3>
+                    <Badge variant="outline" className="mb-2 text-xs">{member.role}</Badge>
+                    <p className="text-xs text-muted-foreground mb-3">{member.dept}</p>
+                    <p className="text-xs leading-relaxed">{member.description}</p>
+                    <div className="flex justify-center mt-3">
+                      <Button variant="ghost" size="sm" className="hover-scale">
+                        <Linkedin className="h-3 w-3" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Faculty Advisory */}
+          <div>
+            <h3 className="text-3xl font-bold text-center mb-8 gradient-text">Faculty Advisory</h3>
+            <div className="flex justify-center">
+              <Card className="glass-card hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-fade-in max-w-md">
+                <CardContent className="p-8 text-center">
+                  <div className="w-24 h-24 bg-gradient-to-br from-accent to-primary rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white animate-pulse-glow">
+                    N
+                  </div>
+                  <h3 className="text-2xl font-bold mb-2 gradient-text">Prof. Nandishwar</h3>
+                  <Badge variant="secondary" className="mb-3">HOD - CSE AIML</Badge>
+                  <p className="text-sm text-muted-foreground mb-3">Department Head</p>
+                  <p className="text-sm leading-relaxed">Visionary academic leader fostering innovation and excellence in AI/ML education, guiding students towards entrepreneurial success</p>
+                  <div className="flex justify-center space-x-2 mt-4">
+                    <Button variant="outline" size="sm" className="hover-scale">
+                      <Linkedin className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
