@@ -1,30 +1,61 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   Lightbulb, 
   Users, 
+  Target, 
   Calendar, 
   MapPin, 
   Mail, 
-  ExternalLink,
-  Target,
+  Linkedin, 
+  Instagram, 
   Rocket,
-  Building,
-  Award,
-  Quote,
-  ArrowRight,
-  Play,
-  Instagram,
-  Linkedin,
-  ChevronRight,
   Star,
-  Zap,
-  TrendingUp,
+  Trophy,
   Globe,
   Heart,
-  Sparkles
+  BookOpen,
+  Zap,
+  Brain,
+  Code,
+  Palette,
+  MessageCircle,
+  CheckCircle,
+  ArrowRight,
+  Play,
+  Award,
+  TrendingUp,
+  Building,
+  UserCheck,
+  Download,
+  ExternalLink,
+  Handshake,
+  Megaphone,
+  Search,
+  FileText,
+  Video,
+  Camera,
+  ThumbsUp,
+  Send,
+  Shield,
+  Briefcase,
+  GraduationCap,
+  Settings,
+  Network,
+  PieChart,
+  BarChart3,
+  Users2,
+  Coins,
+  Clock,
+  Eye,
+  Sparkles,
+  Menu,
+  X,
+  ChevronDown,
+  Crown
 } from "lucide-react";
 
 // Counter component for animated stats
@@ -53,105 +84,320 @@ const AnimatedCounter = ({ end, suffix = "", duration = 2000 }: { end: number; s
 };
 
 const Index = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false);
+    }
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Animated Background Orbs */}
-      <div className="blur-orb blur-orb-1"></div>
-      <div className="blur-orb blur-orb-2"></div>
-      <div className="blur-orb blur-orb-3"></div>
-      
+    <div className="min-h-screen bg-slate-900 font-['Inter'] relative overflow-x-hidden">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 glass-card border-b">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-3 animate-fade-in">
-            <img 
-              src="/lovable-uploads/2393551e-f229-4311-96a9-fd84f1257fd7.png" 
-              alt="AMC Logo" 
-              className="h-12 w-auto hover-scale"
-            />
-            <div>
-              <span className="font-bold text-xl gradient-text">AMC E-Cell</span>
-              <p className="text-xs text-muted-foreground">Innovation Hub</p>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled ? 'bg-slate-900/95 backdrop-blur-md shadow-2xl border-b border-purple-500/20' : 'bg-transparent'
+      }`}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20">
+            {/* Logo */}
+            <div className="flex items-center space-x-3 animate-fade-in">
+              <img 
+                src="/lovable-uploads/2393551e-f229-4311-96a9-fd84f1257fd7.png" 
+                alt="AMC E-Cell" 
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-transform duration-300 hover:scale-110"
+              />
+              <div>
+                <span className="text-lg sm:text-xl font-bold gradient-text-stalight">AMC E-Cell</span>
+                <p className="text-xs text-gray-400 hidden sm:block">Innovation Hub</p>
+              </div>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-8">
+              {[
+                { name: 'Home', id: 'home' },
+                { name: 'About', id: 'about' },
+                { name: 'Programs', id: 'programs' },
+                { name: 'Events', id: 'events' },
+                { name: 'Team', id: 'team' },
+                { name: 'Contact', id: 'contact' }
+              ].map((item) => (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-gray-300 hover:text-white transition-all duration-300 font-medium relative group"
+                >
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-600 transition-all duration-300 group-hover:w-full"></span>
+                </button>
+              ))}
+              <Button 
+                onClick={() => scrollToSection('contact')}
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-2 rounded-full transition-all duration-300 hover:scale-105 shadow-lg"
+              >
+                Join E-Cell
+              </Button>
+            </div>
+
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-300"
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+
+          {/* Mobile Navigation */}
+          <div className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden ${
+            isMenuOpen ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'
+          }`}>
+            <div className="py-4 space-y-3 bg-slate-800/95 backdrop-blur-md rounded-xl mt-4 px-6 border border-purple-500/20">
+              {[
+                { name: 'Home', id: 'home' },
+                { name: 'About', id: 'about' },
+                { name: 'Programs', id: 'programs' },
+                { name: 'Events', id: 'events' },
+                { name: 'Team', id: 'team' },
+                { name: 'Contact', id: 'contact' }
+              ].map((item) => (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.id)}
+                  className="block text-gray-300 hover:text-white transition-colors duration-300 font-medium w-full text-left py-2 px-3 rounded-lg hover:bg-purple-600/20"
+                >
+                  {item.name}
+                </button>
+              ))}
+              <Button 
+                onClick={() => scrollToSection('contact')}
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white w-full mt-4 rounded-full"
+              >
+                Join E-Cell
+              </Button>
             </div>
           </div>
-          <div className="hidden md:flex space-x-6">
-            <button onClick={() => scrollToSection('about')} className="hover:text-primary transition-colors">About</button>
-            <button onClick={() => scrollToSection('initiatives')} className="hover:text-primary transition-colors">Initiatives</button>
-            <button onClick={() => scrollToSection('events')} className="hover:text-primary transition-colors">Events</button>
-            <button onClick={() => scrollToSection('team')} className="hover:text-primary transition-colors">Team</button>
-            <button onClick={() => scrollToSection('contact')} className="hover:text-primary transition-colors">Contact</button>
-          </div>
-          <Button onClick={() => scrollToSection('contact')} className="animate-pulse-glow">
-            Join E-Cell
-          </Button>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4">
-        <div className="container mx-auto text-center">
-          <div className="flex justify-center items-center mb-8 animate-scale-in">
+      <section id="home" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="4"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+          <div className="absolute top-10 left-10 w-32 sm:w-48 md:w-72 h-32 sm:h-48 md:h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+          <div className="absolute top-10 right-10 w-32 sm:w-48 md:w-72 h-32 sm:h-48 md:h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-20 w-32 sm:w-48 md:w-72 h-32 sm:h-48 md:h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+        </div>
+        
+        <div className="relative z-10 text-center max-w-7xl mx-auto">
+          {/* Logo */}
+          <div className="mb-6 sm:mb-8 animate-fade-in">
             <img 
               src="/lovable-uploads/2393551e-f229-4311-96a9-fd84f1257fd7.png" 
-              alt="AMC Logo" 
-              className="h-24 w-auto mr-6 hover-scale"
+              alt="AMC E-Cell Logo" 
+              className="w-16 h-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 mx-auto mb-4 rounded-full shadow-2xl hover-glow transition-all duration-500 hover:scale-110 float-animation"
             />
-            <div className="text-left">
-              <h3 className="text-2xl font-bold gradient-text">AMC Institutions</h3>
-              <p className="text-muted-foreground">Innovation • Excellence • Leadership</p>
-            </div>
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 gradient-text animate-fade-in">
-            Igniting Innovation
+          
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold mb-4 sm:mb-6 animate-fade-in animation-delay-200 leading-tight px-4">
+            <span className="gradient-text-stalight block">Igniting Innovation</span>
+            <span className="text-white block mt-2">Empowering Entrepreneurs</span>
           </h1>
-          <h2 className="text-4xl md:text-6xl font-bold mb-8 text-foreground animate-fade-in" style={{animationDelay: '0.2s'}}>
-            Empowering Entrepreneurs
-          </h2>
-          <div className="flex items-center justify-center mb-8 animate-fade-in" style={{animationDelay: '0.4s'}}>
-            <Sparkles className="h-6 w-6 text-primary mr-2" />
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl">
-              AMC Engineering College's Official Entrepreneurship Cell - Fostering the next generation of innovators and startup founders
-            </p>
-            <Sparkles className="h-6 w-6 text-accent ml-2" />
-          </div>
-          <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+          
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-300 mb-6 sm:mb-8 animate-fade-in animation-delay-400 max-w-5xl mx-auto px-4">
+            AMC Engineering College's Official Entrepreneurship Cell
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in animation-delay-600 px-4 max-w-lg mx-auto sm:max-w-none">
             <Button 
-              size="lg" 
-              className="text-lg px-8 py-6 animate-pulse-glow"
               onClick={() => scrollToSection('contact')}
+              size="lg" 
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full transition-all duration-300 hover:scale-105 shadow-lg w-full sm:w-auto"
             >
               <Rocket className="mr-2 h-5 w-5" />
               Join E-Cell
             </Button>
             <Button 
+              onClick={() => scrollToSection('events')}
               size="lg" 
               variant="outline" 
-              className="text-lg px-8 py-6 glass-card"
-              onClick={() => scrollToSection('events')}
+              className="border-2 border-purple-500 text-purple-300 hover:bg-purple-500 hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full transition-all duration-300 hover:scale-105 w-full sm:w-auto backdrop-blur-sm"
             >
               <Calendar className="mr-2 h-5 w-5" />
               View Events
             </Button>
           </div>
+          
+          {/* Scroll indicator */}
+          <div className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-purple-400 rounded-full flex justify-center cursor-pointer" onClick={() => scrollToSection('stats')}>
+              <div className="w-1 h-2 sm:h-3 bg-purple-400 rounded-full mt-2 animate-pulse"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section id="stats" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-slate-800 to-slate-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+              <span className="gradient-text-stalight">Our Impact</span>
+            </h2>
+            <p className="text-gray-400 text-base sm:text-lg lg:text-xl">Driving innovation and entrepreneurship at AMC</p>
+          </div>
+          
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 lg:gap-8">
+            {[
+              { label: "Startups Reached", value: 30, suffix: "+", icon: Rocket },
+              { label: "Events Conducted", value: 15, suffix: "+", icon: Calendar },
+              { label: "Students Impacted", value: 800, suffix: "+", icon: Users },
+              { label: "Alumni Entrepreneurs", value: 12, suffix: "", icon: GraduationCap },
+              { label: "Funds Raised", value: 10, suffix: "L+", icon: Coins },
+              { label: "Partner Organizations", value: 6, suffix: "", icon: Handshake }
+            ].map((stat, index) => (
+              <Card key={index} className="bg-white/5 border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 text-center backdrop-blur-sm">
+                <CardContent className="p-3 sm:p-4 lg:p-6">
+                  <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 mx-auto mb-2 sm:mb-3 lg:mb-4 text-purple-400" />
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1 sm:mb-2">
+                    <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                  </div>
+                  <p className="text-gray-400 text-xs sm:text-sm lg:text-base leading-tight">{stat.label}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section - Enhanced */}
+      <section id="about" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-slate-900 to-purple-900 relative">
+        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+              About <span className="gradient-text-stalight">AMC E-Cell</span>
+            </h2>
+            <p className="text-gray-300 text-base sm:text-lg lg:text-xl max-w-4xl mx-auto leading-relaxed">
+              Founded in 2022 with a vision to foster innovation and entrepreneurship, AMC E-Cell emerged from the collective passion of students who believed in the power of ideas to transform society.
+            </p>
+          </div>
+
+          {/* Founding Story */}
+          <div className="mb-12 sm:mb-16">
+            <Card className="bg-white/5 border-purple-500/30 overflow-hidden backdrop-blur-sm">
+              <CardContent className="p-6 sm:p-8 lg:p-12">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                  <div>
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 sm:mb-6 flex items-center">
+                      <BookOpen className="mr-3 h-6 w-6 sm:h-8 sm:w-8 text-purple-400" />
+                      Our Founding Story
+                    </h3>
+                    <div className="space-y-4 text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed">
+                      <p>
+                        In 2022, a group of visionary students at AMC Engineering College recognized the need for a platform that could bridge the gap between academic learning and real-world entrepreneurship. What started as informal brainstorming sessions in the college corridors evolved into a structured entrepreneurship cell.
+                      </p>
+                      <p>
+                        With support from the faculty and administration, AMC E-Cell was officially established to nurture the entrepreneurial spirit among students and create a thriving startup ecosystem within the campus.
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2 mt-6">
+                      {["Innovation", "Collaboration", "Leadership", "Sustainability"].map((value) => (
+                        <Badge key={value} variant="secondary" className="bg-purple-600/20 text-purple-300 border-purple-500/30 text-xs sm:text-sm">
+                          {value}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex justify-center">
+                    <img 
+                      src="/lovable-uploads/2393551e-f229-4311-96a9-fd84f1257fd7.png" 
+                      alt="AMC E-Cell Logo" 
+                      className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full shadow-2xl hover-glow float-animation"
+                    />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Core Values */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16">
+            {[
+              { title: "Innovation", icon: Lightbulb, desc: "Fostering creative thinking and breakthrough ideas" },
+              { title: "Collaboration", icon: Users, desc: "Building strong partnerships and teamwork" },
+              { title: "Leadership", icon: Trophy, desc: "Developing future leaders and changemakers" },
+              { title: "Sustainability", icon: Globe, desc: "Creating lasting impact for society" }
+            ].map((value, index) => (
+              <Card key={index} className="bg-white/10 border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 text-center backdrop-blur-sm">
+                <CardContent className="p-4 sm:p-6">
+                  <value.icon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 mx-auto mb-3 sm:mb-4 text-purple-400" />
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-2">{value.title}</h3>
+                  <p className="text-gray-300 text-xs sm:text-sm lg:text-base leading-relaxed">{value.desc}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Achievements Timeline */}
+          <div className="bg-white/5 rounded-2xl p-6 sm:p-8 lg:p-12 border border-purple-500/30 backdrop-blur-sm">
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-6 sm:mb-8 text-center">
+              <span className="gradient-text-stalight">Our Journey</span>
+            </h3>
+            <div className="space-y-6 sm:space-y-8">
+              {[
+                { year: "2022", event: "AMC E-Cell Founded", desc: "Official establishment with faculty support" },
+                { year: "2023", event: "First Ideathon Launched", desc: "Campus-wide innovation challenge with 200+ participants" },
+                { year: "2024", event: "First Startup Incubated", desc: "Successfully launched our first student-led venture" },
+                { year: "2024", event: "Industry Partnerships", desc: "Collaborated with 6+ organizations and startups" },
+                { year: "2025", event: "External Collaborations", desc: "Expanding beyond campus with regional partnerships" }
+              ].map((milestone, index) => (
+                <div key={index} className="timeline-item flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold text-xs sm:text-sm lg:text-base">{milestone.year.slice(-2)}</span>
+                  </div>
+                  <div className="flex-1 pb-4">
+                    <h4 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-1">{milestone.event}</h4>
+                    <p className="text-gray-300 text-sm sm:text-base leading-relaxed">{milestone.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Video Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="glass-card rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold text-center mb-8 gradient-text">
-              AMC E-Cell Journey
-            </h3>
-            <div className="aspect-video rounded-xl overflow-hidden shadow-2xl">
+      <section className="py-12 sm:py-16 lg:py-20 bg-slate-800 relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+              <span className="gradient-text-stalight">Experience AMC E-Cell</span>
+            </h2>
+            <p className="text-gray-300 text-base sm:text-lg lg:text-xl">Watch our journey in action</p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-purple-900/20 to-pink-900/20 p-2">
               <iframe
+                className="w-full h-64 sm:h-80 lg:h-96 rounded-xl"
                 src="https://www.youtube.com/embed/HI7t9mb71yg?autoplay=1&mute=1&loop=1&playlist=HI7t9mb71yg"
                 title="AMC E-Cell Video"
-                className="w-full h-full"
+                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
@@ -160,455 +406,128 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-5xl font-bold mb-6 gradient-text">About AMC E-Cell</h2>
-            <div className="flex items-center justify-center mb-4">
-              <Star className="h-5 w-5 text-primary mr-2" />
-              <p className="text-xl text-muted-foreground max-w-3xl">
-                Founded in 2023, AMC E-Cell is a student-run initiative to cultivate entrepreneurial talent and drive startup success stories on campus and beyond
-              </p>
-              <Star className="h-5 w-5 text-accent ml-2" />
-            </div>
-            <div className="flex justify-center items-center space-x-8 mt-8">
-              <div className="text-center animate-scale-in" style={{animationDelay: '0.2s'}}>
-                <div className="text-3xl font-bold text-primary">50+</div>
-                <div className="text-sm text-muted-foreground">Active Members</div>
-              </div>
-              <div className="text-center animate-scale-in" style={{animationDelay: '0.4s'}}>
-                <div className="text-3xl font-bold text-accent">15+</div>
-                <div className="text-sm text-muted-foreground">Events Organized</div>
-              </div>
-              <div className="text-center animate-scale-in" style={{animationDelay: '0.6s'}}>
-                <div className="text-3xl font-bold text-primary">5+</div>
-                <div className="text-sm text-muted-foreground">Startups Incubated</div>
-              </div>
-            </div>
+      {/* Contact Section */}
+      <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-purple-900 to-slate-900 relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Get In <span className="gradient-text-stalight">Touch</span>
+            </h2>
+            <p className="text-gray-300 text-base sm:text-lg lg:text-xl">Ready to start your entrepreneurial journey?</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="glass-card hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-fade-in">
-              <CardContent className="p-8 text-center">
-                <div className="animate-pulse-glow">
-                  <Target className="h-12 w-12 text-primary mx-auto mb-4" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4 gradient-text">Vision</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  To foster a culture of innovation and entrepreneurship at AMC Engineering College, creating the next generation of successful entrepreneurs and industry leaders
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="glass-card hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-fade-in" style={{animationDelay: '0.2s'}}>
-              <CardContent className="p-8 text-center">
-                <div className="animate-pulse-glow">
-                  <Lightbulb className="h-12 w-12 text-accent mx-auto mb-4" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4 gradient-text">Mission</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  To empower students with comprehensive guidance, mentorship, and resources to transform innovative ideas into successful ventures and real-world impact
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="glass-card hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-fade-in" style={{animationDelay: '0.4s'}}>
-              <CardContent className="p-8 text-center">
-                <div className="animate-pulse-glow">
-                  <Rocket className="h-12 w-12 text-primary mx-auto mb-4" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4 gradient-text">Objectives</h3>
-                <ul className="text-muted-foreground text-left space-y-3">
-                  <li className="flex items-center"><Zap className="h-4 w-4 mr-2 text-primary" />Promote startup culture on campus</li>
-                  <li className="flex items-center"><Calendar className="h-4 w-4 mr-2 text-accent" />Host innovative events & workshops</li>
-                  <li className="flex items-center"><Globe className="h-4 w-4 mr-2 text-primary" />Build strong industry relations</li>
-                  <li className="flex items-center"><TrendingUp className="h-4 w-4 mr-2 text-accent" />Provide comprehensive incubation support</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Initiatives Section */}
-      <section id="initiatives" className="py-20 px-4">
-        <div className="container mx-auto">
-          <h2 className="text-5xl font-bold text-center mb-16 gradient-text">Ongoing Initiatives</h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                title: "Know Your Surroundings",
-                description: "Startup interaction survey to understand local ecosystem",
-                status: "Active",
-                badge: "Survey"
-              },
-              {
-                title: "Ideathon 2025",
-                description: "Campus-wide idea pitching competition",
-                status: "Upcoming",
-                badge: "Competition"
-              },
-              {
-                title: "Startup Saturdays",
-                description: "Monthly founder talks and networking sessions",
-                status: "Monthly",
-                badge: "Workshop"
-              },
-              {
-                title: "AMC StartHub",
-                description: "Mini incubation space for student ventures",
-                status: "Beta",
-                badge: "Incubation"
-              }
-            ].map((initiative, index) => (
-              <Card key={index} className="glass-card hover:scale-105 transition-transform">
-                <CardContent className="p-6">
-                  <div className="flex justify-between items-start mb-4">
-                    <Badge variant="secondary">{initiative.badge}</Badge>
-                    <Badge variant={initiative.status === 'Active' ? 'default' : 'outline'}>
-                      {initiative.status}
-                    </Badge>
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{initiative.title}</h3>
-                  <p className="text-muted-foreground mb-4">{initiative.description}</p>
-                  <Button variant="outline" size="sm" className="w-full">
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Events Section */}
-      <section id="events" className="py-20 px-4">
-        <div className="container mx-auto">
-          <h2 className="text-5xl font-bold text-center mb-16 gradient-text">Events & Activities</h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Pitch Perfect Workshop",
-                type: "Workshop",
-                description: "Learn how to pitch your startup idea effectively",
-                date: "March 15, 2025",
-                participants: "50+"
-              },
-              {
-                title: "Innovation Hackathon",
-                type: "Competition",
-                description: "48-hour coding marathon for innovative solutions",
-                date: "April 10-12, 2025",
-                participants: "200+"
-              },
-              {
-                title: "Industry Connect",
-                type: "Seminar",
-                description: "Networking with successful entrepreneurs",
-                date: "February 28, 2025",
-                participants: "100+"
-              }
-            ].map((event, index) => (
-              <Card key={index} className="glass-card hover:scale-105 transition-transform">
-                <CardContent className="p-6">
-                  <Badge className="mb-4">{event.type}</Badge>
-                  <h3 className="text-xl font-bold mb-3">{event.title}</h3>
-                  <p className="text-muted-foreground mb-4">{event.description}</p>
-                  <div className="space-y-2 text-sm text-muted-foreground">
-                    <div className="flex items-center">
-                      <Calendar className="h-4 w-4 mr-2" />
-                      {event.date}
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div>
+              <Card className="bg-white/5 border-purple-500/30 backdrop-blur-sm">
+                <CardContent className="p-6 sm:p-8">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">Contact Information</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-3">
+                      <Mail className="h-5 w-5 text-purple-400" />
+                      <span className="text-gray-300 text-sm sm:text-base">amcecell@amc.edu.in</span>
                     </div>
-                    <div className="flex items-center">
-                      <Users className="h-4 w-4 mr-2" />
-                      {event.participants} participants
+                    <div className="flex items-center space-x-3">
+                      <MapPin className="h-5 w-5 text-purple-400" />
+                      <span className="text-gray-300 text-sm sm:text-base">AMC Engineering College, Bangalore</span>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section id="team" className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-5xl font-bold mb-6 gradient-text">Our Dynamic Team</h2>
-            <p className="text-xl text-muted-foreground">Meet the passionate leaders driving innovation at AMC E-Cell</p>
-          </div>
-          
-          {/* Leadership Team */}
-          <div className="mb-12">
-            <h3 className="text-3xl font-bold text-center mb-8 gradient-text">Leadership</h3>
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <Card className="glass-card hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-fade-in">
-                <CardContent className="p-8 text-center">
-                  <div className="w-24 h-24 bg-gradient-to-br from-primary to-accent rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white animate-pulse-glow">
-                    RN
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2 gradient-text">Ritesh N</h3>
-                  <Badge variant="default" className="mb-3 animate-pulse-glow">Team Lead</Badge>
-                  <p className="text-sm text-muted-foreground mb-3">4th Year CSE AIML</p>
-                  <p className="text-sm leading-relaxed">Visionary leader driving innovation and entrepreneurship, orchestrating the E-Cell's strategic direction and fostering a culture of excellence</p>
-                  <div className="flex justify-center space-x-2 mt-4">
-                    <Button variant="outline" size="sm" className="hover-scale">
-                      <Linkedin className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              <Card className="glass-card hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-fade-in" style={{animationDelay: '0.1s'}}>
-                <CardContent className="p-8 text-center">
-                  <div className="w-24 h-24 bg-gradient-to-br from-accent to-primary rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white animate-pulse-glow">
-                    SS
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2 gradient-text">Swathi Srikanth</h3>
-                  <Badge variant="secondary" className="mb-3">Mentor</Badge>
-                  <p className="text-sm text-muted-foreground mb-3">Faculty Guidance</p>
-                  <p className="text-sm leading-relaxed">Experienced mentor providing strategic guidance and industry insights to nurture entrepreneurial talent and ensure academic excellence</p>
-                  <div className="flex justify-center space-x-2 mt-4">
-                    <Button variant="outline" size="sm" className="hover-scale">
-                      <Linkedin className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
-          {/* Core Team */}
-          <div className="mb-12">
-            <h3 className="text-3xl font-bold text-center mb-8 gradient-text">Core Team</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                {
-                  name: "Pannaga JA",
-                  initials: "PJ",
-                  role: "Vice President",
-                  dept: "4th Year CSE AIML",
-                  description: "Strategic planning and team coordination specialist"
-                },
-                {
-                  name: "Shashank GS",
-                  initials: "SG",
-                  role: "Technical Lead",
-                  dept: "4th Year CSE AIML", 
-                  description: "Innovation catalyst and technical architecture expert"
-                },
-                {
-                  name: "Ruthu Parinika",
-                  initials: "RP",
-                  role: "Events Manager",
-                  dept: "4th Year CSE AIML",
-                  description: "Event orchestration and community engagement leader"
-                },
-                {
-                  name: "Sanath Naik",
-                  initials: "SN",
-                  role: "Marketing Head",
-                  dept: "4th Year CSE AIML",
-                  description: "Brand building and digital outreach strategist"
-                },
-                {
-                  name: "Praveen V",
-                  initials: "PV",
-                  role: "Operations Manager",
-                  dept: "4th Year CSE AIML",
-                  description: "Operational excellence and resource management expert"
-                }
-              ].map((member, index) => (
-                <Card key={index} className="glass-card hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-fade-in" style={{animationDelay: `${0.1 * index}s`}}>
-                  <CardContent className="p-6 text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full mx-auto mb-4 flex items-center justify-center text-lg font-bold text-white hover-scale">
-                      {member.initials}
-                    </div>
-                    <h3 className="text-lg font-bold mb-2">{member.name}</h3>
-                    <Badge variant="outline" className="mb-2 text-xs">{member.role}</Badge>
-                    <p className="text-xs text-muted-foreground mb-3">{member.dept}</p>
-                    <p className="text-xs leading-relaxed">{member.description}</p>
-                    <div className="flex justify-center mt-3">
-                      <Button variant="ghost" size="sm" className="hover-scale">
-                        <Linkedin className="h-3 w-3" />
+                  
+                  <div className="mt-6">
+                    <h4 className="text-lg font-bold text-white mb-4">Follow Us</h4>
+                    <div className="flex space-x-4">
+                      <Button variant="ghost" size="sm" className="text-purple-400 hover:text-white hover:bg-purple-600/20">
+                        <Instagram className="h-5 w-5" />
+                      </Button>
+                      <Button variant="ghost" size="sm" className="text-purple-400 hover:text-white hover:bg-purple-600/20">
+                        <Linkedin className="h-5 w-5" />
                       </Button>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* Faculty Advisory */}
-          <div>
-            <h3 className="text-3xl font-bold text-center mb-8 gradient-text">Faculty Advisory</h3>
-            <div className="flex justify-center">
-              <Card className="glass-card hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-fade-in max-w-md">
-                <CardContent className="p-8 text-center">
-                  <div className="w-24 h-24 bg-gradient-to-br from-accent to-primary rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white animate-pulse-glow">
-                    N
                   </div>
-                  <h3 className="text-2xl font-bold mb-2 gradient-text">Prof. Nandishwar</h3>
-                  <Badge variant="secondary" className="mb-3">HOD - CSE AIML</Badge>
-                  <p className="text-sm text-muted-foreground mb-3">Department Head</p>
-                  <p className="text-sm leading-relaxed">Visionary academic leader fostering innovation and excellence in AI/ML education, guiding students towards entrepreneurial success</p>
-                  <div className="flex justify-center space-x-2 mt-4">
-                    <Button variant="outline" size="sm" className="hover-scale">
-                      <Linkedin className="h-4 w-4" />
-                    </Button>
-                  </div>
+                  
+                  <Button className="w-full mt-6 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-full">
+                    <Send className="mr-2 h-4 w-4" />
+                    Join Our Community
+                  </Button>
                 </CardContent>
               </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto">
-          <h2 className="text-5xl font-bold text-center mb-16 gradient-text">What Our Members Say</h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                quote: "The E-Cell helped me network with like-minded peers and turn my idea into a working prototype.",
-                author: "Rakesh Kumar",
-                position: "CSE 2024, Founder of TechSolutions"
-              },
-              {
-                quote: "Amazing workshops and mentorship opportunities. The startup ecosystem here is truly inspiring.",
-                author: "Anita Desai",
-                position: "ECE 2023, Co-founder of InnovateLab"
-              },
-              {
-                quote: "From idea to implementation, E-Cell provided all the support I needed for my entrepreneurial journey.",
-                author: "Suresh Reddy",
-                position: "Mech 2024, CEO of GreenTech"
-              }
-            ].map((testimonial, index) => (
-              <Card key={index} className="glass-card hover:scale-105 transition-transform">
-                <CardContent className="p-6">
-                  <Quote className="h-8 w-8 text-primary mb-4" />
-                  <p className="text-muted-foreground mb-6 italic">"{testimonial.quote}"</p>
-                  <div className="border-t pt-4">
-                    <p className="font-semibold">{testimonial.author}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.position}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Location & Contact */}
-      <section id="contact" className="py-20 px-4">
-        <div className="container mx-auto">
-          <h2 className="text-5xl font-bold text-center mb-16 gradient-text">Visit Us</h2>
-          
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="glass-card rounded-2xl p-8">
-              <h3 className="text-3xl font-bold mb-6">Get in Touch</h3>
-              <div className="space-y-6">
-                <div className="flex items-center space-x-3">
-                  <Mail className="h-6 w-6 text-primary" />
-                  <span>amcecell@amc.edu.in</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <MapPin className="h-6 w-6 text-primary" />
-                  <span>AMC Engineering College, Bangalore</span>
-                </div>
-                <div className="flex space-x-4 pt-4">
-                  <Button variant="outline" size="sm">
-                    <Instagram className="h-4 w-4 mr-2" />
-                    Instagram
-                  </Button>
-                  <Button variant="outline" size="sm">
-                    <Linkedin className="h-4 w-4 mr-2" />
-                    LinkedIn
-                  </Button>
-                </div>
-              </div>
-              
-              <div className="mt-8">
-                <h4 className="text-xl font-bold mb-4">Join Our Community</h4>
-                <p className="text-muted-foreground mb-6">
-                  Ready to be part of the entrepreneurial revolution? Join AMC E-Cell today and start your startup journey.
-                </p>
-                <Button className="w-full animate-pulse-glow">
-                  <ExternalLink className="mr-2 h-4 w-4" />
-                  Join E-Cell Now
-                </Button>
-              </div>
             </div>
             
-            <div className="glass-card rounded-2xl overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.840267553756!2d77.58752897480615!3d12.828711118772804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15b72df6be0d%3A0x8e3de654b632a37f!2sAMC%20Engineering%20College!5e0!3m2!1sen!2sin!4v1705668234567!5m2!1sen!2sin"
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="AMC Engineering College Location"
-              ></iframe>
+            <div>
+              <Card className="bg-white/5 border-purple-500/30 backdrop-blur-sm">
+                <CardContent className="p-6 sm:p-8">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">Visit Our Campus</h3>
+                  <div className="rounded-xl overflow-hidden">
+                    <iframe
+                      className="w-full h-64 sm:h-80"
+                      src="https://www.google.com/maps/embed?pb=!4v1736967089871!6m8!1m7!1sAF1QipNpwe7RjE9UpG0ktBm8bo7qQEEGSU-FCFluhao1!2m2!1d12.8287112!2d77.5875289!3f180.78!4f-0.8576119402985114!5f0.7820865974627469"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 border-t border-white/10">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
+      <footer className="bg-slate-900 border-t border-purple-500/20 py-8 sm:py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Building className="h-6 w-6 text-primary" />
-                <span className="font-bold text-lg gradient-text">AMC E-Cell</span>
+              <div className="flex items-center space-x-3 mb-4">
+                <img 
+                  src="/lovable-uploads/2393551e-f229-4311-96a9-fd84f1257fd7.png" 
+                  alt="AMC E-Cell" 
+                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full"
+                />
+                <span className="text-lg sm:text-xl font-bold gradient-text-stalight">AMC E-Cell</span>
               </div>
-              <p className="text-muted-foreground">
-                Empowering the next generation of entrepreneurs and innovators.
-              </p>
+              <p className="text-gray-400 text-sm sm:text-base">Empowering the next generation of entrepreneurs</p>
             </div>
             
             <div>
-              <h4 className="font-bold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li><button onClick={() => scrollToSection('about')} className="hover:text-primary transition-colors">About</button></li>
-                <li><button onClick={() => scrollToSection('initiatives')} className="hover:text-primary transition-colors">Initiatives</button></li>
-                <li><button onClick={() => scrollToSection('events')} className="hover:text-primary transition-colors">Events</button></li>
-                <li><button onClick={() => scrollToSection('team')} className="hover:text-primary transition-colors">Team</button></li>
-              </ul>
+              <h4 className="text-white font-bold mb-3 sm:mb-4 text-sm sm:text-base">Quick Links</h4>
+              <div className="space-y-2">
+                {['Home', 'About', 'Events', 'Team', 'Contact'].map((link) => (
+                  <button key={link} className="block text-gray-400 hover:text-white transition-colors text-sm sm:text-base">
+                    {link}
+                  </button>
+                ))}
+              </div>
             </div>
             
             <div>
-              <h4 className="font-bold mb-4">Programs</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>Startup Incubation</li>
-                <li>Mentorship</li>
-                <li>Workshops</li>
-                <li>Networking Events</li>
-              </ul>
+              <h4 className="text-white font-bold mb-3 sm:mb-4 text-sm sm:text-base">Programs</h4>
+              <div className="space-y-2">
+                {['Ideathon', 'Startup Saturdays', 'Mentorship', 'Incubation'].map((program) => (
+                  <button key={program} className="block text-gray-400 hover:text-white transition-colors text-sm sm:text-base">
+                    {program}
+                  </button>
+                ))}
+              </div>
             </div>
             
             <div>
-              <h4 className="font-bold mb-4">Connect</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>amcecell@amc.edu.in</li>
-                <li>AMC Engineering College</li>
-                <li>Bangalore, Karnataka</li>
-              </ul>
+              <h4 className="text-white font-bold mb-3 sm:mb-4 text-sm sm:text-base">Connect</h4>
+              <div className="flex space-x-3">
+                <Button variant="ghost" size="sm" className="text-purple-400 hover:text-white hover:bg-purple-600/20 p-2">
+                  <Instagram className="h-4 w-4 sm:h-5 sm:w-5" />
+                </Button>
+                <Button variant="ghost" size="sm" className="text-purple-400 hover:text-white hover:bg-purple-600/20 p-2">
+                  <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
+                </Button>
+              </div>
             </div>
           </div>
           
-          <div className="border-t border-white/10 mt-8 pt-8 text-center text-muted-foreground">
-            <p>© 2025 AMC E-Cell. All rights reserved. | Powered by AMC Innovation Cell</p>
+          <div className="border-t border-purple-500/20 pt-6 sm:pt-8 text-center">
+            <p className="text-gray-400 text-xs sm:text-sm">
+              © 2025 AMC E-Cell. All rights reserved. | Powered by AMC Innovation Cell
+            </p>
           </div>
         </div>
       </footer>
