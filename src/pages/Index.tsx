@@ -381,6 +381,451 @@ const Index = () => {
         </div>
       </section>
 
+      {/* E-Cell Programs & Divisions */}
+      <section id="programs" className="py-12 sm:py-16 lg:py-20 bg-slate-800 relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+              <span className="gradient-text-stalight">Our Programs & Divisions</span>
+            </h2>
+            <p className="text-gray-300 text-base sm:text-lg lg:text-xl">Specialized wings driving innovation across different domains</p>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
+            {[
+              {
+                title: "Innovation Wing",
+                description: "Idea curation, hackathons, and innovation challenges",
+                icon: Lightbulb,
+                features: ["Ideation Workshops", "Prototype Development", "Innovation Challenges"]
+              },
+              {
+                title: "Incubation Cell",
+                description: "Support for prototypes, mentorship, and startup guidance",
+                icon: Rocket,
+                features: ["Mentorship Programs", "Funding Guidance", "Legal Support"]
+              },
+              {
+                title: "Community Outreach",
+                description: "Local startup interaction, school visits, and awareness",
+                icon: Users,
+                features: ["School Programs", "Local Partnerships", "Awareness Campaigns"]
+              },
+              {
+                title: "Marketing & PR",
+                description: "Social media, branding, newsletters, and communications",
+                icon: Megaphone,
+                features: ["Social Media", "Event Promotion", "Newsletter"]
+              },
+              {
+                title: "Research & Analysis",
+                description: "Industry trends, startup challenges, and market research",
+                icon: BarChart3,
+                features: ["Market Research", "Trend Analysis", "Case Studies"]
+              },
+              {
+                title: "Startup Support Wing",
+                description: "Web development, legal, and branding help for startups",
+                icon: Settings,
+                features: ["Web Development", "Legal Assistance", "Branding Support"]
+              }
+            ].map((program, index) => (
+              <Card key={index} className="bg-white/10 border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 backdrop-blur-sm">
+                <CardHeader>
+                  <div className="flex items-center mb-4">
+                    <program.icon className="h-6 w-6 sm:h-8 sm:w-8 text-purple-400 mr-3" />
+                    <CardTitle className="text-white text-base sm:text-lg lg:text-xl">{program.title}</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-300 mb-4 text-sm sm:text-base">{program.description}</p>
+                  <div className="space-y-2">
+                    {program.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center">
+                        <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-400 mr-2 flex-shrink-0" />
+                        <span className="text-gray-300 text-xs sm:text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Knowledge Center / Resources */}
+          <div className="bg-white/5 rounded-2xl p-6 sm:p-8 lg:p-12 border border-purple-500/30 backdrop-blur-sm">
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-6 sm:mb-8 text-center">
+              <span className="gradient-text-stalight">Knowledge Center</span>
+            </h3>
+            <p className="text-gray-300 text-center mb-8 sm:mb-12 text-base sm:text-lg">Free resources to fuel your entrepreneurial journey</p>
+            
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+              {[
+                { title: "E-books", icon: BookOpen, desc: "Startup basics and entrepreneurship guides", count: "15+" },
+                { title: "Pitch Decks", icon: FileText, desc: "Winning presentation templates", count: "8+" },
+                { title: "Video Lectures", icon: Video, desc: "Recorded sessions from guest speakers", count: "25+" },
+                { title: "Startup Toolkits", icon: Briefcase, desc: "Legal checklists and business templates", count: "12+" }
+              ].map((resource, index) => (
+                <Card key={index} className="bg-white/10 border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 text-center backdrop-blur-sm">
+                  <CardContent className="p-4 sm:p-6">
+                    <resource.icon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 mx-auto mb-3 sm:mb-4 text-purple-400" />
+                    <h3 className="text-base sm:text-lg font-bold text-white mb-2">{resource.title}</h3>
+                    <p className="text-gray-300 text-xs sm:text-sm mb-4">{resource.desc}</p>
+                    <Badge variant="secondary" className="bg-purple-600/20 text-purple-300 mb-4 text-xs">
+                      {resource.count} Available
+                    </Badge>
+                    <Button variant="ghost" className="text-purple-400 hover:text-purple-300 w-full text-xs sm:text-sm">
+                      <Download className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+                      Access Now
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Events & Activities - Enhanced */}
+      <section id="events" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-purple-900 to-slate-900 relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Events & <span className="gradient-text-stalight">Activities</span>
+            </h2>
+            <p className="text-gray-300 text-base sm:text-lg lg:text-xl">Building trust through active engagement and innovation</p>
+          </div>
+
+          <Tabs defaultValue="upcoming" className="w-full">
+            <TabsList className="grid w-full grid-cols-3 bg-white/10 border border-purple-500/30 mb-8">
+              <TabsTrigger value="upcoming" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-xs sm:text-sm">Upcoming</TabsTrigger>
+              <TabsTrigger value="ongoing" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-xs sm:text-sm">Ongoing</TabsTrigger>
+              <TabsTrigger value="completed" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-xs sm:text-sm">Completed</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="upcoming" className="space-y-6 sm:space-y-8">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                {[
+                  {
+                    title: "Ideathon 2025",
+                    type: "Competition",
+                    description: "Campus-wide idea pitching competition with exciting prizes",
+                    date: "February 25-26, 2025",
+                    participants: "Registration Open",
+                    prize: "₹50,000 Total Prize Pool"
+                  },
+                  {
+                    title: "Business Plan Competition",
+                    type: "Competition",
+                    description: "Comprehensive business plan presentation contest",
+                    date: "March 15, 2025",
+                    participants: "Teams of 3-5",
+                    prize: "₹25,000 Winner Prize"
+                  },
+                  {
+                    title: "Tech Startup Expo",
+                    type: "Exhibition",
+                    description: "Showcase of student and alumni startups",
+                    date: "April 10, 2025",
+                    participants: "Expected 300+",
+                    prize: "Industry Recognition"
+                  }
+                ].map((event, index) => (
+                  <Card key={index} className="bg-white/10 border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 backdrop-blur-sm">
+                    <CardHeader>
+                      <div className="flex items-center justify-between mb-2">
+                        <Badge variant="secondary" className="bg-blue-600/20 text-blue-300 text-xs">
+                          Upcoming
+                        </Badge>
+                        <Badge variant="outline" className="text-purple-300 border-purple-400 text-xs">
+                          {event.type}
+                        </Badge>
+                      </div>
+                      <CardTitle className="text-white text-base sm:text-lg">{event.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-300 mb-4 text-sm sm:text-base">{event.description}</p>
+                      <div className="space-y-2 mb-4">
+                        <div className="flex items-center text-xs sm:text-sm">
+                          <Calendar className="h-3 w-3 sm:h-4 sm:w-4 text-purple-400 mr-2 flex-shrink-0" />
+                          <span className="text-gray-300">{event.date}</span>
+                        </div>
+                        <div className="flex items-center text-xs sm:text-sm">
+                          <Users className="h-3 w-3 sm:h-4 sm:w-4 text-purple-400 mr-2 flex-shrink-0" />
+                          <span className="text-gray-300">{event.participants}</span>
+                        </div>
+                        <div className="flex items-center text-xs sm:text-sm">
+                          <Trophy className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-400 mr-2 flex-shrink-0" />
+                          <span className="text-yellow-300">{event.prize}</span>
+                        </div>
+                      </div>
+                      <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-xs sm:text-sm">
+                        Register Now
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="ongoing" className="space-y-6 sm:space-y-8">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                {[
+                  {
+                    title: "Startup Saturdays",
+                    type: "Series",
+                    description: "Monthly founder talks and networking sessions",
+                    date: "Every Saturday",
+                    participants: "50+ attendees/session"
+                  },
+                  {
+                    title: "Mentorship Program",
+                    type: "Program",
+                    description: "One-on-one guidance from industry experts",
+                    date: "Ongoing",
+                    participants: "25 selected students"
+                  },
+                  {
+                    title: "AMC StartHub",
+                    type: "Incubation",
+                    description: "Mini incubation space for student ventures",
+                    date: "Operational",
+                    participants: "5 active startups"
+                  }
+                ].map((event, index) => (
+                  <Card key={index} className="bg-white/10 border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 backdrop-blur-sm">
+                    <CardHeader>
+                      <div className="flex items-center justify-between mb-2">
+                        <Badge variant="secondary" className="bg-orange-600/20 text-orange-300 text-xs">
+                          Ongoing
+                        </Badge>
+                        <Badge variant="outline" className="text-purple-300 border-purple-400 text-xs">
+                          {event.type}
+                        </Badge>
+                      </div>
+                      <CardTitle className="text-white text-base sm:text-lg">{event.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-300 mb-4 text-sm sm:text-base">{event.description}</p>
+                      <div className="space-y-2">
+                        <div className="flex items-center text-xs sm:text-sm">
+                          <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-purple-400 mr-2 flex-shrink-0" />
+                          <span className="text-gray-300">{event.date}</span>
+                        </div>
+                        <div className="flex items-center text-xs sm:text-sm">
+                          <Users className="h-3 w-3 sm:h-4 sm:w-4 text-purple-400 mr-2 flex-shrink-0" />
+                          <span className="text-gray-300">{event.participants}</span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="completed" className="space-y-6 sm:space-y-8">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                {[
+                  {
+                    title: "Innovation Hackathon 2024",
+                    type: "Competition",
+                    description: "48-hour hackathon for innovative tech solutions",
+                    date: "November 20-22, 2024",
+                    participants: "120 participants",
+                    outcome: "15 prototypes developed"
+                  },
+                  {
+                    title: "Startup Pitch Workshop",
+                    type: "Workshop",
+                    description: "Learn the art of pitching your startup idea effectively",
+                    date: "October 15, 2024",
+                    participants: "75 students",
+                    outcome: "25 pitch decks created"
+                  },
+                  {
+                    title: "Entrepreneur Talk Series",
+                    type: "Seminar",
+                    description: "Industry leaders sharing their success stories",
+                    date: "September 2024",
+                    participants: "200+ attendees",
+                    outcome: "3 guest speakers"
+                  }
+                ].map((event, index) => (
+                  <Card key={index} className="bg-white/10 border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 backdrop-blur-sm">
+                    <CardHeader>
+                      <div className="flex items-center justify-between mb-2">
+                        <Badge variant="secondary" className="bg-green-600/20 text-green-300 text-xs">
+                          Completed
+                        </Badge>
+                        <Badge variant="outline" className="text-purple-300 border-purple-400 text-xs">
+                          {event.type}
+                        </Badge>
+                      </div>
+                      <CardTitle className="text-white text-base sm:text-lg">{event.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-300 mb-4 text-sm sm:text-base">{event.description}</p>
+                      <div className="space-y-2">
+                        <div className="flex items-center text-xs sm:text-sm">
+                          <Calendar className="h-3 w-3 sm:h-4 sm:w-4 text-purple-400 mr-2 flex-shrink-0" />
+                          <span className="text-gray-300">{event.date}</span>
+                        </div>
+                        <div className="flex items-center text-xs sm:text-sm">
+                          <Users className="h-3 w-3 sm:h-4 sm:w-4 text-purple-400 mr-2 flex-shrink-0" />
+                          <span className="text-gray-300">{event.participants}</span>
+                        </div>
+                        <div className="flex items-center text-xs sm:text-sm">
+                          <Award className="h-3 w-3 sm:h-4 sm:w-4 text-green-400 mr-2 flex-shrink-0" />
+                          <span className="text-green-300">{event.outcome}</span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </section>
+
+      {/* Team Section - Enhanced */}
+      <section id="team" className="py-12 sm:py-16 lg:py-20 bg-slate-800 relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Meet Our <span className="gradient-text-stalight">Team</span>
+            </h2>
+            <p className="text-gray-300 text-base sm:text-lg lg:text-xl">The passionate individuals driving innovation at AMC</p>
+          </div>
+
+          {/* Organizational Structure */}
+          <div className="mb-12 sm:mb-16">
+            <Card className="bg-white/5 border-purple-500/30 backdrop-blur-sm">
+              <CardContent className="p-6 sm:p-8 lg:p-12">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white text-center mb-6 sm:mb-8">Organizational Structure</h3>
+                <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
+                  <div className="text-center">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full mx-auto mb-2 flex items-center justify-center">
+                      <Shield className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                    </div>
+                    <p className="text-white font-semibold text-sm sm:text-base">Faculty Coordinator</p>
+                  </div>
+                  <ArrowRight className="text-purple-400 rotate-90 md:rotate-0 h-4 w-4 sm:h-6 sm:w-6" />
+                  <div className="text-center">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full mx-auto mb-2 flex items-center justify-center">
+                      <Users className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                    </div>
+                    <p className="text-white font-semibold text-sm sm:text-base">Mentorship</p>
+                  </div>
+                  <ArrowRight className="text-purple-400 rotate-90 md:rotate-0 h-4 w-4 sm:h-6 sm:w-6" />
+                  <div className="text-center">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mx-auto mb-2 flex items-center justify-center">
+                      <Star className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                    </div>
+                    <p className="text-white font-semibold text-sm sm:text-base">Team Lead</p>
+                  </div>
+                  <ArrowRight className="text-purple-400 rotate-90 md:rotate-0 h-4 w-4 sm:h-6 sm:w-6" />
+                  <div className="text-center">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mx-auto mb-2 flex items-center justify-center">
+                      <Network className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                    </div>
+                    <p className="text-white font-semibold text-sm sm:text-base">Core Members</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Faculty Coordinator */}
+          <div className="mb-12 sm:mb-16">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white text-center mb-6 sm:mb-8">Faculty Coordinator</h3>
+            <Card className="bg-white/10 border-purple-500/30 max-w-md mx-auto hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+              <CardContent className="p-4 sm:p-6 text-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <GraduationCap className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
+                </div>
+                <h4 className="text-lg sm:text-xl font-bold text-white mb-2">Prof. Nandishwar</h4>
+                <p className="text-yellow-300 mb-2 text-sm sm:text-base">HOD, CSE AIML Department</p>
+                <p className="text-gray-300 text-xs sm:text-sm mb-4">Guiding our vision with academic excellence and industry expertise. Leading the department with innovation and fostering entrepreneurial mindset among students.</p>
+                <div className="flex justify-center flex-wrap gap-2">
+                  <Badge variant="secondary" className="bg-yellow-600/20 text-yellow-300 text-xs">Academic Leader</Badge>
+                  <Badge variant="secondary" className="bg-orange-600/20 text-orange-300 text-xs">Mentor</Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Mentorship */}
+          <div className="mb-12 sm:mb-16">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white text-center mb-6 sm:mb-8">Mentorship</h3>
+            <Card className="bg-white/10 border-purple-500/30 max-w-md mx-auto hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+              <CardContent className="p-4 sm:p-6 text-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-green-500 to-teal-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <Star className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
+                </div>
+                <h4 className="text-lg sm:text-xl font-bold text-white mb-2">Swathi Srikanth</h4>
+                <p className="text-green-300 mb-2 text-sm sm:text-base">Senior Mentor & Industry Expert</p>
+                <p className="text-gray-300 text-xs sm:text-sm mb-4">Providing strategic guidance and industry insights to our team. With extensive experience in startup ecosystem and business development.</p>
+                <div className="flex justify-center flex-wrap gap-2">
+                  <Badge variant="secondary" className="bg-green-600/20 text-green-300 text-xs">Industry Expert</Badge>
+                  <Badge variant="secondary" className="bg-teal-600/20 text-teal-300 text-xs">Startup Advisor</Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Team Lead */}
+          <div className="mb-12 sm:mb-16">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white text-center mb-6 sm:mb-8">Team Leadership</h3>
+            <Card className="bg-white/10 border-purple-500/30 max-w-md mx-auto hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+              <CardContent className="p-4 sm:p-6 text-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <Crown className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
+                </div>
+                <h4 className="text-lg sm:text-xl font-bold text-white mb-2">Ritesh N</h4>
+                <p className="text-purple-300 mb-2 text-sm sm:text-base">Team Lead</p>
+                <p className="text-gray-400 text-xs sm:text-sm mb-4">4th Year CSE AIML Department</p>
+                <p className="text-gray-300 text-xs sm:text-sm mb-4">Leading the E-Cell with vision and dedication. Coordinating all activities and driving the entrepreneurial culture at AMC.</p>
+                <div className="flex justify-center flex-wrap gap-2">
+                  <Badge variant="secondary" className="bg-purple-600/20 text-purple-300 text-xs">Team Lead</Badge>
+                  <Badge variant="secondary" className="bg-pink-600/20 text-pink-300 text-xs">Visionary</Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Core Team */}
+          <div className="mb-12">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white text-center mb-6 sm:mb-8">Core Team Members</h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {[
+                { name: "Pannaga JA", role: "Innovation Lead", dept: "4th Year CSE AIML", specialization: "Ideation & Development", linkedin: "#" },
+                { name: "Shashank GS", role: "Technical Lead", dept: "4th Year CSE AIML", specialization: "Tech Solutions", linkedin: "#" },
+                { name: "Ruthu Parinika", role: "Community Lead", dept: "4th Year CSE AIML", specialization: "Outreach & Events", linkedin: "#" },
+                { name: "Sanath Naik", role: "Marketing Lead", dept: "4th Year CSE AIML", specialization: "Branding & PR", linkedin: "#" },
+                { name: "Praveen V", role: "Operations Lead", dept: "4th Year CSE AIML", specialization: "Project Management", linkedin: "#" }
+              ].map((member, index) => (
+                <Card key={index} className="bg-white/10 border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 backdrop-blur-sm">
+                  <CardContent className="p-4 sm:p-6 text-center">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                      <Users className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                    </div>
+                    <h4 className="text-base sm:text-lg font-bold text-white mb-1">{member.name}</h4>
+                    <p className="text-blue-300 text-xs sm:text-sm mb-1">{member.role}</p>
+                    <p className="text-gray-400 text-xs mb-2">{member.dept}</p>
+                    <p className="text-gray-300 text-xs mb-3">{member.specialization}</p>
+                    <Button variant="ghost" size="sm" className="text-blue-400 hover:text-blue-300 text-xs">
+                      <Linkedin className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                      Connect
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Video Section */}
       <section className="py-12 sm:py-16 lg:py-20 bg-slate-800 relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
