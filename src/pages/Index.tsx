@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { 
   Lightbulb, 
   Users, 
@@ -58,29 +59,38 @@ import {
   Crown
 } from "lucide-react";
 
-// Counter component for animated stats
+// Counter component for animated stats with intersection observer
 const AnimatedCounter = ({ end, suffix = "", duration = 2000 }: { end: number; suffix?: string; duration?: number }) => {
   const [count, setCount] = useState(0);
+  const [elementRef, isVisible] = useIntersectionObserver({ threshold: 0.3, freezeOnceVisible: true });
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    let startTime: number;
-    const startCount = 0;
+    if (isVisible && !hasAnimated) {
+      setHasAnimated(true);
+      let startTime: number;
+      const startCount = 0;
 
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-      
-      setCount(Math.floor(progress * (end - startCount) + startCount));
+      const animate = (currentTime: number) => {
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        
+        setCount(Math.floor(progress * (end - startCount) + startCount));
 
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        }
+      };
 
-    requestAnimationFrame(animate);
-  }, [end, duration]);
+      requestAnimationFrame(animate);
+    }
+  }, [isVisible, hasAnimated, end, duration]);
 
-  return <span className="counter-animate">{count}{suffix}</span>;
+  return (
+    <div ref={elementRef}>
+      <span className="counter-animate">{count}{suffix}</span>
+    </div>
+  );
 };
 
 const Index = () => {
@@ -353,27 +363,35 @@ const Index = () => {
             ))}
           </div>
 
-          {/* Achievements Timeline */}
+          {/* Our Journey - Expandable Icon Cards */}
           <div className="bg-white/5 rounded-2xl p-6 sm:p-8 lg:p-12 border border-purple-500/30 backdrop-blur-sm">
             <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-6 sm:mb-8 text-center">
               <span className="gradient-text-stalight">Our Journey</span>
             </h3>
-            <div className="space-y-6 sm:space-y-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
               {[
-                { year: "2022", event: "AMC E-Cell Founded", desc: "Official establishment with faculty support" },
-                { year: "2023", event: "First Ideathon Launched", desc: "Campus-wide innovation challenge with 200+ participants" },
-                { year: "2024", event: "First Startup Incubated", desc: "Successfully launched our first student-led venture" },
-                { year: "2024", event: "Industry Partnerships", desc: "Collaborated with 6+ organizations and startups" },
-                { year: "2025", event: "External Collaborations", desc: "Expanding beyond campus with regional partnerships" }
+                { year: "2022", event: "AMC E-Cell Founded", desc: "Official establishment with faculty support", icon: Shield },
+                { year: "2023", event: "First Ideathon Launched", desc: "Campus-wide innovation challenge with 200+ participants", icon: Lightbulb },
+                { year: "2024", event: "First Startup Incubated", desc: "Successfully launched our first student-led venture", icon: Rocket },
+                { year: "2024", event: "Industry Partnerships", desc: "Collaborated with 6+ organizations and startups", icon: Handshake },
+                { year: "2025", event: "External Collaborations", desc: "Expanding beyond campus with regional partnerships", icon: Globe }
               ].map((milestone, index) => (
-                <div key={index} className="timeline-item flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-xs sm:text-sm lg:text-base">{milestone.year.slice(-2)}</span>
-                  </div>
-                  <div className="flex-1 pb-4">
-                    <h4 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-1">{milestone.event}</h4>
-                    <p className="text-gray-300 text-sm sm:text-base leading-relaxed">{milestone.desc}</p>
-                  </div>
+                <div key={index} className="group relative">
+                  <Card className="bg-white/10 border-purple-500/30 hover:border-purple-400/50 transition-all duration-500 hover:scale-105 backdrop-blur-sm h-32 sm:h-40 lg:h-48 cursor-pointer overflow-hidden">
+                    <CardContent className="p-4 sm:p-6 h-full flex flex-col items-center justify-center relative">
+                      {/* Default State - Icon and Year */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 group-hover:opacity-0">
+                        <milestone.icon className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-purple-400 mb-2" />
+                        <span className="text-white font-bold text-lg sm:text-xl lg:text-2xl">{milestone.year}</span>
+                      </div>
+                      
+                      {/* Hover State - Full Description */}
+                      <div className="absolute inset-0 p-3 sm:p-4 lg:p-6 flex flex-col justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-purple-600/80 to-pink-600/80 backdrop-blur-sm">
+                        <h4 className="text-white font-bold text-xs sm:text-sm lg:text-base mb-2 text-center leading-tight">{milestone.event}</h4>
+                        <p className="text-gray-200 text-xs sm:text-xs lg:text-sm text-center leading-tight">{milestone.desc}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
               ))}
             </div>
@@ -794,33 +812,58 @@ const Index = () => {
             </Card>
           </div>
           
-          {/* Core Team */}
+          {/* Core Team - Horizontal Scroll with Hover Effects */}
           <div className="mb-12">
             <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white text-center mb-6 sm:mb-8">Core Team Members</h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {[
-                { name: "Pannaga JA", role: "Innovation Lead", dept: "4th Year CSE AIML", specialization: "Ideation & Development", linkedin: "#" },
-                { name: "Shashank GS", role: "Technical Lead", dept: "4th Year CSE AIML", specialization: "Tech Solutions", linkedin: "#" },
-                { name: "Ruthu Parinika", role: "Community Lead", dept: "4th Year CSE AIML", specialization: "Outreach & Events", linkedin: "#" },
-                { name: "Sanath Naik", role: "Marketing Lead", dept: "4th Year CSE AIML", specialization: "Branding & PR", linkedin: "#" },
-                { name: "Praveen V", role: "Operations Lead", dept: "4th Year CSE AIML", specialization: "Project Management", linkedin: "#" }
-              ].map((member, index) => (
-                <Card key={index} className="bg-white/10 border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 backdrop-blur-sm">
-                  <CardContent className="p-4 sm:p-6 text-center">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <Users className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                    </div>
-                    <h4 className="text-base sm:text-lg font-bold text-white mb-1">{member.name}</h4>
-                    <p className="text-blue-300 text-xs sm:text-sm mb-1">{member.role}</p>
-                    <p className="text-gray-400 text-xs mb-2">{member.dept}</p>
-                    <p className="text-gray-300 text-xs mb-3">{member.specialization}</p>
-                    <Button variant="ghost" size="sm" className="text-blue-400 hover:text-blue-300 text-xs">
-                      <Linkedin className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
-                      Connect
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+            <div className="relative">
+              <div className="flex overflow-x-auto scrollbar-hide space-x-4 sm:space-x-6 lg:space-x-8 pb-4">
+                {[
+                  { name: "Pannaga JA", role: "Innovation Lead", dept: "4th Year CSE AIML", specialization: "Ideation & Development", linkedin: "#", image: "/lovable-uploads/2393551e-f229-4311-96a9-fd84f1257fd7.png" },
+                  { name: "Shashank GS", role: "Technical Lead", dept: "4th Year CSE AIML", specialization: "Tech Solutions", linkedin: "#", image: "/lovable-uploads/2393551e-f229-4311-96a9-fd84f1257fd7.png" },
+                  { name: "Ruthu Parinika", role: "Community Lead", dept: "4th Year CSE AIML", specialization: "Outreach & Events", linkedin: "#", image: "/lovable-uploads/2393551e-f229-4311-96a9-fd84f1257fd7.png" },
+                  { name: "Sanath Naik", role: "Marketing Lead", dept: "4th Year CSE AIML", specialization: "Branding & PR", linkedin: "#", image: "/lovable-uploads/2393551e-f229-4311-96a9-fd84f1257fd7.png" },
+                  { name: "Praveen V", role: "Operations Lead", dept: "4th Year CSE AIML", specialization: "Project Management", linkedin: "#", image: "/lovable-uploads/2393551e-f229-4311-96a9-fd84f1257fd7.png" }
+                ].map((member, index) => (
+                  <div key={index} className="flex-shrink-0 w-64 sm:w-72 lg:w-80">
+                    <Card className="group bg-white/10 border-purple-500/30 hover:border-purple-400/50 transition-all duration-500 backdrop-blur-sm h-64 sm:h-72 lg:h-80 overflow-hidden relative cursor-pointer">
+                      <CardContent className="p-0 h-full relative">
+                        {/* Default State - Circular Image */}
+                        <div className="absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 group-hover:opacity-0">
+                          <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full mb-4 overflow-hidden border-4 border-blue-500/50">
+                            <img 
+                              src={member.image} 
+                              alt={member.name}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <h4 className="text-base sm:text-lg font-bold text-white mb-1 text-center px-4">{member.name}</h4>
+                          <p className="text-blue-300 text-xs sm:text-sm text-center px-4">{member.role}</p>
+                        </div>
+                        
+                        {/* Hover State - Full Card Image with Overlay */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                          <img 
+                            src={member.image} 
+                            alt={member.name}
+                            className="w-full h-full object-cover transform scale-110 group-hover:scale-100 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent"></div>
+                          <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+                            <h4 className="text-lg sm:text-xl font-bold text-white mb-2">{member.name}</h4>
+                            <p className="text-blue-300 text-sm sm:text-base mb-1">{member.role}</p>
+                            <p className="text-gray-300 text-xs sm:text-sm mb-2">{member.dept}</p>
+                            <p className="text-gray-200 text-xs sm:text-sm mb-3">{member.specialization}</p>
+                            <Button variant="ghost" size="sm" className="text-blue-400 hover:text-blue-300 text-xs bg-white/10 backdrop-blur-sm">
+                              <Linkedin className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                              Connect
+                            </Button>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -937,9 +980,20 @@ const Index = () => {
             <div>
               <h4 className="text-white font-bold mb-3 sm:mb-4 text-sm sm:text-base">Quick Links</h4>
               <div className="space-y-2">
-                {['Home', 'About', 'Events', 'Team', 'Contact'].map((link) => (
-                  <button key={link} className="block text-gray-400 hover:text-white transition-colors text-sm sm:text-base">
-                    {link}
+                {[
+                  { name: 'Home', id: 'home' },
+                  { name: 'About', id: 'about' },
+                  { name: 'Events', id: 'events' },
+                  { name: 'Team', id: 'team' },
+                  { name: 'Contact', id: 'contact' }
+                ].map((link) => (
+                  <button 
+                    key={link.name} 
+                    onClick={() => scrollToSection(link.id)}
+                    className="block text-gray-400 hover:text-white transition-all duration-300 text-sm sm:text-base relative group"
+                  >
+                    {link.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-600 transition-all duration-300 group-hover:w-full"></span>
                   </button>
                 ))}
               </div>
@@ -948,9 +1002,19 @@ const Index = () => {
             <div>
               <h4 className="text-white font-bold mb-3 sm:mb-4 text-sm sm:text-base">Programs</h4>
               <div className="space-y-2">
-                {['Ideathon', 'Startup Saturdays', 'Mentorship', 'Incubation'].map((program) => (
-                  <button key={program} className="block text-gray-400 hover:text-white transition-colors text-sm sm:text-base">
-                    {program}
+                {[
+                  { name: 'Ideathon', id: 'events' },
+                  { name: 'Startup Saturdays', id: 'events' },
+                  { name: 'Mentorship', id: 'programs' },
+                  { name: 'Incubation', id: 'programs' }
+                ].map((program) => (
+                  <button 
+                    key={program.name}
+                    onClick={() => scrollToSection(program.id)}
+                    className="block text-gray-400 hover:text-white transition-all duration-300 text-sm sm:text-base relative group"
+                  >
+                    {program.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-600 transition-all duration-300 group-hover:w-full"></span>
                   </button>
                 ))}
               </div>
