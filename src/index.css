@@ -32,33 +32,33 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Light theme - AMC Professional */
-    --background: 0 0% 100%;
-    --foreground: 220 100% 15%;
-    --card: 0 0% 100%;
-    --card-foreground: 220 100% 15%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 100% 15%;
-    --primary: 220 100% 30%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 220 100% 15%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 217 91% 60%;
-    --radius: 0.75rem;
+  /* Light theme - Professional E-Cell */
+  --background: 0 0% 100%;
+  --foreground: 222 14% 15%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 14% 15%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 14% 15%;
+  --primary: 221 83% 53%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222 14% 15%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+  --accent: 262 83% 58%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 221 83% 53%;
+  --radius: 0.5rem;
 
-    /* AMC Brand Colors */
-    --amc-navy: 220 100% 20%;
-    --amc-blue: 217 91% 60%;
-    --amc-purple: 280 100% 70%;
-    --amc-cyan: 190 100% 50%;
+  /* E-Cell Professional Colors */
+  --ecell-blue: 221 83% 53%;
+  --ecell-purple: 262 83% 58%;
+  --ecell-gray: 217 19% 35%;
+  --ecell-light: 210 40% 96%;
     
     /* Gradients for colorful blur effects */
     --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(280 100% 70%));
@@ -79,26 +79,26 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Dark theme - Professional AMC */
-    --background: 222 47% 4%;
+    /* Dark theme - Professional E-Cell */
+    --background: 222 14% 8%;
     --foreground: 210 40% 98%;
-    --card: 222 47% 6%;
+    --card: 222 14% 10%;
     --card-foreground: 210 40% 98%;
-    --popover: 222 47% 6%;
+    --popover: 222 14% 10%;
     --popover-foreground: 210 40% 98%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 4%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
     --secondary: 217 32% 15%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217 32% 15%;
     --muted-foreground: 215 20% 65%;
-    --accent: 280 100% 70%;
-    --accent-foreground: 222 47% 4%;
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
     --border: 217 32% 18%;
     --input: 217 32% 18%;
-    --ring: 217 91% 60%;
+    --ring: 221 83% 53%;
     
     /* Dark gradients */
     --gradient-hero: linear-gradient(135deg, hsl(222 47% 4%) 0%, hsl(220 100% 8%) 50%, hsl(217 91% 12%) 100%);
@@ -124,44 +124,17 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    background: var(--gradient-hero);
+    background: hsl(var(--background));
     min-height: 100vh;
+    font-family: 'Inter', sans-serif;
   }
   
-  .blur-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    pointer-events: none;
-    z-index: -1;
-  }
-  
-  .blur-orb-1 {
-    width: 400px;
-    height: 400px;
-    background: var(--gradient-blur-1);
-    top: -200px;
-    left: -200px;
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  .blur-orb-2 {
-    width: 300px;
-    height: 300px;
-    background: var(--gradient-blur-2);
-    top: 50%;
-    right: -150px;
-    animation: float 8s ease-in-out infinite reverse;
-  }
-  
-  .blur-orb-3 {
-    width: 500px;
-    height: 500px;
-    background: var(--gradient-blur-3);
-    bottom: -250px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: float 10s ease-in-out infinite;
+  /* Professional section dividers */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, hsl(var(--border)), transparent);
+    width: 100%;
+    margin: 2rem 0;
   }
   
   .glass-card {
