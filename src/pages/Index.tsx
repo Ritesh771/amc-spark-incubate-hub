@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,6 +7,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { CountUpNumber } from "@/components/CountUpNumber";
 import { ProgramModal } from "@/components/ProgramModal";
+import { EventCard } from "@/components/EventCard";
 import { 
   Users, 
   Target, 
