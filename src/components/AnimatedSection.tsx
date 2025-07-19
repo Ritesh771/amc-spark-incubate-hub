@@ -8,6 +8,7 @@ interface AnimatedSectionProps {
   animation?: 'fadeUp' | 'fadeLeft' | 'fadeRight' | 'scale' | 'slideDown';
   delay?: number;
   threshold?: number;
+  id?: string;
 }
 
 export const AnimatedSection = ({ 
@@ -15,7 +16,8 @@ export const AnimatedSection = ({
   className = '',
   animation = 'fadeUp',
   delay = 0,
-  threshold = 0.1
+  threshold = 0.1,
+  id
 }: AnimatedSectionProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -66,6 +68,7 @@ export const AnimatedSection = ({
   return (
     <motion.div
       ref={ref}
+      id={id}
       initial={selectedAnimation.initial}
       animate={isVisible ? selectedAnimation.animate : selectedAnimation.initial}
       transition={{ 

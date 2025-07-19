@@ -13,8 +13,8 @@ export default defineConfig(({ mode }) => ({
     mode === 'development' &&
     {
       name: 'singleHMR',
-      handleHotUpdate({ modules, file }) {
-        modules.map((m) => {
+      handleHotUpdate({ modules, file }: { modules: any[], file: string }) {
+        modules.map((m: any) => {
           m.importedModules = new Set();
           m.importers = new Set();
         });
