@@ -514,59 +514,161 @@ const Index = () => {
         </div>
       </section>
 
-      {/* What is Entrepreneurship Section */}
-      <AnimatedSection animation="fadeUp" className="section-padding bg-background">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">What is Entrepreneurship?</h2>
-          <div className="card-hover bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl p-8 space-y-8 border border-white/20">
-            <div>
-              <p className="text-lg text-muted-foreground text-center mb-2">
-                Entrepreneurship is the process of creating, launching, and managing a new venture to solve problems and create value for society.
-              </p>
+      {/* What is Entrepreneurship Section - Enhanced */}
+      <section className="section-padding bg-gradient-to-br from-background via-primary/5 to-secondary/20 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-10 left-10 w-20 h-20 bg-primary/20 rounded-full blur-xl animate-float"></div>
+          <div className="absolute bottom-20 right-20 w-32 h-32 bg-accent/20 rounded-full blur-xl animate-float delay-700"></div>
+          <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-secondary/30 rounded-full blur-lg animate-float delay-500"></div>
+        </div>
+
+        <div className="container-width relative z-10">
+          <AnimatedSection animation="fadeUp" className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
+              <Lightbulb className="w-4 h-4" />
+              <span>Foundation Knowledge</span>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <AnimatedSection animation="scale" delay={0.1} className="flex flex-col items-center text-center">
-                <User className="w-8 h-8 text-primary mb-2 animate-float" />
-                <h3 className="font-semibold text-lg mb-1">Who is an Entrepreneur?</h3>
-                <p className="text-muted-foreground text-sm">
-                  An entrepreneur is someone who identifies a need, takes risks, and builds a business around a solution to fulfill that need.
-                </p>
-              </AnimatedSection>
-              <AnimatedSection animation="scale" delay={0.2} className="flex flex-col items-center text-center">
-                <Building2 className="w-8 h-8 text-accent mb-2 animate-float delay-200" />
-                <h3 className="font-semibold text-lg mb-1">Business Owner vs Entrepreneur</h3>
-                <div className="text-muted-foreground text-sm space-y-1">
-                  <div><span className="font-medium">Business Owner:</span> Manages an existing business for profit.</div>
-                  <div><span className="font-medium">Entrepreneur:</span> Builds something new, innovative, and impactful to create value.</div>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+              What is <span className="gradient-text">Entrepreneurship</span>?
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Understanding the core principles that drive innovation and business creation
+            </p>
+          </AnimatedSection>
+
+          {/* Main Definition Card */}
+          <AnimatedSection animation="scale" delay={0.1} className="mb-16">
+            <Card className="card-hover bg-white/80 backdrop-blur-lg border-0 shadow-2xl max-w-4xl mx-auto">
+              <CardContent className="p-8 md:p-12">
+                <div className="text-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Rocket className="w-8 h-8 text-white animate-float" />
+                  </div>
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                    Entrepreneurship is the process of <span className="text-primary font-semibold">creating, launching, and managing</span> a new venture to solve problems and create value for society.
+                  </p>
                 </div>
-              </AnimatedSection>
-            </div>
-            
-            <AnimatedSection animation="fadeUp" delay={0.3}>
-              <div className="mt-6">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <Award className="w-6 h-6 text-primary" />
-                  <span className="font-semibold text-base">Why this matters:</span>
-                </div>
-                <p className="text-center text-muted-foreground text-sm max-w-xl mx-auto">
-                  Understanding the core of entrepreneurship helps you think beyond employment—to become a job creator, problem solver, and innovator.
-                </p>
-              </div>
-              <div className="text-center mt-4">
-                <a
-                  href="https://www.instagram.com/amc.ecell?igsh=MXZsMGVwODFpZWp1aA=="
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-primary/10 text-primary px-6 py-3 rounded-full font-medium text-base transition-all duration-300 hover:bg-primary/20 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                  aria-label="Follow us on Instagram"
-                >
-                  💬 Want to become one? Follow us and stay tuned.
-                </a>
-              </div>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
+
+          {/* Key Concepts Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <AnimatedSection animation="fadeLeft" delay={0.2}>
+              <Card className="card-hover bg-white/70 backdrop-blur-lg border-0 shadow-xl h-full">
+                <CardContent className="p-8">
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <User className="w-6 h-6 text-primary animate-float" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold mb-3">Who is an Entrepreneur?</h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        An entrepreneur is someone who <span className="text-primary font-medium">identifies opportunities</span>, takes calculated risks, and builds innovative solutions to fulfill market needs.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-sm text-muted-foreground">Problem solver and innovator</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-accent rounded-full"></div>
+                      <span className="text-sm text-muted-foreground">Risk-taker with vision</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-secondary rounded-full"></div>
+                      <span className="text-sm text-muted-foreground">Value creator for society</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </AnimatedSection>
+
+            <AnimatedSection animation="fadeRight" delay={0.3}>
+              <Card className="card-hover bg-white/70 backdrop-blur-lg border-0 shadow-xl h-full">
+                <CardContent className="p-8">
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Building2 className="w-6 h-6 text-accent animate-float delay-200" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold mb-3">Business Owner vs Entrepreneur</h3>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-6">
+                    <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-primary">
+                      <div className="font-semibold text-primary mb-1">Business Owner</div>
+                      <div className="text-sm text-muted-foreground">Manages existing business models for consistent profit and stability</div>
+                    </div>
+                    <div className="p-4 bg-purple-50 rounded-lg border-l-4 border-accent">
+                      <div className="font-semibold text-accent mb-1">Entrepreneur</div>
+                      <div className="text-sm text-muted-foreground">Creates innovative solutions and disrupts markets to generate new value</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </AnimatedSection>
           </div>
+
+          {/* Impact & Importance */}
+          <AnimatedSection animation="fadeUp" delay={0.4}>
+            <Card className="card-hover bg-gradient-to-br from-primary/10 to-accent/10 backdrop-blur-lg border-0 shadow-xl">
+              <CardContent className="p-8 md:p-12">
+                <div className="text-center mb-8">
+                  <div className="flex items-center justify-center gap-2 mb-4">
+                    <Award className="w-8 h-8 text-primary" />
+                    <span className="text-2xl font-bold">Why This Matters</span>
+                  </div>
+                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                    Understanding entrepreneurship helps you think beyond traditional employment—to become a <span className="text-primary font-semibold">job creator</span>, <span className="text-accent font-semibold">problem solver</span>, and <span className="text-primary font-semibold">innovator</span> who shapes the future.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <TrendingUp className="w-8 h-8 text-primary animate-float" />
+                    </div>
+                    <h4 className="font-semibold mb-2">Economic Growth</h4>
+                    <p className="text-sm text-muted-foreground">Drive innovation and create employment opportunities</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Brain className="w-8 h-8 text-accent animate-float delay-300" />
+                    </div>
+                    <h4 className="font-semibold mb-2">Problem Solving</h4>
+                    <p className="text-sm text-muted-foreground">Address real-world challenges with creative solutions</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-secondary/40 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Network className="w-8 h-8 text-primary animate-float delay-500" />
+                    </div>
+                    <h4 className="font-semibold mb-2">Social Impact</h4>
+                    <p className="text-sm text-muted-foreground">Create positive change in communities and society</p>
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <a
+                    href="https://www.instagram.com/amc.ecell?igsh=MXZsMGVwODFpZWp1aA=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-accent text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 btn-primary"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    Ready to become one? Join our journey!
+                  </a>
+                </div>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
         </div>
-      </AnimatedSection>
+      </section>
 
       {/* Highlighted Event Video */}
       <AnimatedSection animation="scale" className="section-padding bg-background">
