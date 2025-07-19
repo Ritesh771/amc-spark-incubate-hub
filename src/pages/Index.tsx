@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -619,7 +618,7 @@ const Index = () => {
       </AnimatedSection>
 
       {/* About Section */}
-      <AnimatedSection animation="fadeUp" className="section-padding">
+      <AnimatedSection animation="fadeUp" className="section-padding" id="about">
         <div className="container-width">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">About E-Cell AMC</h2>
@@ -781,7 +780,7 @@ const Index = () => {
         </div>
       </AnimatedSection>
 
-      {/* Events Section */}
+      {/* Events Section - Updated Layout */}
       <section className="section-padding bg-gradient-to-br from-background via-secondary/20 to-background" id="events">
         <div className="container-width">
           {/* Section Header */}
@@ -798,77 +797,18 @@ const Index = () => {
             </p>
           </AnimatedSection>
           
-          {/* Bento Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-6 auto-rows-fr">
-            {/* Featured Event - Large Card */}
-            <div className="md:col-span-12 lg:col-span-8 transform lg:-skew-y-1 hover:skew-y-0 transition-transform duration-500">
-              <div className="transform lg:skew-y-1">
+          {/* Standard Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {eventsData.map((event, index) => (
+              <AnimatedSection key={event.id} animation="scale" delay={index * 0.1}>
                 <EventCard
-                  {...eventsData[0]}
+                  {...event}
                   className="h-full"
-                  delay={0.1}
-                  onRegister={() => handleEventRegister(eventsData[0].id)}
+                  delay={index * 0.1}
+                  onRegister={() => handleEventRegister(event.id)}
                 />
-              </div>
-            </div>
-
-            {/* Secondary Event - Medium Card */}
-            <div className="md:col-span-6 lg:col-span-4 transform lg:skew-y-1 hover:skew-y-0 transition-transform duration-500">
-              <div className="transform lg:-skew-y-1">
-                <EventCard
-                  {...eventsData[1]}
-                  className="h-full"
-                  delay={0.2}
-                  onRegister={() => handleEventRegister(eventsData[1].id)}
-                />
-              </div>
-            </div>
-
-            {/* Row 2 - Three Medium Cards */}
-            <div className="md:col-span-6 lg:col-span-4 transform lg:-skew-y-1 hover:skew-y-0 transition-transform duration-500">
-              <div className="transform lg:skew-y-1">
-                <EventCard
-                  {...eventsData[2]}
-                  className="h-full"
-                  delay={0.3}
-                  onRegister={() => handleEventRegister(eventsData[2].id)}
-                />
-              </div>
-            </div>
-
-            <div className="md:col-span-6 lg:col-span-4 transform lg:-skew-y-1 hover:skew-y-0 transition-transform duration-500">
-              <div className="transform lg:-skew-y-1">
-                <EventCard
-                  {...eventsData[3]}
-                  className="h-full"
-                  delay={0.4}
-                  onRegister={() => handleEventRegister(eventsData[3].id)}
-                />
-              </div>
-            </div>
-
-            <div className="md:col-span-6 lg:col-span-4 transform lg:-skew-y-1 hover:skew-y-0 transition-transform duration-500">
-              <div className="transform lg:skew-y-1">
-                <EventCard
-                  {...eventsData[4]}
-                  className="h-full"
-                  delay={0.5}
-                  onRegister={() => handleEventRegister(eventsData[4].id)}
-                />
-              </div>
-            </div>
-
-            {/* Final Row - Wide Card */}
-            <div className="md:col-span-12 lg:col-span-12 transform lg:skew-y-1 hover:skew-y-0 transition-transform duration-500">
-              <div className="transform lg:-skew-y-1">
-                <EventCard
-                  {...eventsData[5]}
-                  className="h-full"
-                  delay={0.6}
-                  onRegister={() => handleEventRegister(eventsData[5].id)}
-                />
-              </div>
-            </div>
+              </AnimatedSection>
+            ))}
           </div>
 
           {/* Call to Action */}
