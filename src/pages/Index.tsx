@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { CountUpNumber } from "@/components/CountUpNumber";
+import { ProgramModal } from "@/components/ProgramModal";
 import { 
   Users, 
   Target, 
@@ -26,7 +26,13 @@ import {
   ChevronDown,
   Menu,
   X,
-  MessageCircle
+  MessageCircle,
+  Briefcase,
+  Globe,
+  Code,
+  DollarSign,
+  Zap,
+  Brain
 } from "lucide-react";
 
 import heroImage from "@/assets/hero-business.jpg";
@@ -36,10 +42,308 @@ import innovationImage from "@/assets/innovation-lab.jpg";
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedProgram, setSelectedProgram] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const programs = [
+    {
+      icon: Rocket,
+      title: "Startup Incubation Program",
+      desc: "Comprehensive 6-month program for transforming ideas into viable businesses",
+      duration: "6 Months",
+      level: "Beginner to Intermediate",
+      participants: "20-25 startups per batch",
+      features: [
+        "Dedicated mentorship from industry experts",
+        "Seed funding opportunities up to ₹5 lakhs",
+        "Legal and IP guidance",
+        "Co-working space access",
+        "Technical infrastructure support",
+        "Market research assistance"
+      ],
+      benefits: [
+        "Access to investor network",
+        "Government scheme guidance",
+        "Product development support",
+        "Marketing and branding assistance",
+        "Financial planning and accounting",
+        "Pitch deck preparation"
+      ],
+      curriculum: [
+        "Business Model Canvas Development",
+        "Market Validation Techniques",
+        "Financial Planning and Fundraising",
+        "Legal Framework and Compliance",
+        "Product Development Lifecycle",
+        "Go-to-Market Strategy",
+        "Investor Pitch Preparation",
+        "Scaling and Growth Strategies"
+      ],
+      requirements: [
+        "Original business idea or early-stage startup",
+        "Commitment to full program duration",
+        "Basic business knowledge",
+        "Team of 2-4 members (preferred)"
+      ],
+      outcomes: [
+        "Fully developed business plan",
+        "Working prototype or MVP",
+        "Investor-ready pitch deck",
+        "Market validation data",
+        "Legal entity establishment",
+        "Potential seed funding"
+      ]
+    },
+    {
+      icon: TrendingUp,
+      title: "Growth Accelerator Program",
+      desc: "3-month intensive program for scaling existing startups to the next level",
+      duration: "3 Months",
+      level: "Intermediate to Advanced",
+      participants: "15-20 startups per batch",
+      features: [
+        "Revenue optimization strategies",
+        "Advanced digital marketing",
+        "Investment readiness training",
+        "International market expansion",
+        "Partnership development",
+        "Advanced analytics and metrics"
+      ],
+      benefits: [
+        "Series A funding preparation",
+        "Strategic partnership opportunities",
+        "Advanced technology integration",
+        "International market access",
+        "Leadership development",
+        "Exit strategy planning"
+      ],
+      curriculum: [
+        "Advanced Growth Hacking Techniques",
+        "Data-Driven Decision Making",
+        "International Expansion Strategies",
+        "Series A Fundraising",
+        "Strategic Partnerships",
+        "Advanced Digital Marketing",
+        "Leadership and Team Scaling",
+        "Exit Strategy Planning"
+      ],
+      requirements: [
+        "Existing startup with minimum viable product",
+        "Revenue generation (minimum ₹1 lakh/month)",
+        "Team of 3+ members",
+        "Growth potential demonstration"
+      ],
+      outcomes: [
+        "100%+ revenue growth target",
+        "Series A funding readiness",
+        "International market entry plan",
+        "Strategic partnerships established",
+        "Advanced product features",
+        "Scalable business processes"
+      ]
+    },
+    {
+      icon: BookOpen,
+      title: "Entrepreneurship Foundation Course",
+      desc: "8-week comprehensive course covering entrepreneurship fundamentals",
+      duration: "8 Weeks",
+      level: "Beginner",
+      participants: "50-60 students per batch",
+      features: [
+        "Interactive online and offline sessions",
+        "Case study analysis",
+        "Guest lectures from successful entrepreneurs",
+        "Hands-on project work",
+        "Peer learning groups",
+        "Industry exposure visits"
+      ],
+      benefits: [
+        "Entrepreneurial mindset development",
+        "Business opportunity identification",
+        "Risk assessment capabilities",
+        "Leadership skills enhancement",
+        "Network building",
+        "Career direction clarity"
+      ],
+      curriculum: [
+        "Introduction to Entrepreneurship",
+        "Opportunity Recognition and Evaluation",
+        "Business Model Innovation",
+        "Marketing and Customer Development",
+        "Financial Management Basics",
+        "Leadership and Team Building",
+        "Risk Management",
+        "Business Plan Development"
+      ],
+      requirements: [
+        "Interest in entrepreneurship",
+        "Basic English proficiency",
+        "Commitment to attend all sessions",
+        "No prior business experience required"
+      ],
+      outcomes: [
+        "Entrepreneurship certificate",
+        "Business idea validation",
+        "Network of like-minded peers",
+        "Basic business plan",
+        "Industry exposure",
+        "Career clarity"
+      ]
+    },
+    {
+      icon: Code,
+      title: "Tech Startup Bootcamp",
+      desc: "4-month intensive program focused on technology-driven startups",
+      duration: "4 Months",
+      level: "Intermediate",
+      participants: "25-30 participants per batch",
+      features: [
+        "Technical product development",
+        "AI/ML integration guidance",
+        "Cloud infrastructure setup",
+        "Cybersecurity best practices",
+        "API development and integration",
+        "Mobile app development"
+      ],
+      benefits: [
+        "Technical expertise development",
+        "Industry-standard development practices",
+        "Cloud platform partnerships",
+        "Technical mentorship",
+        "Product development acceleration",
+        "Technology trend insights"
+      ],
+      curriculum: [
+        "Tech Stack Selection and Architecture",
+        "MVP Development Methodologies",
+        "AI/ML Integration for Startups",
+        "Cloud Infrastructure and DevOps",
+        "Cybersecurity for Startups",
+        "Mobile-First Development",
+        "API Design and Development",
+        "Technology Scaling Strategies"
+      ],
+      requirements: [
+        "Basic programming knowledge",
+        "Tech startup idea or concept",
+        "Laptop with development environment",
+        "Commitment to technical learning"
+      ],
+      outcomes: [
+        "Fully functional MVP",
+        "Technical architecture documentation",
+        "Cloud deployment capability",
+        "Security implementation",
+        "Mobile application",
+        "Technical team building skills"
+      ]
+    },
+    {
+      icon: DollarSign,
+      title: "FinTech Innovation Program",
+      desc: "5-month specialized program for financial technology startups",
+      duration: "5 Months",
+      level: "Advanced",
+      participants: "15-20 startups per batch",
+      features: [
+        "Regulatory compliance guidance",
+        "Blockchain technology integration",
+        "Payment gateway development",
+        "Financial modeling expertise",
+        "Banking partnership facilitation",
+        "Regulatory sandbox access"
+      ],
+      benefits: [
+        "Financial industry expertise",
+        "Regulatory compliance assurance",
+        "Banking sector partnerships",
+        "Investment from FinTech VCs",
+        "Technology infrastructure support",
+        "Market entry facilitation"
+      ],
+      curriculum: [
+        "FinTech Landscape and Opportunities",
+        "Regulatory Framework and Compliance",
+        "Blockchain and Cryptocurrency",
+        "Payment Systems and Security",
+        "Financial Data Analytics",
+        "Banking APIs and Integration",
+        "Investment and Funding in FinTech",
+        "Risk Management in Financial Services"
+      ],
+      requirements: [
+        "FinTech startup idea or existing solution",
+        "Understanding of financial services",
+        "Technical background preferred",
+        "Regulatory compliance commitment"
+      ],
+      outcomes: [
+        "Compliance-ready FinTech solution",
+        "Banking partnerships established",
+        "Regulatory approvals initiated",
+        "Secure payment integration",
+        "Investment readiness",
+        "Market launch preparation"
+      ]
+    },
+    {
+      icon: Globe,
+      title: "Social Impact Venture Program",
+      desc: "6-month program for startups creating positive social and environmental impact",
+      duration: "6 Months",
+      level: "Intermediate",
+      participants: "20-25 ventures per batch",
+      features: [
+        "Impact measurement frameworks",
+        "Sustainable business model development",
+        "Grant funding guidance",
+        "CSR partnership facilitation",
+        "Community engagement strategies",
+        "Environmental impact assessment"
+      ],
+      benefits: [
+        "Social impact measurement",
+        "Grant funding access",
+        "CSR partnership opportunities",
+        "Sustainable scaling strategies",
+        "Community network building",
+        "Impact investor connections"
+      ],
+      curriculum: [
+        "Social Entrepreneurship Fundamentals",
+        "Impact Measurement and Management",
+        "Sustainable Business Models",
+        "Grant Writing and Funding",
+        "Community Engagement and Partnerships",
+        "Environmental Impact Assessment",
+        "Policy Advocacy and Change",
+        "Scaling Social Impact"
+      ],
+      requirements: [
+        "Social or environmental impact focus",
+        "Commitment to sustainable practices",
+        "Community engagement experience",
+        "Passion for social change"
+      ],
+      outcomes: [
+        "Sustainable business model",
+        "Impact measurement system",
+        "Grant funding secured",
+        "Community partnerships",
+        "Policy influence capability",
+        "Scalable social impact"
+      ]
+    }
+  ];
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
+  };
+
+  const handleProgramClick = (program: any) => {
+    setSelectedProgram(program);
+    setIsModalOpen(true);
   };
 
   return (
@@ -289,7 +593,7 @@ const Index = () => {
       </AnimatedSection>
 
       {/* Programs Section */}
-      <AnimatedSection animation="fadeUp" className="section-padding bg-secondary/30">
+      <AnimatedSection animation="fadeUp" className="section-padding bg-secondary/30" id="programs">
         <div className="container-width">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">Our Programs</h2>
@@ -298,42 +602,39 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: BookOpen,
-                title: "Incubation Program",
-                desc: "6-month intensive program for early-stage startups",
-                features: ["Mentorship from industry experts", "Seed funding opportunities", "Legal and business guidance", "Workspace and resources"]
-              },
-              {
-                icon: Rocket,
-                title: "Accelerator Program", 
-                desc: "3-month intensive program for growth-stage startups",
-                features: ["Market validation support", "Investment readiness training", "Go-to-market strategies", "Investor pitch preparation"]
-              },
-              {
-                icon: Target,
-                title: "Skill Development",
-                desc: "Workshops and training programs for entrepreneurial skills", 
-                features: ["Business model canvas", "Financial planning", "Digital marketing", "Leadership development"]
-              }
-            ].map((program, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {programs.map((program, index) => (
               <AnimatedSection key={program.title} animation="scale" delay={index * 0.1}>
-                <Card className="border-0 shadow-lg hover-lift card-hover bg-white/80 backdrop-blur-sm h-full">
+                <Card 
+                  className="border-0 shadow-lg hover-lift card-hover bg-white/80 backdrop-blur-sm h-full cursor-pointer transition-all duration-300 hover:shadow-2xl"
+                  onClick={() => handleProgramClick(program)}
+                >
                   <CardHeader className="text-center">
                     <program.icon className="w-12 h-12 text-primary mx-auto mb-4 animate-float" style={{ animationDelay: `${index * 0.7}s` }} />
-                    <CardTitle>{program.title}</CardTitle>
+                    <CardTitle className="hover:text-primary transition-colors">{program.title}</CardTitle>
                     <CardDescription>{program.desc}</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <Badge variant="secondary" className="text-xs">
+                        {program.duration}
+                      </Badge>
+                      <Badge variant="outline" className="text-xs">
+                        {program.level}
+                      </Badge>
+                    </div>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      {program.features.map((feature, idx) => (
+                      {program.features.slice(0, 3).map((feature, idx) => (
                         <li key={idx} className="flex items-center">
                           <span className="w-2 h-2 bg-primary rounded-full mr-2 opacity-70"></span>
                           {feature}
                         </li>
                       ))}
+                      {program.features.length > 3 && (
+                        <li className="text-primary font-medium text-center pt-2">
+                          Click to see more details...
+                        </li>
+                      )}
                     </ul>
                   </CardContent>
                 </Card>
@@ -669,6 +970,16 @@ const Index = () => {
           </div>
         </div>
       </AnimatedSection>
+
+      {/* Program Modal */}
+      <ProgramModal
+        program={selectedProgram}
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+          setSelectedProgram(null);
+        }}
+      />
     </div>
   );
 };
