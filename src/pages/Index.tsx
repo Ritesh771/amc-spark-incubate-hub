@@ -336,6 +336,75 @@ const Index = () => {
     }
   ];
 
+  const eventsData = [
+    {
+      id: 1,
+      image: eventsImage,
+      title: "Global Startup Pitch Championship 2024",
+      date: "March 15, 2024",
+      time: "9:00 AM - 6:00 PM",
+      location: "AMC Main Auditorium",
+      description: "Present your revolutionary business ideas to a distinguished panel of industry leaders, VCs, and successful entrepreneurs. Compete for prizes worth ₹5 lakhs and secure potential seed funding for your startup.",
+      attendees: 200,
+      status: "registration-open" as const
+    },
+    {
+      id: 2,
+      image: innovationImage,
+      title: "Entrepreneurship Masterclass Series",
+      date: "March 22, 2024",
+      time: "2:00 PM - 5:00 PM",
+      location: "Innovation Lab",
+      description: "Intensive workshop covering the complete entrepreneurial journey - from ideation to scaling. Learn directly from industry veterans who have built successful startups from the ground up.",
+      attendees: 150,
+      status: "upcoming" as const
+    },
+    {
+      id: 3,
+      image: teamImage,
+      title: "Tech Startup Bootcamp - MVP Building",
+      date: "April 10, 2024",
+      time: "10:00 AM - 4:00 PM",
+      location: "Tech Hub",
+      description: "Hands-on intensive workshop focused on rapid MVP development, UI/UX best practices, and effective pitching strategies. Perfect for aspiring tech founders ready to build their first product.",
+      attendees: 100,
+      status: "upcoming" as const
+    },
+    {
+      id: 4,
+      image: eventsImage,
+      title: "Investor Connect Networking Night",
+      date: "April 25, 2024",
+      time: "6:00 PM - 9:00 PM",
+      location: "E-Cell Lounge",
+      description: "Exclusive networking event connecting student entrepreneurs with angel investors, VCs, and successful alumni. An opportunity to showcase your startup and build valuable connections.",
+      attendees: 80,
+      status: "registration-open" as const
+    },
+    {
+      id: 5,
+      image: innovationImage,
+      title: "Women in Entrepreneurship Summit",
+      date: "May 8, 2024",
+      time: "9:00 AM - 5:00 PM",
+      location: "Conference Hall",
+      description: "Celebrating and empowering women entrepreneurs through inspiring talks, panel discussions, and mentorship sessions with successful female business leaders.",
+      attendees: 120,
+      status: "upcoming" as const
+    },
+    {
+      id: 6,
+      image: teamImage,
+      title: "Startup Funding Workshop",
+      date: "May 20, 2024",
+      time: "11:00 AM - 3:00 PM",
+      location: "Seminar Hall",
+      description: "Comprehensive workshop on funding strategies, investor relations, and financial planning for startups. Learn how to prepare for different funding rounds and pitch to investors.",
+      attendees: 90,
+      status: "upcoming" as const
+    }
+  ];
+
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
@@ -344,6 +413,10 @@ const Index = () => {
   const handleProgramClick = (program: any) => {
     setSelectedProgram(program);
     setIsModalOpen(true);
+  };
+
+  const handleEventRegister = (eventId: number) => {
+    window.open('https://forms.gle/ZBL1p3WJuGoqb4vC7', '_blank');
   };
 
   return (
@@ -707,47 +780,114 @@ const Index = () => {
       </AnimatedSection>
 
       {/* Events Section */}
-      <AnimatedSection animation="fadeUp" className="section-padding">
+      <section className="section-padding bg-gradient-to-br from-background via-secondary/20 to-background" id="events">
         <div className="container-width">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Upcoming Events</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Join our events to learn, network, and grow your entrepreneurial journey
+          {/* Section Header */}
+          <AnimatedSection animation="fadeUp" className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
+              <Calendar className="w-4 h-4" />
+              <span>Upcoming Events</span>
+            </div>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+              Join Our <span className="gradient-text">Exciting</span> Events
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Participate in our carefully curated events designed to accelerate your entrepreneurial journey through learning, networking, and hands-on experience.
             </p>
-          </div>
+          </AnimatedSection>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
-            {[
-              { image: eventsImage, title: "Startup Pitch Competition", date: "March 15, 2024", desc: "Present your business ideas to a panel of expert judges and win prizes worth ₹2 lakhs" },
-              { image: innovationImage, title: "Entrepreneurship Workshop", date: "March 22, 2024", desc: "Learn the fundamentals of starting and scaling a business from industry veterans" },
-              { image: teamImage, title: "E-Cell Skill Bootcamp", date: "April 10, 2024", desc: "Hands-on workshop on MVP building, UI/UX, and pitching for aspiring founders." }
-            ].map((event, index) => (
-              <AnimatedSection key={event.title} animation="scale" delay={index * 0.1}>
-                <Card className="border-0 shadow-xl hover-lift card-hover overflow-hidden group bg-white/90 backdrop-blur-sm">
-                  <div className="aspect-video w-full overflow-hidden">
-                    <img 
-                      src={event.image} 
-                      alt={event.title} 
-                      className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" 
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Badge variant="secondary" className="animate-pulse">Upcoming</Badge>
-                      <span className="text-sm text-muted-foreground">{event.date}</span>
-                    </div>
-                    <h3 className="text-xl font-bold mb-3">{event.title}</h3>
-                    <p className="text-muted-foreground mb-4">{event.desc}</p>
-                    <Button variant="outline" size="sm" className="hover-scale" onClick={() => scrollToSection('contact')}>
-                      Register Now
-                    </Button>
-                  </CardContent>
-                </Card>
-              </AnimatedSection>
-            ))}
+          {/* Bento Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-6 auto-rows-fr">
+            {/* Featured Event - Large Card */}
+            <div className="md:col-span-12 lg:col-span-8 transform lg:-skew-y-1 hover:skew-y-0 transition-transform duration-500">
+              <div className="transform lg:skew-y-1">
+                <EventCard
+                  {...eventsData[0]}
+                  className="h-full"
+                  delay={0.1}
+                  onRegister={() => handleEventRegister(eventsData[0].id)}
+                />
+              </div>
+            </div>
+
+            {/* Secondary Event - Medium Card */}
+            <div className="md:col-span-6 lg:col-span-4 transform lg:skew-y-1 hover:skew-y-0 transition-transform duration-500">
+              <div className="transform lg:-skew-y-1">
+                <EventCard
+                  {...eventsData[1]}
+                  className="h-full"
+                  delay={0.2}
+                  onRegister={() => handleEventRegister(eventsData[1].id)}
+                />
+              </div>
+            </div>
+
+            {/* Row 2 - Three Medium Cards */}
+            <div className="md:col-span-6 lg:col-span-4 transform lg:-skew-y-1 hover:skew-y-0 transition-transform duration-500">
+              <div className="transform lg:skew-y-1">
+                <EventCard
+                  {...eventsData[2]}
+                  className="h-full"
+                  delay={0.3}
+                  onRegister={() => handleEventRegister(eventsData[2].id)}
+                />
+              </div>
+            </div>
+
+            <div className="md:col-span-6 lg:col-span-4 transform lg:-skew-y-1 hover:skew-y-0 transition-transform duration-500">
+              <div className="transform lg:-skew-y-1">
+                <EventCard
+                  {...eventsData[3]}
+                  className="h-full"
+                  delay={0.4}
+                  onRegister={() => handleEventRegister(eventsData[3].id)}
+                />
+              </div>
+            </div>
+
+            <div className="md:col-span-6 lg:col-span-4 transform lg:-skew-y-1 hover:skew-y-0 transition-transform duration-500">
+              <div className="transform lg:skew-y-1">
+                <EventCard
+                  {...eventsData[4]}
+                  className="h-full"
+                  delay={0.5}
+                  onRegister={() => handleEventRegister(eventsData[4].id)}
+                />
+              </div>
+            </div>
+
+            {/* Final Row - Wide Card */}
+            <div className="md:col-span-12 lg:col-span-12 transform lg:skew-y-1 hover:skew-y-0 transition-transform duration-500">
+              <div className="transform lg:-skew-y-1">
+                <EventCard
+                  {...eventsData[5]}
+                  className="h-full"
+                  delay={0.6}
+                  onRegister={() => handleEventRegister(eventsData[5].id)}
+                />
+              </div>
+            </div>
           </div>
+
+          {/* Call to Action */}
+          <AnimatedSection animation="scale" delay={0.4} className="flex justify-center mt-16">
+            <div className="text-center space-y-4">
+              <p className="text-lg text-muted-foreground">
+                Ready to take your entrepreneurial journey to the next level?
+              </p>
+              <a
+                href="https://forms.gle/ZBL1p3WJuGoqb4vC7"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg" className="btn-primary bg-primary hover:bg-primary/90 hover-lift animate-pulse-glow">
+                  Register for All Events
+                </Button>
+              </a>
+            </div>
+          </AnimatedSection>
         </div>
-      </AnimatedSection>
+      </section>
 
       {/* Team Section */}
       <AnimatedSection animation="fadeUp" className="section-padding bg-gradient-to-br from-background to-secondary/60" id="team">
