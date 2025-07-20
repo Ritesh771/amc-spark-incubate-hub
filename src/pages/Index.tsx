@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,7 +13,7 @@ import {
   Calendar, 
   Award, 
   Building2, 
-  Lightbulb, 
+  Briefcase, 
   TrendingUp, 
   Network,
   BookOpen,
@@ -29,8 +28,6 @@ import {
   Menu,
   X,
   MessageCircle,
-  Briefcase,
-  Globe,
   Code,
   DollarSign,
   Zap,
@@ -42,7 +39,8 @@ import {
   LineChart,
   Database,
   Server,
-  Monitor
+  Monitor,
+  Globe
 } from "lucide-react";
 
 import heroImage from "@/assets/hero-business.jpg";
@@ -488,7 +486,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
           <AnimatedSection animation="fadeLeft" className="space-y-4 sm:space-y-6 text-center lg:text-left">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Fostering <span className="gradient-text">Innovation</span> & <span className="text-accent">Entrepreneurship</span>
+              Fostering <span className="gradient-text">Innovation</span> & <span className="text-primary">Entrepreneurship</span>
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0">
               The Entrepreneurship Cell of AMC Engineering College - Building tomorrow's entrepreneurs today through mentorship, innovation, and real-world business experience.
@@ -732,7 +730,9 @@ const Index = () => {
       <AnimatedSection animation="fadeUp" className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8" id="about">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">About E-Cell AMC</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+              About <span className="gradient-text">E-Cell AMC</span>
+            </h2>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               We are the premier entrepreneurship hub at AMC Engineering College, dedicated to nurturing innovative minds and transforming ideas into successful ventures.
             </p>
@@ -781,7 +781,9 @@ const Index = () => {
       <AnimatedSection animation="fadeUp" className="py-12 sm:py-16 lg:py-24 bg-secondary/30 px-4 sm:px-6 lg:px-8" id="programs">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Our Programs</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+              Our <span className="gradient-text">Programs</span>
+            </h2>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               Comprehensive programs designed to transform students into successful entrepreneurs
             </p>
@@ -845,7 +847,9 @@ const Index = () => {
       <AnimatedSection animation="fadeUp" className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-background to-secondary/40 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Signature E-Cell Programs & Initiatives</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+              Signature <span className="gradient-text">E-Cell Programs</span> & Initiatives
+            </h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               E-Cell AMC offers a diverse set of hands-on programs and events designed to inspire, educate, and empower the next generation of entrepreneurs.
             </p>
@@ -946,7 +950,9 @@ const Index = () => {
       <AnimatedSection animation="fadeUp" className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-background to-secondary/60 px-4 sm:px-6 lg:px-8" id="team">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">Our Team</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
+              Our <span className="gradient-text">Team</span>
+            </h2>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
               Meet the passionate individuals and mentors guiding E-Cell AMC
             </p>
@@ -1026,7 +1032,9 @@ const Index = () => {
       <AnimatedSection animation="fadeUp" className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8" id="contact">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Get In Touch</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+              Get In <span className="gradient-text">Touch</span>
+            </h2>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               Ready to start your entrepreneurial journey? We're here to help you every step of the way
             </p>
