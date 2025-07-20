@@ -13,14 +13,17 @@ import {
   Calendar, 
   Award, 
   Building2, 
+  Lightbulb, 
   TrendingUp, 
   Network,
   BookOpen,
+  Rocket,
   User,
   Mail,
   Phone,
   MapPin,
   Instagram,
+  Twitter,
   ChevronDown,
   Menu,
   X,
@@ -29,19 +32,8 @@ import {
   Globe,
   Code,
   DollarSign,
-  BarChart3,
-  GraduationCap,
-  Settings,
-  Shield,
-  Star,
-  CheckCircle,
-  ArrowRight,
-  PieChart,
-  LineChart,
-  Layers,
-  Database,
-  Monitor,
-  Smartphone
+  Zap,
+  Brain
 } from "lucide-react";
 
 import heroImage from "@/assets/hero-business.jpg";
@@ -56,7 +48,7 @@ const Index = () => {
 
   const programs = [
     {
-      icon: Building2,
+      icon: Rocket,
       title: "Startup Incubation Program",
       desc: "Comprehensive 6-month program for transforming ideas into viable businesses",
       duration: "6 Months",
@@ -152,7 +144,7 @@ const Index = () => {
       ]
     },
     {
-      icon: GraduationCap,
+      icon: BookOpen,
       title: "Entrepreneurship Foundation Course",
       desc: "8-week comprehensive course covering entrepreneurship fundamentals",
       duration: "8 Weeks",
@@ -434,9 +426,9 @@ const Index = () => {
       <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center overflow-hidden">
-                <img src="/logo.png" alt="E-Cell AMC Logo" className="w-8 h-8 object-contain" draggable="false" />
+            <div className="flex items-center space-x-2">
+              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center overflow-hidden hover-scale">
+                <img src="/logo.png" alt="E-Cell AMC Logo" className="w-10 h-10 object-contain rounded-full" draggable="false" />
               </div>
               <span className="text-xl font-bold text-primary">E-Cell AMC</span>
             </div>
@@ -447,7 +439,7 @@ const Index = () => {
                 <button
                   key={id}
                   onClick={() => scrollToSection(id)}
-                  className="text-foreground hover:text-primary transition-colors font-medium"
+                  className={`nav-link text-foreground hover:text-primary transition-colors delay-${index * 100}`}
                 >
                   {id.charAt(0).toUpperCase() + id.slice(1)}
                 </button>
@@ -483,20 +475,14 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-16 min-h-screen flex items-center bg-gradient-to-br from-background to-secondary/20">
+      <section id="home" className="pt-16 min-h-screen flex items-center bg-gradient-to-br from-background to-secondary">
         <div className="container-width grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <AnimatedSection animation="fadeLeft" className="space-y-8">
-            <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
-                <Building2 className="w-4 h-4" />
-                <span>Entrepreneurship Excellence</span>
-              </div>
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                Building Tomorrow's <span className="gradient-text">Business Leaders</span>
-              </h1>
-            </div>
+          <AnimatedSection animation="fadeLeft" className="space-y-6">
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+              Fostering <span className="gradient-text">Innovation</span> & <span className="text-accent">Entrepreneurship</span>
+            </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              The Entrepreneurship Cell of AMC Engineering College - Empowering students with practical business skills, industry connections, and real-world entrepreneurial experience.
+              The Entrepreneurship Cell of AMC Engineering College - Building tomorrow's entrepreneurs today through mentorship, innovation, and real-world business experience.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
@@ -506,12 +492,10 @@ const Index = () => {
                 className="inline-block"
               >
                 <Button size="lg" className="btn-primary bg-primary hover:bg-primary/90 hover-lift">
-                  <ArrowRight className="w-4 h-4 mr-2" />
                   Join Our Community
                 </Button>
               </a>
               <Button size="lg" variant="outline" className="hover-scale" onClick={() => scrollToSection('programs')}>
-                <Target className="w-4 h-4 mr-2" />
                 Explore Programs
               </Button>
             </div>
@@ -522,20 +506,27 @@ const Index = () => {
               <img 
                 src={heroImage} 
                 alt="Professional business environment" 
-                className="w-full h-auto rounded-2xl shadow-2xl border border-border/20"
+                className="w-full h-auto rounded-2xl shadow-2xl"
               />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-primary/10 to-transparent"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-primary/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
       {/* What is Entrepreneurship Section - Enhanced */}
-      <section className="section-padding bg-gradient-to-br from-background via-secondary/10 to-background relative overflow-hidden">
+      <section className="section-padding bg-gradient-to-br from-background via-primary/5 to-secondary/20 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-10 left-10 w-20 h-20 bg-primary/20 rounded-full blur-xl animate-float"></div>
+          <div className="absolute bottom-20 right-20 w-32 h-32 bg-accent/20 rounded-full blur-xl animate-float delay-700"></div>
+          <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-secondary/30 rounded-full blur-lg animate-float delay-500"></div>
+        </div>
+
         <div className="container-width relative z-10">
           <AnimatedSection animation="fadeUp" className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-              <GraduationCap className="w-4 h-4" />
+              <Lightbulb className="w-4 h-4" />
               <span>Foundation Knowledge</span>
             </div>
             <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
@@ -548,14 +539,14 @@ const Index = () => {
 
           {/* Main Definition Card */}
           <AnimatedSection animation="scale" delay={0.1} className="mb-16">
-            <Card className="bg-white/90 backdrop-blur-lg border-0 shadow-xl max-w-4xl mx-auto">
+            <Card className="card-hover bg-white/80 backdrop-blur-lg border-0 shadow-2xl max-w-4xl mx-auto">
               <CardContent className="p-8 md:p-12">
                 <div className="text-center mb-8">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-6">
-                    <Building2 className="w-8 h-8 text-white" />
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Rocket className="w-8 h-8 text-white animate-float" />
                   </div>
                   <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                    Entrepreneurship is the process of <span className="text-primary font-semibold">creating, launching, and managing</span> innovative ventures that solve real problems and create sustainable value in the marketplace.
+                    Entrepreneurship is the process of <span className="text-primary font-semibold">creating, launching, and managing</span> a new venture to solve problems and create value for society.
                   </p>
                 </div>
               </CardContent>
@@ -565,32 +556,32 @@ const Index = () => {
           {/* Key Concepts Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <AnimatedSection animation="fadeLeft" delay={0.2}>
-              <Card className="bg-white/80 backdrop-blur-lg border-0 shadow-xl h-full">
+              <Card className="card-hover bg-white/70 backdrop-blur-lg border-0 shadow-xl h-full">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4 mb-6">
-                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <User className="w-6 h-6 text-primary" />
+                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <User className="w-6 h-6 text-primary animate-float" />
                     </div>
                     <div>
                       <h3 className="text-2xl font-bold mb-3">Who is an Entrepreneur?</h3>
                       <p className="text-muted-foreground leading-relaxed">
-                        An entrepreneur is a <span className="text-primary font-medium">visionary leader</span> who identifies market opportunities, takes calculated risks, and builds innovative solutions to address unmet needs.
+                        An entrepreneur is someone who <span className="text-primary font-medium">identifies opportunities</span>, takes calculated risks, and builds innovative solutions to fulfill market needs.
                       </p>
                     </div>
                   </div>
                   
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary" />
-                      <span className="text-sm text-muted-foreground">Strategic problem solver and innovator</span>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-sm text-muted-foreground">Problem solver and innovator</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary" />
-                      <span className="text-sm text-muted-foreground">Risk-taking leader with clear vision</span>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-accent rounded-full"></div>
+                      <span className="text-sm text-muted-foreground">Risk-taker with vision</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary" />
-                      <span className="text-sm text-muted-foreground">Value creator for society and economy</span>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-secondary rounded-full"></div>
+                      <span className="text-sm text-muted-foreground">Value creator for society</span>
                     </div>
                   </div>
                 </CardContent>
@@ -598,11 +589,11 @@ const Index = () => {
             </AnimatedSection>
 
             <AnimatedSection animation="fadeRight" delay={0.3}>
-              <Card className="bg-white/80 backdrop-blur-lg border-0 shadow-xl h-full">
+              <Card className="card-hover bg-white/70 backdrop-blur-lg border-0 shadow-xl h-full">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4 mb-6">
-                    <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <BarChart3 className="w-6 h-6 text-accent" />
+                    <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Building2 className="w-6 h-6 text-accent animate-float delay-200" />
                     </div>
                     <div>
                       <h3 className="text-2xl font-bold mb-3">Business Owner vs Entrepreneur</h3>
@@ -610,13 +601,13 @@ const Index = () => {
                   </div>
                   
                   <div className="space-y-6">
-                    <div className="p-4 bg-blue-50 rounded-xl border-l-4 border-primary">
+                    <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-primary">
                       <div className="font-semibold text-primary mb-1">Business Owner</div>
-                      <div className="text-sm text-muted-foreground">Operates established business models focusing on consistent profitability and operational efficiency</div>
+                      <div className="text-sm text-muted-foreground">Manages existing business models for consistent profit and stability</div>
                     </div>
-                    <div className="p-4 bg-purple-50 rounded-xl border-l-4 border-accent">
+                    <div className="p-4 bg-purple-50 rounded-lg border-l-4 border-accent">
                       <div className="font-semibold text-accent mb-1">Entrepreneur</div>
-                      <div className="text-sm text-muted-foreground">Creates disruptive innovations and new market opportunities to generate unprecedented value</div>
+                      <div className="text-sm text-muted-foreground">Creates innovative solutions and disrupts markets to generate new value</div>
                     </div>
                   </div>
                 </CardContent>
@@ -626,39 +617,39 @@ const Index = () => {
 
           {/* Impact & Importance */}
           <AnimatedSection animation="fadeUp" delay={0.4}>
-            <Card className="bg-gradient-to-br from-primary/5 to-accent/5 backdrop-blur-lg border-0 shadow-xl">
+            <Card className="card-hover bg-gradient-to-br from-primary/10 to-accent/10 backdrop-blur-lg border-0 shadow-xl">
               <CardContent className="p-8 md:p-12">
                 <div className="text-center mb-8">
                   <div className="flex items-center justify-center gap-2 mb-4">
                     <Award className="w-8 h-8 text-primary" />
-                    <span className="text-2xl font-bold">Strategic Importance</span>
+                    <span className="text-2xl font-bold">Why This Matters</span>
                   </div>
                   <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                    Entrepreneurship education develops critical thinking beyond traditional employment—creating <span className="text-primary font-semibold">job creators</span>, <span className="text-accent font-semibold">market innovators</span>, and <span className="text-primary font-semibold">economic drivers</span> who shape industries.
+                    Understanding entrepreneurship helps you think beyond traditional employment—to become a <span className="text-primary font-semibold">job creator</span>, <span className="text-accent font-semibold">problem solver</span>, and <span className="text-primary font-semibold">innovator</span> who shapes the future.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                      <TrendingUp className="w-8 h-8 text-primary" />
+                    <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <TrendingUp className="w-8 h-8 text-primary animate-float" />
                     </div>
                     <h4 className="font-semibold mb-2">Economic Growth</h4>
-                    <p className="text-sm text-muted-foreground">Drive market innovation and create sustainable employment opportunities</p>
+                    <p className="text-sm text-muted-foreground">Drive innovation and create employment opportunities</p>
                   </div>
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                      <Target className="w-8 h-8 text-accent" />
+                    <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Brain className="w-8 h-8 text-accent animate-float delay-300" />
                     </div>
-                    <h4 className="font-semibold mb-2">Strategic Solutions</h4>
-                    <p className="text-sm text-muted-foreground">Address complex market challenges with innovative and scalable solutions</p>
+                    <h4 className="font-semibold mb-2">Problem Solving</h4>
+                    <p className="text-sm text-muted-foreground">Address real-world challenges with creative solutions</p>
                   </div>
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-secondary/60 rounded-xl flex items-center justify-center mx-auto mb-4">
-                      <Network className="w-8 h-8 text-primary" />
+                    <div className="w-16 h-16 bg-secondary/40 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Network className="w-8 h-8 text-primary animate-float delay-500" />
                     </div>
-                    <h4 className="font-semibold mb-2">Market Impact</h4>
-                    <p className="text-sm text-muted-foreground">Create transformative change in industries and communities worldwide</p>
+                    <h4 className="font-semibold mb-2">Social Impact</h4>
+                    <p className="text-sm text-muted-foreground">Create positive change in communities and society</p>
                   </div>
                 </div>
 
@@ -667,10 +658,10 @@ const Index = () => {
                     href="https://www.instagram.com/amc.ecell?igsh=MXZsMGVwODFpZWp1aA=="
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-accent text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                    className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-accent text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 btn-primary"
                   >
-                    <ArrowRight className="w-5 h-5" />
-                    Start Your Entrepreneurial Journey
+                    <MessageCircle className="w-5 h-5" />
+                    Ready to become one? Join our journey!
                   </a>
                 </div>
               </CardContent>
@@ -682,7 +673,7 @@ const Index = () => {
       {/* Highlighted Event Video */}
       <AnimatedSection animation="scale" className="section-padding bg-background">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="rounded-2xl shadow-2xl overflow-hidden aspect-video border border-border mb-6">
+          <div className="card-hover rounded-2xl shadow-2xl overflow-hidden aspect-video border border-border mb-6">
             <iframe
               src="https://www.youtube.com/embed/HI7t9mb71yg?autoplay=1&mute=1&rel=0&showinfo=0&modestbranding=1&controls=1"
               title="E-Cell AMC Event Video"
@@ -693,36 +684,33 @@ const Index = () => {
             ></iframe>
           </div>
           <AnimatedSection animation="fadeUp" delay={0.2}>
-            <h3 className="text-2xl font-bold text-center mb-2">E-Cell AMC: Professional Development Series</h3>
+            <h3 className="text-2xl font-bold text-center mb-2">E-Cell AMC: Startup Speaker Series Highlight</h3>
             <p className="text-center text-muted-foreground max-w-2xl mx-auto">
-              Experience the excellence and professional standards of our entrepreneurship programs through this comprehensive overview of our initiatives.
+              Catch the energy and inspiration from our latest event! Watch the journey, insights, and excitement from our Startup Speaker Series.
             </p>
           </AnimatedSection>
         </div>
       </AnimatedSection>
 
       {/* Stats Section */}
-      <AnimatedSection animation="fadeUp" className="section-padding bg-secondary/30">
+      <AnimatedSection animation="fadeUp" className="section-padding bg-secondary/50">
         <div className="container-width">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { end: 5, label: "Startups Launched", suffix: "+", icon: Building2 },
-              { end: 10, label: "Programs Delivered", suffix: "+", icon: Award },
-              { end: 3000, label: "Students Impacted", suffix: "+", icon: Users },
-              { end: 12, label: "Industry Mentors", suffix: "+", icon: Star }
+              { end: 5, label: "Startups Supported", suffix: "+" },
+              { end: 10, label: "Events Conducted", suffix: "+" },
+              { end: 3000, label: "Students Reached", suffix: "+" },
+              { end: 12, label: "Expert Mentors", suffix: "+" }
             ].map((stat, index) => (
               <AnimatedSection key={stat.label} animation="scale" delay={index * 0.1}>
-                <Card className="text-center border-0 shadow-lg hover-lift bg-white/90 backdrop-blur-sm">
+                <Card className="text-center border-0 shadow-lg hover-lift bg-white/80 backdrop-blur-sm">
                   <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                      <stat.icon className="w-6 h-6 text-primary" />
-                    </div>
                     <CountUpNumber 
                       end={stat.end} 
                       suffix={stat.suffix}
                       className="text-4xl font-bold text-primary mb-2 block"
                     />
-                    <div className="text-muted-foreground font-medium">{stat.label}</div>
+                    <div className="text-muted-foreground">{stat.label}</div>
                   </CardContent>
                 </Card>
               </AnimatedSection>
@@ -735,34 +723,28 @@ const Index = () => {
       <AnimatedSection animation="fadeUp" className="section-padding" id="about">
         <div className="container-width">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-              <Building2 className="w-4 h-4" />
-              <span>About Our Organization</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">E-Cell AMC Engineering</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">About E-Cell AMC</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              The premier center for entrepreneurship excellence at AMC Engineering College, fostering innovation through structured programs and industry partnerships.
+              We are the premier entrepreneurship hub at AMC Engineering College, dedicated to nurturing innovative minds and transforming ideas into successful ventures.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <AnimatedSection animation="fadeLeft">
-              <h3 className="text-2xl font-bold mb-6">Our Strategic Mission</h3>
+              <h3 className="text-2xl font-bold mb-6">Our Mission</h3>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                To establish a comprehensive entrepreneurial ecosystem that transforms students into industry-ready business leaders through structured learning, practical experience, and strategic mentorship.
+                To create a vibrant ecosystem that empowers students to think entrepreneurially, develop innovative solutions, and build sustainable businesses that make a positive impact on society.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {[
-                  { icon: Target, title: "Strategic Innovation", desc: "Developing market-ready solutions through systematic approach" },
-                  { icon: Network, title: "Industry Connections", desc: "Building partnerships with established business leaders" },
-                  { icon: TrendingUp, title: "Business Growth", desc: "Supporting ventures from concept to market success" },
-                  { icon: Users, title: "Professional Community", desc: "Creating networks of entrepreneurial excellence" }
+                  { icon: Lightbulb, title: "Innovation", desc: "Fostering creative thinking and breakthrough solutions" },
+                  { icon: Network, title: "Networking", desc: "Building connections with industry leaders" },
+                  { icon: TrendingUp, title: "Growth", desc: "Supporting startups from idea to success" },
+                  { icon: Users, title: "Community", desc: "Building a supportive entrepreneurial ecosystem" }
                 ].map((item, index) => (
                   <AnimatedSection key={item.title} animation="scale" delay={index * 0.1}>
-                    <div className="flex items-start space-x-3 hover-lift p-4 rounded-lg transition-all duration-300 border border-border/50 bg-white/50">
-                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <item.icon className="w-5 h-5 text-primary" />
-                      </div>
+                    <div className="flex items-start space-x-3 hover-lift p-3 rounded-lg transition-all duration-300">
+                      <item.icon className="w-6 h-6 text-primary mt-1 animate-float" style={{ animationDelay: `${index * 0.5}s` }} />
                       <div>
                         <h4 className="font-semibold mb-2">{item.title}</h4>
                         <p className="text-sm text-muted-foreground">{item.desc}</p>
@@ -777,8 +759,8 @@ const Index = () => {
               <div className="hover-lift">
                 <img 
                   src={innovationImage} 
-                  alt="Professional innovation environment" 
-                  className="w-full h-auto rounded-2xl shadow-lg border border-border/20"
+                  alt="Innovation lab" 
+                  className="w-full h-auto rounded-2xl shadow-lg"
                 />
               </div>
             </AnimatedSection>
@@ -787,16 +769,12 @@ const Index = () => {
       </AnimatedSection>
 
       {/* Programs Section */}
-      <AnimatedSection animation="fadeUp" className="section-padding bg-secondary/20" id="programs">
+      <AnimatedSection animation="fadeUp" className="section-padding bg-secondary/30" id="programs">
         <div className="container-width">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-              <Award className="w-4 h-4" />
-              <span>Professional Programs</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Comprehensive Business Programs</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">Our Programs</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Structured learning pathways designed to develop entrepreneurial expertise and business acumen
+              Comprehensive programs designed to transform students into successful entrepreneurs
             </p>
           </div>
 
@@ -804,19 +782,17 @@ const Index = () => {
             {programs.map((program, index) => (
               <AnimatedSection key={program.title} animation="scale" delay={index * 0.1}>
                 <Card 
-                  className="border-0 shadow-lg hover-lift bg-white/90 backdrop-blur-sm h-full cursor-pointer transition-all duration-300 hover:shadow-2xl group"
+                  className="border-0 shadow-lg hover-lift card-hover bg-white/80 backdrop-blur-sm h-full cursor-pointer transition-all duration-300 hover:shadow-2xl"
                   onClick={() => handleProgramClick(program)}
                 >
                   <CardHeader className="text-center">
-                    <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                      <program.icon className="w-8 h-8 text-primary" />
-                    </div>
+                    <program.icon className="w-12 h-12 text-primary mx-auto mb-4 animate-float" style={{ animationDelay: `${index * 0.7}s` }} />
                     <CardTitle className="hover:text-primary transition-colors">{program.title}</CardTitle>
-                    <CardDescription className="text-center">{program.desc}</CardDescription>
+                    <CardDescription>{program.desc}</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="flex flex-wrap gap-2 mb-4">
-                      <Badge variant="secondary" className="text-xs font-medium">
+                      <Badge variant="secondary" className="text-xs">
                         {program.duration}
                       </Badge>
                       <Badge variant="outline" className="text-xs">
@@ -826,13 +802,13 @@ const Index = () => {
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       {program.features.slice(0, 3).map((feature, idx) => (
                         <li key={idx} className="flex items-center">
-                          <CheckCircle className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                          <span className="w-2 h-2 bg-primary rounded-full mr-2 opacity-70"></span>
                           {feature}
                         </li>
                       ))}
                       {program.features.length > 3 && (
                         <li className="text-primary font-medium text-center pt-2">
-                          View complete program details...
+                          Click to see more details...
                         </li>
                       )}
                     </ul>
@@ -848,9 +824,8 @@ const Index = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button size="lg" className="btn-primary bg-primary hover:bg-primary/90 hover-lift">
-                <ArrowRight className="w-4 h-4 mr-2" />
-                Apply Now
+              <Button size="lg" className="btn-primary bg-primary hover:bg-primary/90 hover-lift animate-pulse-glow">
+                Register Now
               </Button>
             </a>
           </AnimatedSection>
@@ -858,50 +833,44 @@ const Index = () => {
       </AnimatedSection>
 
       {/* Signature Programs */}
-      <AnimatedSection animation="fadeUp" className="section-padding bg-gradient-to-br from-background to-secondary/30">
+      <AnimatedSection animation="fadeUp" className="section-padding bg-gradient-to-br from-background to-secondary/40">
         <div className="container-width">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-              <Settings className="w-4 h-4" />
-              <span>Signature Initiatives</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Professional Development Programs</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">Signature E-Cell Programs & Initiatives</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive suite of professional programs designed to develop business acumen and entrepreneurial excellence.
+              E-Cell AMC offers a diverse set of hands-on programs and events designed to inspire, educate, and empower the next generation of entrepreneurs.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { icon: Award, title: "Executive Speaker Series", timing: "Monthly", desc: "Industry leaders and successful entrepreneurs share strategic insights and market intelligence with participants.", outcome: "Professional networking + industry knowledge." },
-              { icon: Target, title: "Business Plan Competition", timing: "Quarterly", desc: "Comprehensive business plan development and presentation to industry experts and investment professionals.", outcome: "Evaluated by business leaders and potential investors." },
-              { icon: GraduationCap, title: "Professional Skill Development", timing: "Bi-monthly", desc: "Core business competencies: Strategic presentation skills, Business model design, MVP development, Corporate compliance, Growth marketing strategies." },
-              { icon: Network, title: "Corporate Partnership Program", timing: "Semester-wise", desc: "Strategic partnerships with established companies providing internship and career opportunities for qualified candidates.", outcome: "Direct pathway to professional opportunities." },
-              { icon: Building2, title: "Innovation Challenge Series", timing: "Monthly", desc: "Teams collaborate on solving real business challenges and developing market-ready solutions across various industries." },
-              { icon: LineChart, title: "Business Spotlight Program", timing: "", desc: "Monthly feature highlighting innovative businesses and successful case studies through professional content and industry analysis." },
-              { icon: Users, title: "Alumni Advisory Board", timing: "Bi-annual", desc: "Established AMC alumni in senior business roles provide strategic mentorship and industry guidance to current participants." },
-              { icon: DollarSign, title: "Investment Simulation Program", timing: "", desc: "Professional training in investment principles, venture capital processes, and strategic business evaluation methodologies." },
-              { icon: Briefcase, title: "Executive-in-Residence Program", timing: "", desc: "Senior business executives provide week-long intensive mentorship and strategic guidance to selected participants." },
-              { icon: Star, title: "AMC Business Showcase", timing: "Annual", desc: "Premier event showcasing top business innovations and entrepreneurial achievements to industry stakeholders and potential partners." }
+              { icon: Award, title: "Startup Speaker Series", timing: "Monthly", desc: "Invite founders, alumni entrepreneurs, or investors to share their journey, mistakes, and insights with students.", outcome: "Inspires students + builds network." },
+              { icon: Lightbulb, title: "Ideathon / Pitch & Win", timing: "Quarterly", desc: "A short 1–2 day event where students pitch early startup ideas.", outcome: "Judged by faculty, alumni, or real entrepreneurs." },
+              { icon: BookOpen, title: "E-Cell Skill Bootcamps", timing: "Every 2 months", desc: "Skill-specific workshops: Pitching & storytelling, UI/UX & Product design, MVP building, Startup law & IP, Growth marketing 101." },
+              { icon: Network, title: "Startup Internship Connect", timing: "Semester-wise", desc: "Partner with 5–10 early-stage startups and let students apply for internships directly through E-Cell.", outcome: "Bridge between student talent and startups." },
+              { icon: Rocket, title: "Build Something Hack Series", timing: "Monthly / Bi-monthly", desc: "Students team up to solve local problems or startup challenges. Helps create prototypes, apps, AI tools, and even social startups." },
+              { icon: TrendingUp, title: "Startup of the Month Feature", timing: "", desc: "Spotlight one innovative startup every month through reels, carousel posts, and posters. Builds awareness and encourages networking." },
+              { icon: Users, title: "Alumni Mentorship Circles", timing: "Bi-annual", desc: "Bring back 3–5 successful AMC alumni working in startups or product roles. Match them with groups of student founders for mentorship." },
+              { icon: Target, title: "Mini Investment Simulation Program", timing: "", desc: "Teach students how VC/investor rounds work through a mock event — some students become 'investors', others pitch." },
+              { icon: User, title: "Entrepreneur-in-Residence Program (EIR)", timing: "", desc: "Invite a local founder to 'reside' (virtually) for a week — students can ask questions, shadow their schedule, etc." },
+              { icon: Calendar, title: "AMC Startup Demo Day", timing: "End of year", desc: "Let top student teams showcase their MVPs or ideas in front of the college, mentors, and local ecosystem players." }
             ].map((program, index) => (
               <AnimatedSection key={program.title} animation="scale" delay={index * 0.05}>
-                <Card className="bg-white/90 backdrop-blur-lg shadow-xl border-0 hover-lift h-full group">
+                <Card className="bg-white/80 backdrop-blur-lg shadow-xl border-0 hover-lift card-hover h-full">
                   <CardHeader className="flex flex-row items-center gap-3 pb-3">
-                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <program.icon className="w-6 h-6 text-primary" />
-                    </div>
+                    <program.icon className="w-7 h-7 text-primary animate-float" style={{ animationDelay: `${index * 0.3}s` }} />
                     <div className="flex-1">
                       <CardTitle className="text-lg leading-tight">{program.title}</CardTitle>
                       {program.timing && (
-                        <span className="text-xs text-muted-foreground font-medium">({program.timing})</span>
+                        <span className="text-xs text-muted-foreground">({program.timing})</span>
                       )}
                     </div>
                   </CardHeader>
                   <CardContent className="text-sm text-muted-foreground pt-0">
-                    <p className="mb-3 leading-relaxed">{program.desc}</p>
+                    <p className="mb-2">{program.desc}</p>
                     {program.outcome && (
-                      <p className="text-primary font-medium flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-primary" />
+                      <p className="text-green-600 font-medium flex items-center gap-1">
+                        <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                         {program.outcome}
                       </p>
                     )}
@@ -913,22 +882,24 @@ const Index = () => {
         </div>
       </AnimatedSection>
 
-      {/* Events Section */}
-      <section className="section-padding bg-gradient-to-br from-background via-secondary/15 to-background" id="events">
+      {/* Events Section - Updated Layout */}
+      <section className="section-padding bg-gradient-to-br from-background via-secondary/20 to-background" id="events">
         <div className="container-width">
+          {/* Section Header */}
           <AnimatedSection animation="fadeUp" className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
               <Calendar className="w-4 h-4" />
-              <span>Professional Events</span>
+              <span>Upcoming Events</span>
             </div>
             <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-              Business <span className="gradient-text">Excellence</span> Events
+              Join Our <span className="gradient-text">Exciting</span> Events
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Professional development events designed to enhance business acumen through strategic learning and industry networking.
+              Participate in our carefully curated events designed to accelerate your entrepreneurial journey through learning, networking, and hands-on experience.
             </p>
           </AnimatedSection>
           
+          {/* Standard Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {eventsData.map((event, index) => (
               <AnimatedSection key={event.id} animation="scale" delay={index * 0.1}>
@@ -942,19 +913,19 @@ const Index = () => {
             ))}
           </div>
 
+          {/* Call to Action */}
           <AnimatedSection animation="scale" delay={0.4} className="flex justify-center mt-16">
             <div className="text-center space-y-4">
               <p className="text-lg text-muted-foreground">
-                Ready to advance your professional development?
+                Ready to take your entrepreneurial journey to the next level?
               </p>
               <a
                 href="https://forms.gle/ZBL1p3WJuGoqb4vC7"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button size="lg" className="btn-primary bg-primary hover:bg-primary/90 hover-lift">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  Register for Events
+                <Button size="lg" className="btn-primary bg-primary hover:bg-primary/90 hover-lift animate-pulse-glow">
+                  Register for All Events
                 </Button>
               </a>
             </div>
@@ -963,16 +934,12 @@ const Index = () => {
       </section>
 
       {/* Team Section */}
-      <AnimatedSection animation="fadeUp" className="section-padding bg-gradient-to-br from-background to-secondary/40" id="team">
+      <AnimatedSection animation="fadeUp" className="section-padding bg-gradient-to-br from-background to-secondary/60" id="team">
         <div className="container-width">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-              <Users className="w-4 h-4" />
-              <span>Leadership Team</span>
-            </div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">Professional Leadership</h2>
+            <h2 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">Our Team</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Experienced professionals and dedicated team members driving entrepreneurship excellence at AMC Engineering
+              Meet the passionate individuals and mentors guiding E-Cell AMC
             </p>
           </div>
           
@@ -980,61 +947,59 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
             {[
               { name: "Dr. Nandeeswar S B", role: "Faculty Coordinator", dept: "HOD CSE AIML", initials: "NSB" },
-              { name: "Prof. Swathi Srikanth", role: "Industry Mentor", dept: "Business Strategy Expert", initials: "SS" }
+              { name: "Prof. Swathi Srikanth", role: "Mentorship", dept: "Industry Expert", initials: "SS" }
             ].map((member, index) => (
               <AnimatedSection key={member.name} animation="scale" delay={index * 0.1}>
-                <Card className="group bg-white/80 backdrop-blur-lg shadow-2xl border-0 hover-lift overflow-hidden">
+                <Card className="group bg-white/60 backdrop-blur-lg shadow-2xl border-0 hover-lift card-hover overflow-hidden">
                   <CardContent className="flex flex-col items-center p-8 relative">
-                    <div className="mb-6 relative">
-                      <Avatar className="w-24 h-24 shadow-lg ring-4 ring-primary/20 transition-all duration-500 group-hover:w-28 group-hover:h-28">
-                        <AvatarFallback className="text-lg font-bold bg-primary/10 text-primary">{member.initials}</AvatarFallback>
+                    <div className="mb-4 relative">
+                      <Avatar className="w-24 h-24 shadow-lg ring-4 ring-primary/30 transition-all duration-500 group-hover:w-32 group-hover:h-32">
+                        <AvatarFallback className="text-lg font-bold">{member.initials}</AvatarFallback>
                       </Avatar>
-                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                        <Star className="w-4 h-4 text-white" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full flex items-end justify-center pb-2">
+                        <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                          <div className="text-sm font-semibold">{member.role}</div>
+                        </div>
                       </div>
                     </div>
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors text-center">{member.name}</h3>
-                    <p className="text-sm text-primary font-medium mb-1">{member.role}</p>
-                    <p className="text-xs text-muted-foreground text-center">{member.dept}</p>
+                    <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">{member.name}</h3>
+                    <p className="text-sm text-muted-foreground mb-1">{member.role}</p>
+                    <p className="text-xs text-accent">{member.dept}</p>
                   </CardContent>
                 </Card>
               </AnimatedSection>
             ))}
           </div>
           
-          {/* Core Team */}
+          {/* Core Team - Horizontal Scroll */}
           <div className="relative">
-            <h3 className="text-2xl font-bold text-center mb-8">Executive Team Members</h3>
+            <h3 className="text-2xl font-bold text-center mb-8">Core Team Members</h3>
             <div className="flex overflow-x-auto scrollbar-hide gap-6 pb-4">
               {[
                 { name: "Ritesh N", role: "Team Lead" },
-                { name: "Pannaga JA", role: "Operations" },
-                { name: "Shashank GS", role: "Technology" },
-                { name: "Ruthu Parinika", role: "Communications" },
-                { name: "Raghuveer", role: "Events" },
-                { name: "Poornima", role: "Marketing" },
-                { name: "Praveen V", role: "Partnerships" }
+                { name: "Pannaga JA" },
+                { name: "Shashank GS" },
+                { name: "Ruthu Parinika" },
+                { name: "Raghuveer" },
+                { name: "Poornima" },
+                { name: "Praveen V" }
               ].map((member, index) => (
                 <AnimatedSection key={member.name} animation="scale" delay={index * 0.05}>
-                  <Card className="group bg-white/80 backdrop-blur-lg shadow-xl border-0 min-w-[200px] flex-shrink-0 hover-lift overflow-hidden">
+                  <Card className="group bg-white/60 backdrop-blur-lg shadow-2xl border-0 min-w-[200px] flex-shrink-0 hover-lift overflow-hidden">
                     <CardContent className="flex flex-col items-center p-6 relative">
-                      <div className="mb-4 relative">
+                      <div className="mb-3 relative">
                         <Avatar className="w-16 h-16 shadow-md ring-2 ring-primary/20 transition-all duration-500 group-hover:w-20 group-hover:h-20">
-                          <AvatarFallback className="text-sm font-semibold bg-primary/10 text-primary">
+                          <AvatarFallback className="text-sm font-semibold">
                             {member.name.split(' ').map(n => n[0]).join('')}
                           </AvatarFallback>
                         </Avatar>
-                        {member.role === "Team Lead" && (
-                          <div className="absolute -top-1 -right-1 w-6 h-6 bg-accent rounded-full flex items-center justify-center">
-                            <Star className="w-3 h-3 text-white" />
-                          </div>
-                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full"></div>
                       </div>
                       <h4 className="text-base font-semibold group-hover:text-primary transition-colors text-center">
                         {member.name}
                       </h4>
                       {member.role && (
-                        <p className="text-xs text-primary text-center mt-1 font-medium">
+                        <p className="text-xs text-accent text-center mt-1 font-medium">
                           {member.role}
                         </p>
                       )}
@@ -1051,13 +1016,9 @@ const Index = () => {
       <AnimatedSection animation="fadeUp" className="section-padding" id="contact">
         <div className="container-width">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-              <MessageCircle className="w-4 h-4" />
-              <span>Professional Contact</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Connect With Us</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">Get In Touch</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Ready to begin your professional entrepreneurial journey? Our team is here to provide guidance and support.
+              Ready to start your entrepreneurial journey? We're here to help you every step of the way
             </p>
           </div>
           
@@ -1065,14 +1026,12 @@ const Index = () => {
             <AnimatedSection animation="fadeLeft">
               <div className="space-y-8">
                 {[
-                  { icon: MapPin, title: "Location", content: "AMC Engineering College\nBangalore, Karnataka, India", link: "https://www.google.com/maps?q=AMC+Engineering+College+Bangalore+Karnataka+India" },
+                  { icon: MapPin, title: "Address", content: "AMC Engineering College\nBangalore, Karnataka, India", link: "https://www.google.com/maps?q=AMC+Engineering+College+Bangalore+Karnataka+India" },
                   { icon: Mail, title: "Email", content: "amcentrepreneurshipcell@gmail.com", link: "mailto:amcentrepreneurshipcell@gmail.com" },
-                  { icon: Phone, title: "Phone", content: "+91 8660144040", link: "tel:8660144040" }
+                  { icon: Phone, title: "Phone", content: "8660144040", link: "tel:8660144040" }
                 ].map((contact, index) => (
-                  <div key={contact.title} className="flex items-start space-x-4 hover-lift p-4 rounded-lg transition-all duration-300 border border-border/50 bg-white/50">
-                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <contact.icon className="w-6 h-6 text-primary" />
-                    </div>
+                  <div key={contact.title} className={`flex items-start space-x-4 hover-lift p-4 rounded-lg transition-all duration-300 delay-${index * 100}`}>
+                    <contact.icon className="w-6 h-6 text-primary mt-1 animate-float" style={{ animationDelay: `${index * 0.5}s` }} />
                     <div>
                       <h4 className="font-semibold mb-2">{contact.title}</h4>
                       <a
@@ -1090,8 +1049,8 @@ const Index = () => {
             </AnimatedSection>
             
             <AnimatedSection animation="fadeRight" delay={0.2}>
-              <div className="rounded-2xl overflow-hidden shadow-2xl border border-border/20">
-                <div className="aspect-video">
+              <div className="card-hover">
+                <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl border border-border">
                   <iframe
                     src="https://www.google.com/maps?q=AMC+Engineering+College+Bangalore+Karnataka+India&output=embed"
                     title="AMC Engineering College Location"
@@ -1108,36 +1067,33 @@ const Index = () => {
         </div>
       </AnimatedSection>
 
-      {/* Professional CTA */}
+      {/* Social CTA */}
       <AnimatedSection animation="scale" className="py-16 bg-background">
         <div className="container-width">
-          <div className="flex flex-col items-center justify-center gap-6">
-            <div className="text-center space-y-4 max-w-2xl">
-              <h3 className="text-2xl font-bold">Stay Connected for Professional Updates</h3>
-              <p className="text-lg text-muted-foreground">
-                Join our professional network for industry insights, program updates, and business opportunities.
-              </p>
-            </div>
+          <div className="flex flex-col items-center justify-center gap-4">
+            <p className="text-lg text-muted-foreground text-center font-medium mb-2">
+              "Stay connected with us for inspiration, updates, and opportunities!"
+            </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
                 href="https://www.instagram.com/amc.ecell?igsh=MXZsMGVwODFpZWp1aA=="
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold shadow hover:bg-primary/90 hover-lift btn-primary"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-semibold shadow hover:bg-primary/90 hover-lift btn-primary"
                 aria-label="Follow us on Instagram"
               >
                 <Instagram className="w-5 h-5" />
-                Follow Our Updates
+                Follow us on Instagram
               </a>
               <a
                 href="https://whatsapp.com/channel/0029VbBWPAL2UPBNBnF63e2m"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-xl font-semibold shadow hover:bg-green-700 hover-lift"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-full font-semibold shadow hover:bg-green-700 hover-lift"
                 aria-label="Join our WhatsApp Channel"
               >
                 <MessageCircle className="w-5 h-5" />
-                Join Professional Network
+                Join our WhatsApp Channel
               </a>
             </div>
           </div>
@@ -1149,25 +1105,25 @@ const Index = () => {
         <div className="container-width">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center overflow-hidden hover-scale">
-                  <img src="/logo.png" alt="E-Cell AMC Logo" className="w-8 h-8 object-contain" draggable="false" />
+              <div className="flex items-center space-x-2">
+                <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center overflow-hidden hover-scale">
+                  <img src="/logo.png" alt="E-Cell AMC Logo" className="w-8 h-8 object-contain rounded-full" draggable="false" />
                 </div>
                 <span className="text-lg font-bold text-primary">E-Cell AMC</span>
               </div>
               <p className="text-sm text-muted-foreground">
-                Professional entrepreneurship development at AMC Engineering College
+                Fostering innovation and entrepreneurship at AMC Engineering College
               </p>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Navigation</h4>
+              <h4 className="font-semibold mb-4">Quick Links</h4>
               <div className="space-y-2">
                 {['home','about','programs','events'].map((id) => (
                   <button
                     key={id}
                     onClick={() => scrollToSection(id)}
-                    className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+                    className="block text-sm text-muted-foreground hover:text-primary transition-colors nav-link"
                   >
                     {id.charAt(0).toUpperCase() + id.slice(1)}
                   </button>
@@ -1178,7 +1134,7 @@ const Index = () => {
             <div>
               <h4 className="font-semibold mb-4">Programs</h4>
               <div className="space-y-2">
-                {["Business Incubation", "Growth Acceleration", "Professional Development", "Industry Partnerships"].map((program) => (
+                {["Incubation", "Acceleration", "Mentorship", "Workshops"].map((program) => (
                   <p key={program} className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                     {program}
                   </p>
