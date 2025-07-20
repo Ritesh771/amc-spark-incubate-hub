@@ -13,7 +13,7 @@ import {
   Calendar, 
   Award, 
   Building2, 
-  Briefcase, 
+  Lightbulb, 
   TrendingUp, 
   Network,
   BookOpen,
@@ -30,17 +30,13 @@ import {
   MessageCircle,
   Code,
   DollarSign,
-  Zap,
-  Brain,
-  Shield,
-  Settings,
+  Globe,
+  Briefcase,
   BarChart3,
-  PieChart,
+  Brain,
+  Settings,
   LineChart,
-  Database,
-  Server,
-  Monitor,
-  Globe
+  PieChart
 } from "lucide-react";
 
 import heroImage from "@/assets/hero-business.jpg";
