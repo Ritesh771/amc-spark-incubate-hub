@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -33,7 +34,15 @@ import {
   Code,
   DollarSign,
   Zap,
-  Brain
+  Brain,
+  Shield,
+  Settings,
+  BarChart3,
+  PieChart,
+  LineChart,
+  Database,
+  Server,
+  Monitor
 } from "lucide-react";
 
 import heroImage from "@/assets/hero-business.jpg";
@@ -514,13 +523,13 @@ const Index = () => {
         </div>
       </section>
 
-      {/* What is Entrepreneurship Section - Enhanced */}
+      {/* What is Entrepreneurship Section */}
       <section className="section-padding bg-gradient-to-br from-background via-primary/5 to-secondary/20 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-10 left-10 w-20 h-20 bg-primary/20 rounded-full blur-xl animate-float"></div>
-          <div className="absolute bottom-20 right-20 w-32 h-32 bg-accent/20 rounded-full blur-xl animate-float delay-700"></div>
-          <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-secondary/30 rounded-full blur-lg animate-float delay-500"></div>
+          <div className="absolute top-10 left-10 w-20 h-20 bg-primary/20 rounded-full blur-xl"></div>
+          <div className="absolute bottom-20 right-20 w-32 h-32 bg-accent/20 rounded-full blur-xl"></div>
+          <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-secondary/30 rounded-full blur-lg"></div>
         </div>
 
         <div className="container-width relative z-10">
@@ -543,7 +552,7 @@ const Index = () => {
               <CardContent className="p-8 md:p-12">
                 <div className="text-center mb-8">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Rocket className="w-8 h-8 text-white animate-float" />
+                    <Briefcase className="w-8 h-8 text-white" />
                   </div>
                   <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                     Entrepreneurship is the process of <span className="text-primary font-semibold">creating, launching, and managing</span> a new venture to solve problems and create value for society.
@@ -560,7 +569,7 @@ const Index = () => {
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4 mb-6">
                     <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <User className="w-6 h-6 text-primary animate-float" />
+                      <User className="w-6 h-6 text-primary" />
                     </div>
                     <div>
                       <h3 className="text-2xl font-bold mb-3">Who is an Entrepreneur?</h3>
@@ -593,7 +602,7 @@ const Index = () => {
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4 mb-6">
                     <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Building2 className="w-6 h-6 text-accent animate-float delay-200" />
+                      <Building2 className="w-6 h-6 text-accent" />
                     </div>
                     <div>
                       <h3 className="text-2xl font-bold mb-3">Business Owner vs Entrepreneur</h3>
@@ -632,21 +641,21 @@ const Index = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
                   <div className="text-center">
                     <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <TrendingUp className="w-8 h-8 text-primary animate-float" />
+                      <BarChart3 className="w-8 h-8 text-primary" />
                     </div>
                     <h4 className="font-semibold mb-2">Economic Growth</h4>
                     <p className="text-sm text-muted-foreground">Drive innovation and create employment opportunities</p>
                   </div>
                   <div className="text-center">
                     <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Brain className="w-8 h-8 text-accent animate-float delay-300" />
+                      <Brain className="w-8 h-8 text-accent" />
                     </div>
                     <h4 className="font-semibold mb-2">Problem Solving</h4>
                     <p className="text-sm text-muted-foreground">Address real-world challenges with creative solutions</p>
                   </div>
                   <div className="text-center">
                     <div className="w-16 h-16 bg-secondary/40 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Network className="w-8 h-8 text-primary animate-float delay-500" />
+                      <Network className="w-8 h-8 text-primary" />
                     </div>
                     <h4 className="font-semibold mb-2">Social Impact</h4>
                     <p className="text-sm text-muted-foreground">Create positive change in communities and society</p>
@@ -744,7 +753,7 @@ const Index = () => {
                 ].map((item, index) => (
                   <AnimatedSection key={item.title} animation="scale" delay={index * 0.1}>
                     <div className="flex items-start space-x-3 hover-lift p-3 rounded-lg transition-all duration-300">
-                      <item.icon className="w-6 h-6 text-primary mt-1 animate-float" style={{ animationDelay: `${index * 0.5}s` }} />
+                      <item.icon className="w-6 h-6 text-primary mt-1" />
                       <div>
                         <h4 className="font-semibold mb-2">{item.title}</h4>
                         <p className="text-sm text-muted-foreground">{item.desc}</p>
@@ -786,7 +795,7 @@ const Index = () => {
                   onClick={() => handleProgramClick(program)}
                 >
                   <CardHeader className="text-center">
-                    <program.icon className="w-12 h-12 text-primary mx-auto mb-4 animate-float" style={{ animationDelay: `${index * 0.7}s` }} />
+                    <program.icon className="w-12 h-12 text-primary mx-auto mb-4" />
                     <CardTitle className="hover:text-primary transition-colors">{program.title}</CardTitle>
                     <CardDescription>{program.desc}</CardDescription>
                   </CardHeader>
@@ -845,20 +854,20 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { icon: Award, title: "Startup Speaker Series", timing: "Monthly", desc: "Invite founders, alumni entrepreneurs, or investors to share their journey, mistakes, and insights with students.", outcome: "Inspires students + builds network." },
-              { icon: Lightbulb, title: "Ideathon / Pitch & Win", timing: "Quarterly", desc: "A short 1–2 day event where students pitch early startup ideas.", outcome: "Judged by faculty, alumni, or real entrepreneurs." },
+              { icon: Target, title: "Ideathon / Pitch & Win", timing: "Quarterly", desc: "A short 1–2 day event where students pitch early startup ideas.", outcome: "Judged by faculty, alumni, or real entrepreneurs." },
               { icon: BookOpen, title: "E-Cell Skill Bootcamps", timing: "Every 2 months", desc: "Skill-specific workshops: Pitching & storytelling, UI/UX & Product design, MVP building, Startup law & IP, Growth marketing 101." },
               { icon: Network, title: "Startup Internship Connect", timing: "Semester-wise", desc: "Partner with 5–10 early-stage startups and let students apply for internships directly through E-Cell.", outcome: "Bridge between student talent and startups." },
-              { icon: Rocket, title: "Build Something Hack Series", timing: "Monthly / Bi-monthly", desc: "Students team up to solve local problems or startup challenges. Helps create prototypes, apps, AI tools, and even social startups." },
-              { icon: TrendingUp, title: "Startup of the Month Feature", timing: "", desc: "Spotlight one innovative startup every month through reels, carousel posts, and posters. Builds awareness and encourages networking." },
+              { icon: Settings, title: "Build Something Hack Series", timing: "Monthly / Bi-monthly", desc: "Students team up to solve local problems or startup challenges. Helps create prototypes, apps, AI tools, and even social startups." },
+              { icon: LineChart, title: "Startup of the Month Feature", timing: "", desc: "Spotlight one innovative startup every month through reels, carousel posts, and posters. Builds awareness and encourages networking." },
               { icon: Users, title: "Alumni Mentorship Circles", timing: "Bi-annual", desc: "Bring back 3–5 successful AMC alumni working in startups or product roles. Match them with groups of student founders for mentorship." },
-              { icon: Target, title: "Mini Investment Simulation Program", timing: "", desc: "Teach students how VC/investor rounds work through a mock event — some students become 'investors', others pitch." },
+              { icon: PieChart, title: "Mini Investment Simulation Program", timing: "", desc: "Teach students how VC/investor rounds work through a mock event — some students become 'investors', others pitch." },
               { icon: User, title: "Entrepreneur-in-Residence Program (EIR)", timing: "", desc: "Invite a local founder to 'reside' (virtually) for a week — students can ask questions, shadow their schedule, etc." },
               { icon: Calendar, title: "AMC Startup Demo Day", timing: "End of year", desc: "Let top student teams showcase their MVPs or ideas in front of the college, mentors, and local ecosystem players." }
             ].map((program, index) => (
               <AnimatedSection key={program.title} animation="scale" delay={index * 0.05}>
                 <Card className="bg-white/80 backdrop-blur-lg shadow-xl border-0 hover-lift card-hover h-full">
                   <CardHeader className="flex flex-row items-center gap-3 pb-3">
-                    <program.icon className="w-7 h-7 text-primary animate-float" style={{ animationDelay: `${index * 0.3}s` }} />
+                    <program.icon className="w-7 h-7 text-primary" />
                     <div className="flex-1">
                       <CardTitle className="text-lg leading-tight">{program.title}</CardTitle>
                       {program.timing && (
@@ -882,7 +891,7 @@ const Index = () => {
         </div>
       </AnimatedSection>
 
-      {/* Events Section - Updated Layout */}
+      {/* Events Section */}
       <section className="section-padding bg-gradient-to-br from-background via-secondary/20 to-background" id="events">
         <div className="container-width">
           {/* Section Header */}
@@ -1031,7 +1040,7 @@ const Index = () => {
                   { icon: Phone, title: "Phone", content: "8660144040", link: "tel:8660144040" }
                 ].map((contact, index) => (
                   <div key={contact.title} className={`flex items-start space-x-4 hover-lift p-4 rounded-lg transition-all duration-300 delay-${index * 100}`}>
-                    <contact.icon className="w-6 h-6 text-primary mt-1 animate-float" style={{ animationDelay: `${index * 0.5}s` }} />
+                    <contact.icon className="w-6 h-6 text-primary mt-1" />
                     <div>
                       <h4 className="font-semibold mb-2">{contact.title}</h4>
                       <a
