@@ -944,11 +944,10 @@ const Index = () => {
           </div>
           
           {/* Faculty & Mentors */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
             {[
               { name: "Dr. Nandeeswar S B", role: "Faculty Coordinator", dept: "HOD CSE AIML", initials: "NSB" },
-              { name: "Prof. Swathi Srikanth", role: "Mentorship", dept: "Industry Expert", initials: "SS" },
-              { name: "Ritesh N", role: "Team Lead", dept: "4th Year CSE AIML", initials: "RN" }
+              { name: "Prof. Swathi Srikanth", role: "Mentorship", dept: "Industry Expert", initials: "SS" }
             ].map((member, index) => (
               <AnimatedSection key={member.name} animation="scale" delay={index * 0.1}>
                 <Card className="group bg-white/60 backdrop-blur-lg shadow-2xl border-0 hover-lift card-hover overflow-hidden">
@@ -977,6 +976,7 @@ const Index = () => {
             <h3 className="text-2xl font-bold text-center mb-8">Core Team Members</h3>
             <div className="flex overflow-x-auto scrollbar-hide gap-6 pb-4">
               {[
+                { name: "Ritesh N", role: "Team Lead" },
                 { name: "Pannaga JA" },
                 { name: "Shashank GS" },
                 { name: "Ruthu Parinika" },
@@ -998,6 +998,11 @@ const Index = () => {
                       <h4 className="text-base font-semibold group-hover:text-primary transition-colors text-center">
                         {member.name}
                       </h4>
+                      {member.role && (
+                        <p className="text-xs text-accent text-center mt-1 font-medium">
+                          {member.role}
+                        </p>
+                      )}
                     </CardContent>
                   </Card>
                 </AnimatedSection>
