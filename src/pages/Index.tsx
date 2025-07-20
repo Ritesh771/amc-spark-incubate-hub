@@ -434,21 +434,21 @@ const Index = () => {
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-14 sm:h-16">
             <div className="flex items-center space-x-2">
-              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center overflow-hidden hover-scale">
-                <img src="/logo.png" alt="E-Cell AMC Logo" className="w-10 h-10 object-contain rounded-full" draggable="false" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-primary rounded-full flex items-center justify-center overflow-hidden hover-scale">
+                <img src="/logo.png" alt="E-Cell AMC Logo" className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 object-contain rounded-full" draggable="false" />
               </div>
-              <span className="text-xl font-bold text-primary">E-Cell AMC</span>
+              <span className="text-lg sm:text-xl font-bold text-primary">E-Cell AMC</span>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden lg:flex space-x-6 xl:space-x-8">
               {['home','about','programs','events','team','contact'].map((id, index) => (
                 <button
                   key={id}
                   onClick={() => scrollToSection(id)}
-                  className={`nav-link text-foreground hover:text-primary transition-colors delay-${index * 100}`}
+                  className={`nav-link text-foreground hover:text-primary transition-colors text-sm xl:text-base delay-${index * 100}`}
                 >
                   {id.charAt(0).toUpperCase() + id.slice(1)}
                 </button>
@@ -457,22 +457,22 @@ const Index = () => {
 
             {/* Mobile menu button */}
             <button 
-              className="md:hidden p-2 transition-transform duration-300 hover:scale-110 focus:outline-none"
+              className="lg:hidden p-2 transition-transform duration-300 hover:scale-110 focus:outline-none"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           </div>
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden py-4 border-t border-border animate-slide-down">
-              <div className="flex flex-col space-y-2">
+            <div className="lg:hidden py-4 border-t border-border animate-slide-down bg-background/95 backdrop-blur-sm">
+              <div className="flex flex-col space-y-3">
                 {['home','about','programs','events','team','contact'].map((id) => (
                   <button
                     key={id}
                     onClick={() => scrollToSection(id)}
-                    className="text-left py-2 text-foreground hover:text-primary transition-colors"
+                    className="text-left py-2 px-2 text-foreground hover:text-primary transition-colors text-base font-medium"
                   >
                     {id.charAt(0).toUpperCase() + id.slice(1)}
                   </button>
@@ -484,47 +484,47 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-16 min-h-screen flex items-center bg-gradient-to-br from-background to-secondary">
-        <div className="container-width grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <AnimatedSection animation="fadeLeft" className="space-y-6">
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+      <section id="home" className="pt-14 sm:pt-16 min-h-screen flex items-center bg-gradient-to-br from-background to-secondary px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+          <AnimatedSection animation="fadeLeft" className="space-y-4 sm:space-y-6 text-center lg:text-left">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               Fostering <span className="gradient-text">Innovation</span> & <span className="text-accent">Entrepreneurship</span>
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0">
               The Entrepreneurship Cell of AMC Engineering College - Building tomorrow's entrepreneurs today through mentorship, innovation, and real-world business experience.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
                 href="https://www.instagram.com/amc.ecell?igsh=MXZsMGVwODFpZWp1aA=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block"
               >
-                <Button size="lg" className="btn-primary bg-primary hover:bg-primary/90 hover-lift">
+                <Button size="lg" className="btn-primary bg-primary hover:bg-primary/90 hover-lift w-full sm:w-auto">
                   Join Our Community
                 </Button>
               </a>
-              <Button size="lg" variant="outline" className="hover-scale" onClick={() => scrollToSection('programs')}>
+              <Button size="lg" variant="outline" className="hover-scale w-full sm:w-auto" onClick={() => scrollToSection('programs')}>
                 Explore Programs
               </Button>
             </div>
           </AnimatedSection>
           
-          <AnimatedSection animation="fadeRight" delay={0.2}>
+          <AnimatedSection animation="fadeRight" delay={0.2} className="px-4 lg:px-0">
             <div className="relative hover-lift">
               <img 
                 src={heroImage} 
                 alt="Professional business environment" 
-                className="w-full h-auto rounded-2xl shadow-2xl"
+                className="w-full h-auto rounded-xl lg:rounded-2xl shadow-2xl"
               />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-primary/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 rounded-xl lg:rounded-2xl bg-gradient-to-t from-primary/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
       {/* What is Entrepreneurship Section */}
-      <section className="section-padding bg-gradient-to-br from-background via-primary/5 to-secondary/20 relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-background via-primary/5 to-secondary/20 relative overflow-hidden px-4 sm:px-6 lg:px-8">
         {/* Background Elements */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-10 left-10 w-20 h-20 bg-primary/20 rounded-full blur-xl"></div>
@@ -532,29 +532,29 @@ const Index = () => {
           <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-secondary/30 rounded-full blur-lg"></div>
         </div>
 
-        <div className="container-width relative z-10">
-          <AnimatedSection animation="fadeUp" className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <AnimatedSection animation="fadeUp" className="text-center mb-12 lg:mb-16">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4 sm:mb-6">
               <Lightbulb className="w-4 h-4" />
               <span>Foundation Knowledge</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 tracking-tight">
               What is <span className="gradient-text">Entrepreneurship</span>?
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
               Understanding the core principles that drive innovation and business creation
             </p>
           </AnimatedSection>
 
           {/* Main Definition Card */}
-          <AnimatedSection animation="scale" delay={0.1} className="mb-16">
+          <AnimatedSection animation="scale" delay={0.1} className="mb-12 lg:mb-16">
             <Card className="card-hover bg-white/80 backdrop-blur-lg border-0 shadow-2xl max-w-4xl mx-auto">
-              <CardContent className="p-8 md:p-12">
-                <div className="text-center mb-8">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Briefcase className="w-8 h-8 text-white" />
+              <CardContent className="p-6 sm:p-8 md:p-12">
+                <div className="text-center mb-6 sm:mb-8">
+                  <div className="w-12 sm:w-16 h-12 sm:h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Briefcase className="w-6 sm:w-8 h-6 sm:h-8 text-white" />
                   </div>
-                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                  <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
                     Entrepreneurship is the process of <span className="text-primary font-semibold">creating, launching, and managing</span> a new venture to solve problems and create value for society.
                   </p>
                 </div>
@@ -563,17 +563,17 @@ const Index = () => {
           </AnimatedSection>
 
           {/* Key Concepts Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-12 lg:mb-16">
             <AnimatedSection animation="fadeLeft" delay={0.2}>
               <Card className="card-hover bg-white/70 backdrop-blur-lg border-0 shadow-xl h-full">
-                <CardContent className="p-8">
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <User className="w-6 h-6 text-primary" />
+                <CardContent className="p-6 sm:p-8">
+                  <div className="flex flex-col sm:flex-row items-start gap-4 mb-6">
+                    <div className="w-10 sm:w-12 h-10 sm:h-12 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <User className="w-5 sm:w-6 h-5 sm:h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold mb-3">Who is an Entrepreneur?</h3>
-                      <p className="text-muted-foreground leading-relaxed">
+                      <h3 className="text-xl sm:text-2xl font-bold mb-3">Who is an Entrepreneur?</h3>
+                      <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
                         An entrepreneur is someone who <span className="text-primary font-medium">identifies opportunities</span>, takes calculated risks, and builds innovative solutions to fulfill market needs.
                       </p>
                     </div>
@@ -582,15 +582,15 @@ const Index = () => {
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span className="text-sm text-muted-foreground">Problem solver and innovator</span>
+                      <span className="text-xs sm:text-sm text-muted-foreground">Problem solver and innovator</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-accent rounded-full"></div>
-                      <span className="text-sm text-muted-foreground">Risk-taker with vision</span>
+                      <span className="text-xs sm:text-sm text-muted-foreground">Risk-taker with vision</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-secondary rounded-full"></div>
-                      <span className="text-sm text-muted-foreground">Value creator for society</span>
+                      <span className="text-xs sm:text-sm text-muted-foreground">Value creator for society</span>
                     </div>
                   </div>
                 </CardContent>
@@ -599,24 +599,24 @@ const Index = () => {
 
             <AnimatedSection animation="fadeRight" delay={0.3}>
               <Card className="card-hover bg-white/70 backdrop-blur-lg border-0 shadow-xl h-full">
-                <CardContent className="p-8">
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Building2 className="w-6 h-6 text-accent" />
+                <CardContent className="p-6 sm:p-8">
+                  <div className="flex flex-col sm:flex-row items-start gap-4 mb-6">
+                    <div className="w-10 sm:w-12 h-10 sm:h-12 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Building2 className="w-5 sm:w-6 h-5 sm:h-6 text-accent" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold mb-3">Business Owner vs Entrepreneur</h3>
+                      <h3 className="text-xl sm:text-2xl font-bold mb-3">Business Owner vs Entrepreneur</h3>
                     </div>
                   </div>
                   
-                  <div className="space-y-6">
-                    <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-primary">
-                      <div className="font-semibold text-primary mb-1">Business Owner</div>
-                      <div className="text-sm text-muted-foreground">Manages existing business models for consistent profit and stability</div>
+                  <div className="space-y-4 sm:space-y-6">
+                    <div className="p-3 sm:p-4 bg-blue-50 rounded-lg border-l-4 border-primary">
+                      <div className="font-semibold text-primary mb-1 text-sm sm:text-base">Business Owner</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">Manages existing business models for consistent profit and stability</div>
                     </div>
-                    <div className="p-4 bg-purple-50 rounded-lg border-l-4 border-accent">
-                      <div className="font-semibold text-accent mb-1">Entrepreneur</div>
-                      <div className="text-sm text-muted-foreground">Creates innovative solutions and disrupts markets to generate new value</div>
+                    <div className="p-3 sm:p-4 bg-purple-50 rounded-lg border-l-4 border-accent">
+                      <div className="font-semibold text-accent mb-1 text-sm sm:text-base">Entrepreneur</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">Creates innovative solutions and disrupts markets to generate new value</div>
                     </div>
                   </div>
                 </CardContent>
@@ -627,38 +627,38 @@ const Index = () => {
           {/* Impact & Importance */}
           <AnimatedSection animation="fadeUp" delay={0.4}>
             <Card className="card-hover bg-gradient-to-br from-primary/10 to-accent/10 backdrop-blur-lg border-0 shadow-xl">
-              <CardContent className="p-8 md:p-12">
-                <div className="text-center mb-8">
+              <CardContent className="p-6 sm:p-8 md:p-12">
+                <div className="text-center mb-6 sm:mb-8">
                   <div className="flex items-center justify-center gap-2 mb-4">
-                    <Award className="w-8 h-8 text-primary" />
-                    <span className="text-2xl font-bold">Why This Matters</span>
+                    <Award className="w-6 sm:w-8 h-6 sm:h-8 text-primary" />
+                    <span className="text-xl sm:text-2xl font-bold">Why This Matters</span>
                   </div>
-                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                     Understanding entrepreneurship helps you think beyond traditional employment—to become a <span className="text-primary font-semibold">job creator</span>, <span className="text-accent font-semibold">problem solver</span>, and <span className="text-primary font-semibold">innovator</span> who shapes the future.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <BarChart3 className="w-8 h-8 text-primary" />
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+                  <div className="text-center p-4">
+                    <div className="w-12 sm:w-16 h-12 sm:h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <BarChart3 className="w-6 sm:w-8 h-6 sm:h-8 text-primary" />
                     </div>
-                    <h4 className="font-semibold mb-2">Economic Growth</h4>
-                    <p className="text-sm text-muted-foreground">Drive innovation and create employment opportunities</p>
+                    <h4 className="font-semibold mb-2 text-sm sm:text-base">Economic Growth</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Drive innovation and create employment opportunities</p>
                   </div>
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Brain className="w-8 h-8 text-accent" />
+                  <div className="text-center p-4">
+                    <div className="w-12 sm:w-16 h-12 sm:h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Brain className="w-6 sm:w-8 h-6 sm:h-8 text-accent" />
                     </div>
-                    <h4 className="font-semibold mb-2">Problem Solving</h4>
-                    <p className="text-sm text-muted-foreground">Address real-world challenges with creative solutions</p>
+                    <h4 className="font-semibold mb-2 text-sm sm:text-base">Problem Solving</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Address real-world challenges with creative solutions</p>
                   </div>
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-secondary/40 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Network className="w-8 h-8 text-primary" />
+                  <div className="text-center p-4">
+                    <div className="w-12 sm:w-16 h-12 sm:h-16 bg-secondary/40 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Network className="w-6 sm:w-8 h-6 sm:h-8 text-primary" />
                     </div>
-                    <h4 className="font-semibold mb-2">Social Impact</h4>
-                    <p className="text-sm text-muted-foreground">Create positive change in communities and society</p>
+                    <h4 className="font-semibold mb-2 text-sm sm:text-base">Social Impact</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Create positive change in communities and society</p>
                   </div>
                 </div>
 
@@ -667,9 +667,9 @@ const Index = () => {
                     href="https://www.instagram.com/amc.ecell?igsh=MXZsMGVwODFpZWp1aA=="
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-accent text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 btn-primary"
+                    className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary to-accent text-white rounded-full font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 btn-primary"
                   >
-                    <MessageCircle className="w-5 h-5" />
+                    <MessageCircle className="w-4 sm:w-5 h-4 sm:h-5" />
                     Ready to become one? Join our journey!
                   </a>
                 </div>
@@ -680,9 +680,9 @@ const Index = () => {
       </section>
 
       {/* Highlighted Event Video */}
-      <AnimatedSection animation="scale" className="section-padding bg-background">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="card-hover rounded-2xl shadow-2xl overflow-hidden aspect-video border border-border mb-6">
+      <AnimatedSection animation="scale" className="py-12 sm:py-16 lg:py-24 bg-background px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="card-hover rounded-xl lg:rounded-2xl shadow-2xl overflow-hidden aspect-video border border-border mb-4 sm:mb-6">
             <iframe
               src="https://www.youtube.com/embed/HI7t9mb71yg?autoplay=1&mute=1&rel=0&showinfo=0&modestbranding=1&controls=1"
               title="E-Cell AMC Event Video"
@@ -693,8 +693,8 @@ const Index = () => {
             ></iframe>
           </div>
           <AnimatedSection animation="fadeUp" delay={0.2}>
-            <h3 className="text-2xl font-bold text-center mb-2">E-Cell AMC: Startup Speaker Series Highlight</h3>
-            <p className="text-center text-muted-foreground max-w-2xl mx-auto">
+            <h3 className="text-xl sm:text-2xl font-bold text-center mb-2">E-Cell AMC: Startup Speaker Series Highlight</h3>
+            <p className="text-center text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base px-4">
               Catch the energy and inspiration from our latest event! Watch the journey, insights, and excitement from our Startup Speaker Series.
             </p>
           </AnimatedSection>
@@ -702,9 +702,9 @@ const Index = () => {
       </AnimatedSection>
 
       {/* Stats Section */}
-      <AnimatedSection animation="fadeUp" className="section-padding bg-secondary/50">
-        <div className="container-width">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <AnimatedSection animation="fadeUp" className="py-12 sm:py-16 lg:py-24 bg-secondary/50 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {[
               { end: 5, label: "Startups Supported", suffix: "+" },
               { end: 10, label: "Events Conducted", suffix: "+" },
@@ -713,13 +713,13 @@ const Index = () => {
             ].map((stat, index) => (
               <AnimatedSection key={stat.label} animation="scale" delay={index * 0.1}>
                 <Card className="text-center border-0 shadow-lg hover-lift bg-white/80 backdrop-blur-sm">
-                  <CardContent className="p-6">
+                  <CardContent className="p-4 sm:p-6">
                     <CountUpNumber 
                       end={stat.end} 
                       suffix={stat.suffix}
-                      className="text-4xl font-bold text-primary mb-2 block"
+                      className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-2 block"
                     />
-                    <div className="text-muted-foreground">{stat.label}</div>
+                    <div className="text-muted-foreground text-xs sm:text-sm lg:text-base">{stat.label}</div>
                   </CardContent>
                 </Card>
               </AnimatedSection>
@@ -729,22 +729,22 @@ const Index = () => {
       </AnimatedSection>
 
       {/* About Section */}
-      <AnimatedSection animation="fadeUp" className="section-padding" id="about">
-        <div className="container-width">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">About E-Cell AMC</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+      <AnimatedSection animation="fadeUp" className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8" id="about">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 lg:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">About E-Cell AMC</h2>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               We are the premier entrepreneurship hub at AMC Engineering College, dedicated to nurturing innovative minds and transforming ideas into successful ventures.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12 lg:mb-16">
             <AnimatedSection animation="fadeLeft">
-              <h3 className="text-2xl font-bold mb-6">Our Mission</h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Our Mission</h3>
+              <p className="text-muted-foreground mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
                 To create a vibrant ecosystem that empowers students to think entrepreneurially, develop innovative solutions, and build sustainable businesses that make a positive impact on society.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {[
                   { icon: Lightbulb, title: "Innovation", desc: "Fostering creative thinking and breakthrough solutions" },
                   { icon: Network, title: "Networking", desc: "Building connections with industry leaders" },
@@ -753,10 +753,10 @@ const Index = () => {
                 ].map((item, index) => (
                   <AnimatedSection key={item.title} animation="scale" delay={index * 0.1}>
                     <div className="flex items-start space-x-3 hover-lift p-3 rounded-lg transition-all duration-300">
-                      <item.icon className="w-6 h-6 text-primary mt-1" />
+                      <item.icon className="w-5 sm:w-6 h-5 sm:h-6 text-primary mt-1 flex-shrink-0" />
                       <div>
-                        <h4 className="font-semibold mb-2">{item.title}</h4>
-                        <p className="text-sm text-muted-foreground">{item.desc}</p>
+                        <h4 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">{item.title}</h4>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{item.desc}</p>
                       </div>
                     </div>
                   </AnimatedSection>
@@ -769,7 +769,7 @@ const Index = () => {
                 <img 
                   src={innovationImage} 
                   alt="Innovation lab" 
-                  className="w-full h-auto rounded-2xl shadow-lg"
+                  className="w-full h-auto rounded-xl lg:rounded-2xl shadow-lg"
                 />
               </div>
             </AnimatedSection>
@@ -778,29 +778,29 @@ const Index = () => {
       </AnimatedSection>
 
       {/* Programs Section */}
-      <AnimatedSection animation="fadeUp" className="section-padding bg-secondary/30" id="programs">
-        <div className="container-width">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Our Programs</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+      <AnimatedSection animation="fadeUp" className="py-12 sm:py-16 lg:py-24 bg-secondary/30 px-4 sm:px-6 lg:px-8" id="programs">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 lg:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Our Programs</h2>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               Comprehensive programs designed to transform students into successful entrepreneurs
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
             {programs.map((program, index) => (
               <AnimatedSection key={program.title} animation="scale" delay={index * 0.1}>
                 <Card 
                   className="border-0 shadow-lg hover-lift card-hover bg-white/80 backdrop-blur-sm h-full cursor-pointer transition-all duration-300 hover:shadow-2xl"
                   onClick={() => handleProgramClick(program)}
                 >
-                  <CardHeader className="text-center">
-                    <program.icon className="w-12 h-12 text-primary mx-auto mb-4" />
-                    <CardTitle className="hover:text-primary transition-colors">{program.title}</CardTitle>
-                    <CardDescription>{program.desc}</CardDescription>
+                  <CardHeader className="text-center p-4 sm:p-6">
+                    <program.icon className="w-10 sm:w-12 h-10 sm:h-12 text-primary mx-auto mb-3 sm:mb-4" />
+                    <CardTitle className="hover:text-primary transition-colors text-base sm:text-lg">{program.title}</CardTitle>
+                    <CardDescription className="text-xs sm:text-sm">{program.desc}</CardDescription>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="flex flex-wrap gap-2 mb-4">
+                  <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0">
+                    <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
                       <Badge variant="secondary" className="text-xs">
                         {program.duration}
                       </Badge>
@@ -808,15 +808,15 @@ const Index = () => {
                         {program.level}
                       </Badge>
                     </div>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
+                    <ul className="space-y-2 text-xs sm:text-sm text-muted-foreground">
                       {program.features.slice(0, 3).map((feature, idx) => (
-                        <li key={idx} className="flex items-center">
-                          <span className="w-2 h-2 bg-primary rounded-full mr-2 opacity-70"></span>
-                          {feature}
+                        <li key={idx} className="flex items-start">
+                          <span className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 opacity-70 flex-shrink-0"></span>
+                          <span>{feature}</span>
                         </li>
                       ))}
                       {program.features.length > 3 && (
-                        <li className="text-primary font-medium text-center pt-2">
+                        <li className="text-primary font-medium text-center pt-2 text-xs sm:text-sm">
                           Click to see more details...
                         </li>
                       )}
@@ -827,7 +827,7 @@ const Index = () => {
             ))}
           </div>
           
-          <AnimatedSection animation="scale" delay={0.3} className="flex justify-center mt-12">
+          <AnimatedSection animation="scale" delay={0.3} className="flex justify-center mt-8 sm:mt-12">
             <a
               href="https://forms.gle/ZBL1p3WJuGoqb4vC7"
               target="_blank"
@@ -842,16 +842,16 @@ const Index = () => {
       </AnimatedSection>
 
       {/* Signature Programs */}
-      <AnimatedSection animation="fadeUp" className="section-padding bg-gradient-to-br from-background to-secondary/40">
-        <div className="container-width">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Signature E-Cell Programs & Initiatives</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+      <AnimatedSection animation="fadeUp" className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-background to-secondary/40 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Signature E-Cell Programs & Initiatives</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               E-Cell AMC offers a diverse set of hands-on programs and events designed to inspire, educate, and empower the next generation of entrepreneurs.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {[
               { icon: Award, title: "Startup Speaker Series", timing: "Monthly", desc: "Invite founders, alumni entrepreneurs, or investors to share their journey, mistakes, and insights with students.", outcome: "Inspires students + builds network." },
               { icon: Target, title: "Ideathon / Pitch & Win", timing: "Quarterly", desc: "A short 1–2 day event where students pitch early startup ideas.", outcome: "Judged by faculty, alumni, or real entrepreneurs." },
@@ -866,21 +866,21 @@ const Index = () => {
             ].map((program, index) => (
               <AnimatedSection key={program.title} animation="scale" delay={index * 0.05}>
                 <Card className="bg-white/80 backdrop-blur-lg shadow-xl border-0 hover-lift card-hover h-full">
-                  <CardHeader className="flex flex-row items-center gap-3 pb-3">
-                    <program.icon className="w-7 h-7 text-primary" />
-                    <div className="flex-1">
-                      <CardTitle className="text-lg leading-tight">{program.title}</CardTitle>
+                  <CardHeader className="flex flex-row items-start gap-3 pb-3 p-4 sm:p-6">
+                    <program.icon className="w-6 sm:w-7 h-6 sm:h-7 text-primary flex-shrink-0 mt-1" />
+                    <div className="flex-1 min-w-0">
+                      <CardTitle className="text-base sm:text-lg leading-tight">{program.title}</CardTitle>
                       {program.timing && (
                         <span className="text-xs text-muted-foreground">({program.timing})</span>
                       )}
                     </div>
                   </CardHeader>
-                  <CardContent className="text-sm text-muted-foreground pt-0">
+                  <CardContent className="text-xs sm:text-sm text-muted-foreground pt-0 p-4 sm:p-6">
                     <p className="mb-2">{program.desc}</p>
                     {program.outcome && (
-                      <p className="text-green-600 font-medium flex items-center gap-1">
-                        <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                        {program.outcome}
+                      <p className="text-green-600 font-medium flex items-start gap-1">
+                        <span className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0 mt-1.5"></span>
+                        <span>{program.outcome}</span>
                       </p>
                     )}
                   </CardContent>
@@ -892,24 +892,24 @@ const Index = () => {
       </AnimatedSection>
 
       {/* Events Section */}
-      <section className="section-padding bg-gradient-to-br from-background via-secondary/20 to-background" id="events">
-        <div className="container-width">
+      <section className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-background via-secondary/20 to-background px-4 sm:px-6 lg:px-8" id="events">
+        <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <AnimatedSection animation="fadeUp" className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
+          <AnimatedSection animation="fadeUp" className="text-center mb-12 lg:mb-16">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4 sm:mb-6">
               <Calendar className="w-4 h-4" />
               <span>Upcoming Events</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 tracking-tight">
               Join Our <span className="gradient-text">Exciting</span> Events
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
               Participate in our carefully curated events designed to accelerate your entrepreneurial journey through learning, networking, and hands-on experience.
             </p>
           </AnimatedSection>
           
-          {/* Standard Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Responsive Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
             {eventsData.map((event, index) => (
               <AnimatedSection key={event.id} animation="scale" delay={index * 0.1}>
                 <EventCard
@@ -923,9 +923,9 @@ const Index = () => {
           </div>
 
           {/* Call to Action */}
-          <AnimatedSection animation="scale" delay={0.4} className="flex justify-center mt-16">
+          <AnimatedSection animation="scale" delay={0.4} className="flex justify-center mt-12 lg:mt-16">
             <div className="text-center space-y-4">
-              <p className="text-lg text-muted-foreground">
+              <p className="text-base sm:text-lg text-muted-foreground px-4">
                 Ready to take your entrepreneurial journey to the next level?
               </p>
               <a
@@ -943,47 +943,47 @@ const Index = () => {
       </section>
 
       {/* Team Section */}
-      <AnimatedSection animation="fadeUp" className="section-padding bg-gradient-to-br from-background to-secondary/60" id="team">
-        <div className="container-width">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">Our Team</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+      <AnimatedSection animation="fadeUp" className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-background to-secondary/60 px-4 sm:px-6 lg:px-8" id="team">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 lg:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">Our Team</h2>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
               Meet the passionate individuals and mentors guiding E-Cell AMC
             </p>
           </div>
           
           {/* Faculty & Mentors */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-12 lg:mb-16">
             {[
               { name: "Dr. Nandeeswar S B", role: "Faculty Coordinator", dept: "HOD CSE AIML", initials: "NSB" },
               { name: "Prof. Swathi Srikanth", role: "Mentorship", dept: "Industry Expert", initials: "SS" }
             ].map((member, index) => (
               <AnimatedSection key={member.name} animation="scale" delay={index * 0.1}>
                 <Card className="group bg-white/60 backdrop-blur-lg shadow-2xl border-0 hover-lift card-hover overflow-hidden">
-                  <CardContent className="flex flex-col items-center p-8 relative">
+                  <CardContent className="flex flex-col items-center p-6 sm:p-8 relative">
                     <div className="mb-4 relative">
-                      <Avatar className="w-24 h-24 shadow-lg ring-4 ring-primary/30 transition-all duration-500 group-hover:w-32 group-hover:h-32">
-                        <AvatarFallback className="text-lg font-bold">{member.initials}</AvatarFallback>
+                      <Avatar className="w-20 sm:w-24 h-20 sm:h-24 shadow-lg ring-4 ring-primary/30 transition-all duration-500 group-hover:w-24 group-hover:h-24 sm:group-hover:w-32 sm:group-hover:h-32">
+                        <AvatarFallback className="text-base sm:text-lg font-bold">{member.initials}</AvatarFallback>
                       </Avatar>
                       <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full flex items-end justify-center pb-2">
                         <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                          <div className="text-sm font-semibold">{member.role}</div>
+                          <div className="text-xs sm:text-sm font-semibold">{member.role}</div>
                         </div>
                       </div>
                     </div>
-                    <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">{member.name}</h3>
-                    <p className="text-sm text-muted-foreground mb-1">{member.role}</p>
-                    <p className="text-xs text-accent">{member.dept}</p>
+                    <h3 className="text-lg sm:text-xl font-bold mb-1 group-hover:text-primary transition-colors text-center">{member.name}</h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground mb-1 text-center">{member.role}</p>
+                    <p className="text-xs text-accent text-center">{member.dept}</p>
                   </CardContent>
                 </Card>
               </AnimatedSection>
             ))}
           </div>
           
-          {/* Core Team - Horizontal Scroll */}
+          {/* Core Team - Responsive Grid */}
           <div className="relative">
-            <h3 className="text-2xl font-bold text-center mb-8">Core Team Members</h3>
-            <div className="flex overflow-x-auto scrollbar-hide gap-6 pb-4">
+            <h3 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8">Core Team Members</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
               {[
                 { name: "Ritesh N", role: "Team Lead" },
                 { name: "Pannaga JA" },
@@ -995,17 +995,17 @@ const Index = () => {
                 { name: "Praveen V" }
               ].map((member, index) => (
                 <AnimatedSection key={member.name} animation="scale" delay={index * 0.05}>
-                  <Card className="group bg-white/60 backdrop-blur-lg shadow-2xl border-0 min-w-[200px] flex-shrink-0 hover-lift overflow-hidden">
-                    <CardContent className="flex flex-col items-center p-6 relative">
+                  <Card className="group bg-white/60 backdrop-blur-lg shadow-2xl border-0 hover-lift overflow-hidden">
+                    <CardContent className="flex flex-col items-center p-4 sm:p-6 relative">
                       <div className="mb-3 relative">
-                        <Avatar className="w-16 h-16 shadow-md ring-2 ring-primary/20 transition-all duration-500 group-hover:w-20 group-hover:h-20">
-                          <AvatarFallback className="text-sm font-semibold">
+                        <Avatar className="w-12 sm:w-16 h-12 sm:h-16 shadow-md ring-2 ring-primary/20 transition-all duration-500 group-hover:w-16 group-hover:h-16 sm:group-hover:w-20 sm:group-hover:h-20">
+                          <AvatarFallback className="text-xs sm:text-sm font-semibold">
                             {member.name.split(' ').map(n => n[0]).join('')}
                           </AvatarFallback>
                         </Avatar>
                         <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full"></div>
                       </div>
-                      <h4 className="text-base font-semibold group-hover:text-primary transition-colors text-center">
+                      <h4 className="text-xs sm:text-base font-semibold group-hover:text-primary transition-colors text-center leading-tight">
                         {member.name}
                       </h4>
                       {member.role && (
@@ -1023,32 +1023,32 @@ const Index = () => {
       </AnimatedSection>
 
       {/* Contact Section */}
-      <AnimatedSection animation="fadeUp" className="section-padding" id="contact">
-        <div className="container-width">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Get In Touch</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+      <AnimatedSection animation="fadeUp" className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8" id="contact">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 lg:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Get In Touch</h2>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               Ready to start your entrepreneurial journey? We're here to help you every step of the way
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <AnimatedSection animation="fadeLeft">
-              <div className="space-y-8">
+              <div className="space-y-6 sm:space-y-8">
                 {[
                   { icon: MapPin, title: "Address", content: "AMC Engineering College\nBangalore, Karnataka, India", link: "https://www.google.com/maps?q=AMC+Engineering+College+Bangalore+Karnataka+India" },
                   { icon: Mail, title: "Email", content: "amcentrepreneurshipcell@gmail.com", link: "mailto:amcentrepreneurshipcell@gmail.com" },
                   { icon: Phone, title: "Phone", content: "8660144040", link: "tel:8660144040" }
                 ].map((contact, index) => (
                   <div key={contact.title} className={`flex items-start space-x-4 hover-lift p-4 rounded-lg transition-all duration-300 delay-${index * 100}`}>
-                    <contact.icon className="w-6 h-6 text-primary mt-1" />
-                    <div>
-                      <h4 className="font-semibold mb-2">{contact.title}</h4>
+                    <contact.icon className="w-5 sm:w-6 h-5 sm:h-6 text-primary mt-1 flex-shrink-0" />
+                    <div className="min-w-0 flex-1">
+                      <h4 className="font-semibold mb-2 text-sm sm:text-base">{contact.title}</h4>
                       <a
                         href={contact.link}
                         target={contact.link.startsWith('http') ? '_blank' : undefined}
                         rel={contact.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className="text-muted-foreground hover:text-primary transition-colors whitespace-pre-line hover-scale inline-block"
+                        className="text-muted-foreground hover:text-primary transition-colors whitespace-pre-line hover-scale inline-block text-sm sm:text-base break-words"
                       >
                         {contact.content}
                       </a>
@@ -1060,7 +1060,7 @@ const Index = () => {
             
             <AnimatedSection animation="fadeRight" delay={0.2}>
               <div className="card-hover">
-                <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl border border-border">
+                <div className="aspect-video rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl border border-border">
                   <iframe
                     src="https://www.google.com/maps?q=AMC+Engineering+College+Bangalore+Karnataka+India&output=embed"
                     title="AMC Engineering College Location"
@@ -1078,31 +1078,31 @@ const Index = () => {
       </AnimatedSection>
 
       {/* Social CTA */}
-      <AnimatedSection animation="scale" className="py-16 bg-background">
-        <div className="container-width">
+      <AnimatedSection animation="scale" className="py-12 sm:py-16 bg-background px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <div className="flex flex-col items-center justify-center gap-4">
-            <p className="text-lg text-muted-foreground text-center font-medium mb-2">
+            <p className="text-base sm:text-lg text-muted-foreground text-center font-medium mb-2 px-4">
               "Stay connected with us for inspiration, updates, and opportunities!"
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 w-full max-w-2xl">
               <a
                 href="https://www.instagram.com/amc.ecell?igsh=MXZsMGVwODFpZWp1aA=="
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-semibold shadow hover:bg-primary/90 hover-lift btn-primary"
+                className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-primary text-primary-foreground rounded-full font-semibold shadow hover:bg-primary/90 hover-lift btn-primary text-sm sm:text-base"
                 aria-label="Follow us on Instagram"
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="w-4 sm:w-5 h-4 sm:h-5" />
                 Follow us on Instagram
               </a>
               <a
                 href="https://whatsapp.com/channel/0029VbBWPAL2UPBNBnF63e2m"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-full font-semibold shadow hover:bg-green-700 hover-lift"
+                className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-green-600 text-white rounded-full font-semibold shadow hover:bg-green-700 hover-lift text-sm sm:text-base"
                 aria-label="Join our WhatsApp Channel"
               >
-                <MessageCircle className="w-5 h-5" />
+                <MessageCircle className="w-4 sm:w-5 h-4 sm:h-5" />
                 Join our WhatsApp Channel
               </a>
             </div>
@@ -1111,29 +1111,29 @@ const Index = () => {
       </AnimatedSection>
 
       {/* Footer */}
-      <AnimatedSection animation="fadeUp" className="bg-card border-t border-border py-12">
-        <div className="container-width">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="space-y-4">
+      <AnimatedSection animation="fadeUp" className="bg-card border-t border-border py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <div className="space-y-4 col-span-1 sm:col-span-2 lg:col-span-1">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center overflow-hidden hover-scale">
-                  <img src="/logo.png" alt="E-Cell AMC Logo" className="w-8 h-8 object-contain rounded-full" draggable="false" />
+                <div className="w-8 sm:w-10 h-8 sm:h-10 bg-primary rounded-full flex items-center justify-center overflow-hidden hover-scale">
+                  <img src="/logo.png" alt="E-Cell AMC Logo" className="w-6 sm:w-8 h-6 sm:h-8 object-contain rounded-full" draggable="false" />
                 </div>
-                <span className="text-lg font-bold text-primary">E-Cell AMC</span>
+                <span className="text-base sm:text-lg font-bold text-primary">E-Cell AMC</span>
               </div>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-xs sm:text-sm text-muted-foreground">
                 Fostering innovation and entrepreneurship at AMC Engineering College
               </p>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
+              <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Quick Links</h4>
               <div className="space-y-2">
                 {['home','about','programs','events'].map((id) => (
                   <button
                     key={id}
                     onClick={() => scrollToSection(id)}
-                    className="block text-sm text-muted-foreground hover:text-primary transition-colors nav-link"
+                    className="block text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors nav-link"
                   >
                     {id.charAt(0).toUpperCase() + id.slice(1)}
                   </button>
@@ -1142,10 +1142,10 @@ const Index = () => {
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Programs</h4>
+              <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Programs</h4>
               <div className="space-y-2">
                 {["Incubation", "Acceleration", "Mentorship", "Workshops"].map((program) => (
-                  <p key={program} className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer">
+                  <p key={program} className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                     {program}
                   </p>
                 ))}
@@ -1153,17 +1153,17 @@ const Index = () => {
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
+              <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Contact</h4>
               <div className="space-y-2">
-                <p className="text-sm text-muted-foreground">AMC Engineering College</p>
-                <p className="text-sm text-muted-foreground">Bangalore, Karnataka</p>
-                <p className="text-sm text-muted-foreground">amcentrepreneurshipcell@gmail.com</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">AMC Engineering College</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">Bangalore, Karnataka</p>
+                <p className="text-xs sm:text-sm text-muted-foreground break-words">amcentrepreneurshipcell@gmail.com</p>
               </div>
             </div>
           </div>
           
-          <div className="border-t border-border mt-8 pt-8 text-center">
-            <p className="text-sm text-muted-foreground">
+          <div className="border-t border-border mt-6 sm:mt-8 pt-6 sm:pt-8 text-center">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               © 2024 E-Cell AMC Engineering College. All rights reserved.
             </p>
           </div>
