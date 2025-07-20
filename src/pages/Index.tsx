@@ -708,7 +708,7 @@ const Index = () => {
             {[
               { end: 5, label: "Startups Supported", suffix: "+" },
               { end: 10, label: "Events Conducted", suffix: "+" },
-              { end: 3000, label: "Students Reached", suffix: "+" },
+              { end: 1500, label: "Students Reached", suffix: "+" },
               { end: 12, label: "Expert Mentors", suffix: "+" }
             ].map((stat, index) => (
               <AnimatedSection key={stat.label} animation="scale" delay={index * 0.1}>
@@ -991,6 +991,7 @@ const Index = () => {
                 { name: "Ruthu Parinika" },
                 { name: "Raghuveer" },
                 { name: "Poornima" },
+                { name: "Sanath Naik" },
                 { name: "Praveen V" }
               ].map((member, index) => (
                 <AnimatedSection key={member.name} animation="scale" delay={index * 0.05}>
