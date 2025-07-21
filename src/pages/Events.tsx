@@ -12,13 +12,13 @@ const Events = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background py-24 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-background py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-12">
-          <h1 className="text-3xl sm:text-4xl font-bold gradient-text">Our Events</h1>
-          <Button variant="outline" onClick={() => navigate("/")}>Back to Home</Button>
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-10 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl font-bold gradient-text text-center sm:text-left mb-4 sm:mb-0">Our Events</h1>
+          <Button variant="outline" onClick={() => navigate(-1)}>Back to Home</Button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 mb-12">
           {eventsData.map((event, idx) => (
             <AnimatedSection key={event.id} animation="scale" delay={idx * 0.1}>
               <EventCard
